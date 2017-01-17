@@ -317,7 +317,7 @@ std::vector<FragmentHash> getHashesForFragments(std::vector<ShapeAndPositionInva
 	for (auto frag : normalisedFragments)
 	{
 		auto hash = computeHash(frag.getImageData());
-		printf("the hash: %s\n", convertHashToString(hash).c_str());
+		//printf("the hash: %s\n", convertHashToString(hash).c_str());
 		auto frag_hash = FragmentHash(hash, frag.getShape());
 		ret.push_back(frag_hash);
 		cv::imwrite("../output/"+convertHashToString(hash)+".jpg", frag.getImageData());

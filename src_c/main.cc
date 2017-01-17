@@ -783,6 +783,22 @@ int main(int argc, char* argv[])
             }
         }
         printf("]}");
+        //also save all the hashes to a file
+    } else if (argc > 1 && strcmp(argv[1], "dumpHashesToFile") == 0){
+        
+        cv::Mat img = cv::imread(imageFullPath);
+        auto tris = getTheTris(imagePoints.c_str());
+        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
+        std::ofstream outputFile;
+        outputFile.open("../inputImages/"+ imageName + "/hashes.txt", std::ios::out);
+        printf(("../inputImages/"+ imageName + "/hashes.txt\n").c_str());
+        for (auto val: vals)
+        {
+            //std::cout << "the hash: " << cv::convertHashToString(val) << std::endl;
+            outputFile << cv::convertHashToString(val) << std::endl; 
+        }
+        outputFile.close();
     }else{
         printf("arg didn't match anything...\n");
     }
