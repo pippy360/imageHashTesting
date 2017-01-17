@@ -701,7 +701,7 @@ int main(int argc, char* argv[])
             }else{
                 printf("no match\n");
             }
-        }   
+        }
     } else if (argc > 1 && strcmp(argv[1], "comp_hard") == 0){
         printf("running hard coded compare...\n");
         cv::Mat img1 = cv::imread("../input/img1.jpg");
@@ -799,6 +799,13 @@ int main(int argc, char* argv[])
             outputFile << cv::convertHashToString(val) << std::endl; 
         }
         outputFile.close();
+
+    } else if (argc > 1 && strcmp(argv[1], "printConflicts") == 0){
+        printf("running printConflicts.....\n");
+
+        //compare the number of conflicts!!!!!
+        //...
+
     }else{
         printf("arg didn't match anything...\n");
     }
