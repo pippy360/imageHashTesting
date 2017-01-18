@@ -11,6 +11,8 @@
 #include <iostream>
 #include "hiredis/hiredis.h"
 
+using namespace std;
+
 void toTheLeftOfTest()
 {
 
@@ -557,7 +559,40 @@ std::vector<FragmentHash> getTheHashesFromRedisReply(redisReply *reply)
 // }
 
 
+std::vector<FragmentHash> loadHashes(std::string filename)
+{
+    std::vector<FragmentHash> ret;
+    std::ifstream file(filename);
+    std::string str = ""; 
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
 
+        auto fraghash = cv::hex_str_to_hash(str);
+        ret.push_back(fraghash);
+        //std::cout << str << " should match: " << cv::convertHashToString(fraghash) << std::endl;
+    }
+    return ret;
+}
+
+vector<string> loadImageNames(string filename)
+{
+    vector<string> filenames;
+
+    std::ifstream file(filename);
+    std::string str = ""; 
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
+        ret.push_back(str);
+    }
+
+    return filenames;
+}
 
 int main(int argc, char* argv[])
 {
@@ -792,7 +827,7 @@ int main(int argc, char* argv[])
         auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
         std::ofstream outputFile;
         outputFile.open("../inputImages/"+ imageName + "/hashes.txt", std::ios::out);
-        printf(("../inputImages/"+ imageName + "/hashes.txt\n").c_str());
+        // printf(("../inputImages/"+ imageName + "/hashes.txt\n").c_str());
         for (auto val: vals)
         {
             //std::cout << "the hash: " << cv::convertHashToString(val) << std::endl;
@@ -803,8 +838,23 @@ int main(int argc, char* argv[])
     } else if (argc > 1 && strcmp(argv[1], "printConflicts") == 0){
         printf("running printConflicts.....\n");
 
-        //compare the number of conflicts!!!!!
-        //...
+        auto hashes = loadHashes("../inputImages/"+ imageName + "/hashes.txt");
+
+        //we still need to load the image names for non-conflicts
+        auto imageNames = loadImageNames("../inputImages/imageNames.txt");
+
+        for (auto name: imageNames)
+        {
+            //make sure it's not in the exclude list
+            //make sure it's not our image
+            auto toCompareHashes = loadHashes("../inputImages/"+ name + "/hashes.txt");
+            //...
+        }
+        //use the called image!!
+        //  just load the hashes
+        //  for each NON conflict
+        //      just load the hashes
+        //      compare the hashes and count any matches
 
     }else{
         printf("arg didn't match anything...\n");
