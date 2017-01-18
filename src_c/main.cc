@@ -594,6 +594,37 @@ vector<string> loadImageNames(string filename)
     return filenames;
 }
 
+vector<string> loadExcludeList(string filename)
+{
+    vector<string> filenames;
+
+    std::ifstream file(filename);
+    std::string str = ""; 
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
+        ret.push_back(str);
+    }
+
+    return filenames;
+}
+
+
+bool isInExcludeList(string name, vector<string> excludeList, string imageName){
+    if(name == imageName){
+        return true;
+    }
+    for (auto e: excludeList){
+        if(name == e){
+            return true;
+        }   
+    }
+    return false;
+}
+
+
 int main(int argc, char* argv[])
 {
 
@@ -842,13 +873,16 @@ int main(int argc, char* argv[])
 
         //we still need to load the image names for non-conflicts
         auto imageNames = loadImageNames("../inputImages/imageNames.txt");
-
+        auto excludeList = loadExcludeList("../inputImages/"+ imageName + "/excludeList.txt");
         for (auto name: imageNames)
         {
-            //make sure it's not in the exclude list
-            //make sure it's not our image
-            auto toCompareHashes = loadHashes("../inputImages/"+ name + "/hashes.txt");
-            //...
+            if ( !isInExcludeList(name, excludeList, imageName) ){
+                auto toCompareHashes = loadHashes("../inputImages/"+ name + "/hashes.txt");
+                for (auto hash : hashes){
+                    auto ret_vals = findNearestneighbour_slow(hash, toCompareHashes);
+                    cout << "number of matches: " << ret_vals << endl;
+                }
+            } 
         }
         //use the called image!!
         //  just load the hashes

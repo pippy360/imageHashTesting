@@ -314,6 +314,10 @@ def main():
 	from shutil import copyfile
 	import subprocess
 
+	f = open("../inputImages/imageNames.txt",'w+')
+	for item in items:
+		f.write( item['imgName'] + '\n' )
+
 	for item in items:
 		fullPath = toFullPath(item["imgName"])
 		img = buildImage(fullPath)
@@ -329,6 +333,7 @@ def main():
 		dumpExcludeList(item["excludeList"], outputFile)
 		os.system("sudo ../src_c/app2 dumpHashesToFile "+item["imgName"])
 		#subprocess.call(["sudo", " ])
+
 
 
 main()
