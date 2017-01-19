@@ -516,6 +516,19 @@ FragmentHash testSpeedWithoutFix2_s(const cv::Mat img, Triangle tri)
     return FragmentHash(cv::dHashSlowWithResizeAndGrayscale(resized_input_mat));
 }
 
+void findNearestneighbour_slow_debug(FragmentHash targetHash, std::vector<FragmentHash> hashList, int *outputArr)
+{
+    for(auto tempHash : hashList)
+    {
+        int dist = cv::getHashDistance(targetHash, tempHash);
+        outputArr[dist] += 1;
+        // if (dist <= threshold)
+        // {
+        //     ret.push_back(tempHash);
+        // }
+    }
+}
+
 std::vector<FragmentHash> findNearestneighbour_slow(FragmentHash targetHash, std::vector<FragmentHash> hashList, int threshold=3)
 {
     std::vector<FragmentHash> ret;
@@ -588,7 +601,7 @@ vector<string> loadImageNames(string filename)
         if(!std::getline(file, str)){
             break;
         }
-        ret.push_back(str);
+        filenames.push_back(str);
     }
 
     return filenames;
@@ -605,7 +618,7 @@ vector<string> loadExcludeList(string filename)
         if(!std::getline(file, str)){
             break;
         }
-        ret.push_back(str);
+        filenames.push_back(str);
     }
 
     return filenames;
@@ -874,15 +887,30 @@ int main(int argc, char* argv[])
         //we still need to load the image names for non-conflicts
         auto imageNames = loadImageNames("../inputImages/imageNames.txt");
         auto excludeList = loadExcludeList("../inputImages/"+ imageName + "/excludeList.txt");
+        //debug
+        for (auto e: excludeList){
+            cout << "exclude: " << e << endl;
+        }
+        //debug
+        //debug
+        for (auto e: imageNames){
+            cout << "imagename: " << e << endl;
+        }
+        //debug
         for (auto name: imageNames)
         {
+            int outputArr[64] = {0};
             if ( !isInExcludeList(name, excludeList, imageName) ){
+                cout << "here..." << endl;
                 auto toCompareHashes = loadHashes("../inputImages/"+ name + "/hashes.txt");
                 for (auto hash : hashes){
-                    auto ret_vals = findNearestneighbour_slow(hash, toCompareHashes);
-                    cout << "number of matches: " << ret_vals << endl;
+                    findNearestneighbour_slow_debug(hash, toCompareHashes, outputArr);
                 }
-            } 
+                for (int i = 0; i<64;i++)
+                {
+                    cout << i << ": " << outputArr[i] << endl;
+                }
+            }
         }
         //use the called image!!
         //  just load the hashes

@@ -132,7 +132,7 @@ int getHashDistance(FragmentHash first, FragmentHash second){
 	int dist = 0;
 	for (int i = 0; i < hash1.size(); i++)
 	{
-		dist += (hash1[i] != hash2[i])? 1:0;
+		dist += (hash1[i] != hash2[i]);
 	}
 	return dist;
 }

@@ -304,7 +304,8 @@ def dumpExcludeList(exList, outputFile):
 #######################################################################################
 
 items = [
-	{'imgName': "img2", 'excludeList': ["img1"]},
+#	{'imgName': "img2", 'excludeList': ["img1"]},
+	{'imgName': "mod", 'excludeList': []},
 	{'imgName': "img1", 'excludeList': ["img2"]}
 ]
 
