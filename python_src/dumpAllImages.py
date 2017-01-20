@@ -35,6 +35,7 @@ def processImage(imageObj):
 
 def addImageToDB(fullImagePath):
 	imageObj = buildImage(fullImagePath)
+	
 	values, numberOfFragments = processImage(imageObj)
 	r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
@@ -247,6 +248,16 @@ def getMapByImageName(matches):
 	return ret
 
 def dumpTrianglesUsingImg(img, outputFile):
+    	import mainImageProcessingFunctions as mp
+	imageData = img.imageData	
+	#get the keyPoints
+	keyPoints = mp.getTheKeyPoints(imageData)
+	#turn the keyPoints into triangles	
+	triangles = mp.getTheTriangles(keyPoints)
+
+	mp.dumpTriangles(triangles, outputFile)
+
+def dumpTrianglesUsingImg_max1000(img, outputFile):
 	import mainImageProcessingFunctions as mp
 	imageData = img.imageData	
 	#get the keyPoints
@@ -306,7 +317,18 @@ def dumpExcludeList(exList, outputFile):
 items = [
 #	{'imgName': "img2", 'excludeList': ["img1"]},
 	{'imgName': "lennaWithGreenDots", 'excludeList': []},
-	{'imgName': "img1", 'excludeList': ["img2"]}
+	{'imgName': "2f95f3e1294c759ec23c8e6a21bb2cca", 'excludeList': []},
+	#{'imgName': "dots", 'excludeList': ["img1"]},
+	{'imgName': "moderat-bad-kingdom", 'excludeList': []},
+	{'imgName': "mountains_orginal_dots", 'excludeList': []},
+	{'imgName': "Moderat-Bad-Kingdom", 'excludeList': []},
+	{'imgName': "Moderat-Bad-Kingdom6_2", 'excludeList': []},
+	{'imgName': "Moderat-Bad-Kingdom_1", 'excludeList': []},
+	{'imgName': "Moderat-Bad-Kingdom-10", 'excludeList': []},
+	{'imgName': "rick1", 'excludeList': []},
+	{'imgName': "upload02", 'excludeList': []},
+	{'imgName': "_vector__natsu_and_happy___ninjas__by_coolez-d89c2au", 'excludeList': []},
+	{'imgName': "img1", 'excludeList': ["img2", "dots"]}
 ]
 
 def main():
@@ -329,10 +351,10 @@ def main():
 		print fullPath + " : " + directory+"/"+item["imgName"]+'.jpg'
 		print item['imgName'] + " matches: " + img.imageName
 		outputFile = directory + '/keypoints.txt'
-		dumpTrianglesUsingImg(img, outputFile)
+		dumpTrianglesUsingImg_max1000(img, outputFile)
 		outputFile = directory + '/excludeList.txt'
 		dumpExcludeList(item["excludeList"], outputFile)
-		os.system("sudo ../src_c/app2 dumpHashesToFile "+item["imgName"])
+		os.system("sudo ../src_c/app2 random_dumpHashesToFile "+item["imgName"])
 		#subprocess.call(["sudo", " ])
 
 

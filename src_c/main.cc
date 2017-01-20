@@ -4,6 +4,10 @@
 #include <string>
 #include <regex>
 
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
 #include "FragmentHash.h"
 #include "ShapeAndPositionInvariantImage.h"
 #include "Triangle.h"
@@ -295,6 +299,20 @@ std::vector<Triangle> getTheTris(const char *trisPath){
     //std::string filename = readTheName(&file);
     auto tris = readTheTriangles(&file);
     return tris;
+}
+
+std::vector<Triangle> getTheTris_random(const char *trisPath, int numberOfSamples = 1000){
+    std::ifstream file(trisPath);
+    //std::string filename = readTheName(&file);
+    auto tris = readTheTriangles(&file);
+    std::vector<Triangle> ret;
+    for (int i = 0; i<numberOfSamples; i++)
+    {
+        int ran = rand() % tris.size();
+        ret.push_back(tris[ran]);
+    }
+
+    return ret;
 }
 
 cv::Matx33d getATransformationMatrix(int width, int height){
@@ -879,6 +897,24 @@ int main(int argc, char* argv[])
         }
         outputFile.close();
 
+    } else if (argc > 1 && strcmp(argv[1], "random_dumpHashesToFile") == 0){
+        
+        cv::Mat img = cv::imread(imageFullPath);
+        auto tris = getTheTris_random(imagePoints.c_str());
+        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
+        std::ofstream outputFile;
+        outputFile.open("../inputImages/"+ imageName + "/hashes.txt", std::ios::out);
+        // printf(("../inputImages/"+ imageName + "/hashes.txt\n").c_str());
+        for (auto val: vals)
+        {
+            //std::cout << "the hash: " << cv::convertHashToString(val) << std::endl;
+            outputFile << cv::convertHashToString(val) << std::endl; 
+        }
+        outputFile.close();
+
+
+
     } else if (argc > 1 && strcmp(argv[1], "printConflicts") == 0){
         printf("running printConflicts.....\n");
 
@@ -897,11 +933,13 @@ int main(int argc, char* argv[])
             cout << "imagename: " << e << endl;
         }
         //debug
+        int finOutputArr[64] = {0};
+
         for (auto name: imageNames)
         {
             int outputArr[64] = {0};
             if ( !isInExcludeList(name, excludeList, imageName) ){
-                cout << "here..." << endl;
+                cout << "Output for image: " << name << endl;
                 auto toCompareHashes = loadHashes("../inputImages/"+ name + "/hashes.txt");
                 for (auto hash : hashes){
                     findNearestneighbour_slow_debug(hash, toCompareHashes, outputArr);
@@ -909,9 +947,16 @@ int main(int argc, char* argv[])
                 for (int i = 0; i<64;i++)
                 {
                     cout << i << ": " << outputArr[i] << endl;
+                    finOutputArr[i] += outputArr[i];
                 }
             }
         }
+        cout << "finoutput: " << endl;
+        for (int i = 0; i<64;i++)
+        {
+            cout << i << ": " << finOutputArr[i] << endl;
+        }
+
         //use the called image!!
         //  just load the hashes
         //  for each NON conflict

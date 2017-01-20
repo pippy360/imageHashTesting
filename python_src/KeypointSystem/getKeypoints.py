@@ -230,8 +230,11 @@ def getTheKeypoints_justPoints_inner_inner(channel):
 	#import time		
 	#cv2.imshow('t1'+str(time.time()), img2)
 	
-
-	return finCnts
+	print "Number of keypoints: " + str(len(finCnts))
+	if len(finCnts) > 200:
+		return finCnts[0:200]
+	else:
+		return finCnts
 
 g_pixelVals = [16, 124, 115, 68, 98, 176, 225, 
 55, 50, 53, 129, 19, 57, 160, 143, 237, 75, 164, 
