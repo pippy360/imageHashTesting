@@ -42,7 +42,8 @@
 #ifndef __OPENCV_MARR_HILDRETH_HASH_HPP__
 #define __OPENCV_MARR_HILDRETH_HASH_HPP__
 
-#include "opencv2/core.hpp"
+#include <opencv2/opencv.hpp>
+
 #include "img_hash_base.hpp"
 
 namespace cv

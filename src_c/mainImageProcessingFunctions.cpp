@@ -10,6 +10,9 @@
 #include "Triangle.h"
 #include "img_hash/average_hash.cpp"
 #include "img_hash/block_mean_hash.cpp"
+#include "img_hash/color_moment_hash.cpp"
+#include "img_hash/marr_hildreth_hash.cpp"
+#include "img_hash/phash.cpp"
 
 #define NUM_OF_ROTATIONS 3
 #define HASH_SIZE 8

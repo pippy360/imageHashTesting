@@ -204,7 +204,9 @@ void MarrHildrethHash::setKernelParam(float alpha, float scale)
 
 Ptr<MarrHildrethHash> MarrHildrethHash::create(float alpha, float scale)
 {
-    return makePtr<MarrHildrethHash>(alpha, scale);
+    //return Ptr<MarrHildrethHash>(MarrHildrethHash(alpha, scale));
+    auto c = new MarrHildrethHash(alpha, scale);
+    return Ptr<MarrHildrethHash>(c);
 }
 
 void marrHildrethHash(cv::InputArray inputArr,

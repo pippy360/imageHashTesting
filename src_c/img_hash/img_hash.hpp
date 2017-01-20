@@ -45,10 +45,10 @@
 #include "img_hash_base.hpp"
 #include "average_hash.hpp"
 #include "block_mean_hash.hpp"
-// #include "opencv2/img_hash/color_moment_hash.hpp"
-// #include "opencv2/img_hash/marr_hildreth_hash.hpp"
-// #include "opencv2/img_hash/phash.hpp"
-// #include "opencv2/img_hash/radial_variance_hash.hpp"
+#include "color_moment_hash.hpp"
+#include "marr_hildreth_hash.hpp"
+#include "phash.hpp"
+//#include "opencv2/img_hash/radial_variance_hash.hpp"
 
 /**
 @defgroup img_hash Provide algorithms to extract the hash of images and fast way to figure out most similar images in huge data set

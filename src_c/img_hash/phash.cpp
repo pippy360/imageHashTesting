@@ -107,7 +107,7 @@ double PHash::compare(cv::InputArray hashOne,
 
 Ptr<PHash> PHash::create()
 {
-    return makePtr<PHash>();
+    return Ptr<PHash>();
 }
 
 String PHash::getDefaultName() const

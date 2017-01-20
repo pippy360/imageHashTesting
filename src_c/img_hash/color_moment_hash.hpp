@@ -42,7 +42,8 @@
 #ifndef __OPENCV_COLOR_MOMENT_HASH_HPP__
 #define __OPENCV_COLOR_MOMENT_HASH_HPP__
 
-#include "opencv2/core.hpp"
+#include <opencv2/opencv.hpp>
+
 
 namespace cv
 {
