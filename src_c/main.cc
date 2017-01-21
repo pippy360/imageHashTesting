@@ -534,16 +534,16 @@ FragmentHash testSpeedWithoutFix2_s(const cv::Mat img, Triangle tri)
     return FragmentHash(cv::dHashSlowWithResizeAndGrayscale(resized_input_mat));
 }
 
-void findNearestneighbour_slow_debug(FragmentHash targetHash, std::vector<FragmentHash> hashList, int *outputArr)
+void findNearestneighbour_slow_debug(FragmentHash targetHash, std::vector<FragmentHash> hashList, int *outputArr, int threshold=3)
 {
     for(auto tempHash : hashList)
     {
         int dist = cv::getHashDistance(targetHash, tempHash);
         outputArr[dist] += 1;
-        // if (dist <= threshold)
-        // {
-        //     ret.push_back(tempHash);
-        // }
+        if (dist <= threshold)
+        {
+            printf("failure: %s : %s\n", cv::convertHashToString(targetHash).c_str(), cv::convertHashToString(tempHash).c_str());
+        }
     }
 }
 
@@ -805,8 +805,8 @@ int main(int argc, char* argv[])
         cv::Mat img2 = cv::imread("../input/img2.jpg");
         auto tris1 = getTheTris("../src/tri1.txt");
         auto tris2 = getTheTris("../src/tri2.txt");
-        auto img1_s = ShapeAndPositionInvariantImage("", img1, std::vector<Keypoint>(), "");
-        auto img2_s = ShapeAndPositionInvariantImage("", img2, std::vector<Keypoint>(), "");
+        auto img1_s = ShapeAndPositionInvariantImage("img1", img1, std::vector<Keypoint>(), "");
+        auto img2_s = ShapeAndPositionInvariantImage("img2", img2, std::vector<Keypoint>(), "");
         auto vals1 = cv::getAllTheHashesForImage_debug(img1_s, tris1, tris1.size());
         auto vals2 = cv::getAllTheHashesForImage_debug(img2_s, tris2, tris2.size());
 
@@ -845,7 +845,7 @@ int main(int argc, char* argv[])
         printf("lookup detected\n");
         cv::Mat img = cv::imread(imageFullPath);
         auto tris = getTheTris(imagePoints.c_str());
-        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto img_s = ShapeAndPositionInvariantImage(imageName, img, std::vector<Keypoint>(), "");
         auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
         int count_number_of_matches = 0;
         for(FragmentHash v: vals){
@@ -864,7 +864,7 @@ int main(int argc, char* argv[])
 
         cv::Mat img = cv::imread(imageFullPath);
         auto tris = getTheTris(imagePoints.c_str());
-        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto img_s = ShapeAndPositionInvariantImage(imageName, img, std::vector<Keypoint>(), "");
         auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
         printf("{\"vals\": [");
         // for(FragmentHash v: vals)
@@ -885,7 +885,7 @@ int main(int argc, char* argv[])
         
         cv::Mat img = cv::imread(imageFullPath);
         auto tris = getTheTris(imagePoints.c_str());
-        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto img_s = ShapeAndPositionInvariantImage(imageName, img, std::vector<Keypoint>(), "");
         auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
         std::ofstream outputFile;
         outputFile.open("../inputImages/"+ imageName + "/hashes.txt", std::ios::out);
@@ -901,7 +901,7 @@ int main(int argc, char* argv[])
         
         cv::Mat img = cv::imread(imageFullPath);
         auto tris = getTheTris_random(imagePoints.c_str());
-        auto img_s = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+        auto img_s = ShapeAndPositionInvariantImage(imageName, img, std::vector<Keypoint>(), "");
         auto vals = cv::getAllTheHashesForImage_debug(img_s, tris, tris.size());
         std::ofstream outputFile;
         outputFile.open("../inputImages/"+ imageName + "/hashes.txt", std::ios::out);

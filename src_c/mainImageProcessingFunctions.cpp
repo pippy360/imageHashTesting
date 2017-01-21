@@ -120,7 +120,7 @@ std::vector<bool> matHashToBoolArr(cv::Mat const inHash)
 std::vector<bool> computeHash(cv::Mat const input)
 {
     cv::Mat inHash;
-    auto algo = cv::img_hash::AverageHash();
+    auto algo = cv::img_hash::BlockMeanHash();
     algo.compute(input, inHash);
     return matHashToBoolArr(inHash);
 }
@@ -298,8 +298,12 @@ std::vector<ShapeAndPositionInvariantImage> normaliseScaleAndRotationForSingleFr
 		auto hash = FragmentHash(hash_b, shape);
 		// printf("hash: %s shape: %s\n", convertHashToString(hash).c_str(), getShapeStr(hash.getShape()).c_str());
 		//imshow("fragmentAfterTransformation", newImageData);
-		std::string str = convertHashToString(hash);
-		imwrite("../output/"+ str + ".jpg", newImageData);
+		// std::string str = convertHashToString(hash);
+		// imwrite("../output/"+ str + ".jpg", newImageData);
+
+		cv::imwrite("../inputImages/"+fragment.getImageName()+"/outputFragments/"+convertHashToString(hash)+".jpg", newImageData);
+//		printf("%s\n", ("../inputImages/"+fragment.getImageName()+"/outputFragments/"+convertHashToString(hash)+".jpg").c_str() );
+
 		// waitKey();
 		//DEBUG
 		ret.push_back(t);
@@ -311,7 +315,7 @@ std::vector<ShapeAndPositionInvariantImage> normaliseScaleAndRotationForSingleFr
 ShapeAndPositionInvariantImage getFragment(const ShapeAndPositionInvariantImage& input_image, const Triangle& tri)
 {
 	//TODO: cut out the fragment
-	return ShapeAndPositionInvariantImage("some frag", input_image.getImageData(), tri.toKeypoints(), "");
+	return ShapeAndPositionInvariantImage(input_image.getImageName(), input_image.getImageData(), tri.toKeypoints(), "");
 }
 
 std::vector<FragmentHash> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments)
@@ -323,7 +327,6 @@ std::vector<FragmentHash> getHashesForFragments(std::vector<ShapeAndPositionInva
 		//printf("the hash: %s\n", convertHashToString(hash).c_str());
 		auto frag_hash = FragmentHash(hash, frag.getShape());
 		ret.push_back(frag_hash);
-		cv::imwrite("../output/"+convertHashToString(hash)+".jpg", frag.getImageData());
 		//DEBUG
 		// cv::imshow("./frag.jpg", frag.getImageData());
 		// cv::waitKey();

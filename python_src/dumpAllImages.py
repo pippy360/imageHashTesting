@@ -347,6 +347,9 @@ def main():
 		directory = '../inputImages/'+ item["imgName"]
 		if not os.path.exists(directory):
 			os.makedirs(directory)
+		ignoreMe_directory = '../inputImages/'+ item["imgName"] + '/outputFragments'
+		if not os.path.exists(ignoreMe_directory):
+			os.makedirs(ignoreMe_directory)
 		copyfile(fullPath, directory+"/"+item["imgName"]+'.jpg')
 		print fullPath + " : " + directory+"/"+item["imgName"]+'.jpg'
 		print item['imgName'] + " matches: " + img.imageName
