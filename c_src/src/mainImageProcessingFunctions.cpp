@@ -1,18 +1,17 @@
-#pragma once
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <iomanip>      // std::setw
 #include <math.h>       /* pow, atan2 */
 
-#include "FragmentHash.h"
+#include "img_hash/FragmentHash.h"
 #include "ShapeAndPositionInvariantImage.h"
 #include "Triangle.h"
-#include "img_hash/average_hash.cpp"
-#include "img_hash/block_mean_hash.cpp"
-#include "img_hash/color_moment_hash.cpp"
-#include "img_hash/marr_hildreth_hash.cpp"
-#include "img_hash/phash.cpp"
+#include "img_hash/img_hash_opencv_module/average_hash.cpp"
+#include "img_hash/img_hash_opencv_module/block_mean_hash.cpp"
+#include "img_hash/img_hash_opencv_module/color_moment_hash.cpp"
+#include "img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp"
+#include "img_hash/img_hash_opencv_module/phash.cpp"
 
 #define NUM_OF_ROTATIONS 3
 #define HASH_SIZE 8
@@ -35,26 +34,7 @@ namespace cv
 {
 
 
-std::string convertHashToString(FragmentHash inHash)
-{
-	std::string ret = "";
-	auto hash = inHash.getHash();
-	int h = 0;
-	for (int i = 0; i < hash.size(); i++)
-	{
-		if (hash[i]){
-			h += pow(2, (i % 8));
-		}
 
-		if (i%8 == 7){
-			std::stringstream buffer;
-			buffer << std::hex << std::setfill('0') << std::setw(2) << h;
-			ret += buffer.str();
-			h = 0;
-		}
-	}
-	return ret;
-}
 
 std::string getShapeStr(std::vector<Keypoint> shape)
 {
