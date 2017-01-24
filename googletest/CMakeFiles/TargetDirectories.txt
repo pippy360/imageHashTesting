@@ -1,0 +1,4 @@
+/home/linux/imageHashTesting/googletest/googlemock/gtest/CMakeFiles/gtest.dir
+/home/linux/imageHashTesting/googletest/googlemock/CMakeFiles/gmock.dir
+/home/linux/imageHashTesting/googletest/googlemock/gtest/CMakeFiles/gtest_main.dir
+/home/linux/imageHashTesting/googletest/googlemock/CMakeFiles/gmock_main.dir

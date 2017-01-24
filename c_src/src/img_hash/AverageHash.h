@@ -10,17 +10,17 @@ using namespace std;
 
 namespace hashes{
 
-template <typename T> class AverageHash : public FragmentHash<string>
+class AverageHash : public FragmentHash<vector<bool>>
 {
 private:
     vector<bool> hash;
     vector<Keypoint> shape;
 
-    static std::string convertHashToString(vector<bool> hash) const
+    static std::string convertHashToString(vector<bool> hash)
     {
         std::string ret = "";
         int h = 0;
-        for (int i = 0; i < hash.size(); i++)
+        for (unsigned int i = 0; i < hash.size(); i++)
         {
             if (hash[i]){
                 h += pow(2, (i % 8));
@@ -56,24 +56,24 @@ private:
                 hash.push_back(check);			
             }
         }
-        return FragmentHash(hash);
+        return AverageHash(hash);
     }
 
 public:
 
-    AverageHash(T hash, std::vector<Keypoint> shape=vector<Keypoint>()):
-        hash(hash),
-        shape(shape) 
+    AverageHash(vector<bool> hash, std::vector<Keypoint> shape=vector<Keypoint>()):
+            FragmentHash<vector<bool>>(vector<bool>(), shape)
     {}
 
     string toString() override 
     {
-        return convertHashToString(this);
+        return convertHashToString(hash_);
     }
 
-    AverageHash& buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) override 
+    AverageHash& buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) override
     {
-        return hex_str_to_hash(fragmentHashString);
+        AverageHash val = hex_str_to_hash(fragmentHashString);
+        return val;
     }
 
 

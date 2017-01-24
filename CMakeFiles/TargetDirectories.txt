@@ -1,3 +1,4 @@
 /home/linux/imageHashTesting/CMakeFiles/edit_cache.dir
 /home/linux/imageHashTesting/CMakeFiles/rebuild_cache.dir
+/home/linux/imageHashTesting/CMakeFiles/test1.dir
 /home/linux/imageHashTesting/CMakeFiles/imageHashTesting.dir
