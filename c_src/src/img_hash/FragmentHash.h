@@ -15,8 +15,8 @@ private:
 public:
 
     FragmentHash(T hash, std::vector<Keypoint> shape=vector<Keypoint>()):
-        hash(hash),
-        shape(shape) 
+        hash_(hash),
+        shape_(shape) 
     {}
 
     virtual string toString() = 0;
@@ -25,9 +25,9 @@ public:
 
     //getters and setters
 
-    virtual inline T getHash() { return hash; }
+    virtual inline T getHash() { return hash_; }
 
-    virtual vector<Keypoint> getShape() { return shape; }
+    virtual vector<Keypoint> getShape() { return shape_; }
 
 };
 

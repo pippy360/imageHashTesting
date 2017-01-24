@@ -8,6 +8,8 @@
 
 using namespace std;
 
+namespace hashes{
+
 template <typename T> class AverageHash : public FragmentHash<string>
 {
 private:
@@ -77,4 +79,7 @@ public:
 
 };
 
+}//end of namespace
 #endif // average_hash_h
+
+
