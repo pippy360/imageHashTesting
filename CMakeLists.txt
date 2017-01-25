@@ -3,6 +3,22 @@ project(imageHashTesting)
 
 set(CMAKE_CXX_STANDARD 11)
 
+
+
+################################
+# Testing
+################################
+# This adds another subdirectory, which has 'project(gtest)'.
+add_subdirectory(googletest)
+
+enable_testing()
+
+# Include the gtest library. gtest_SOURCE_DIR is available due to
+    # 'project(gtest)' above.
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+message(STATUS "here ${gtest_SOURCE_DIR}/include ")
+
+
 include_directories(c_src/src)
 
 SET(TARGET_H
@@ -34,41 +50,7 @@ target_link_libraries( imageHashTesting ${OpenCV_LIBS} )
 
 
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
-option(test "Build all tests." ON) # Makes boolean 'test' available.
 
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
-
-################################
-# Testing
-################################
-if (test)
-    # This adds another subdirectory, which has 'project(gtest)'.
-    add_subdirectory(googletest)
-
-    enable_testing()
-
-    # Include the gtest library. gtest_SOURCE_DIR is available due to
-    # 'project(gtest)' above.
-    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-    ##############
-    # Unit Tests
-    ##############
-    add_executable(runUnitTests test_project1.cpp)
-
-    # Standard linking to gtest stuff.
-    target_link_libraries(runUnitTests gtest gtest_main)
-
-    # Extra linking for the project.
-    target_link_libraries(runUnitTests project1_lib)
-
-    # This is so you can do 'make test' to see all your tests run, instead of
-    # manually running the executable runUnitTests to see those specific tests.
-    add_test(NAME that-test-I-made COMMAND runUnitTests)
-
-    # You can also omit NAME and COMMAND. The second argument could be some other
-    # test executable.
-    add_test(that-other-test-I-made runUnitTests)
-endif()
