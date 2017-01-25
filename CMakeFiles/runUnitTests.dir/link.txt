@@ -1,1 +1,0 @@
-/usr/bin/c++   -g -Wall -g     -o runUnitTests googletest/googletest/libgtest.a googletest/googletest/libgtest_main.a -lproject1_lib googletest/googletest/libgtest.a -lpthread 

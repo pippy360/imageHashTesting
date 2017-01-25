@@ -21,6 +21,8 @@ string
 -
 vector
 -
+memory
+-
 Keypoint.h
 c_src/src/img_hash/Keypoint.h
 FragmentHash.h
@@ -32,6 +34,8 @@ string
 vector
 -
 Keypoint.h
+-
+memory
 -
 
 googletest/googletest/include/gtest/gtest-death-test.h

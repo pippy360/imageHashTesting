@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "Keypoint.h"
 #include "FragmentHash.h"
 
@@ -62,7 +63,11 @@ private:
 public:
 
     AverageHash(vector<bool> hash, std::vector<Keypoint> shape=vector<Keypoint>()):
-            FragmentHash<vector<bool>>(vector<bool>(), shape)
+            FragmentHash<vector<bool>>(hash, shape)
+    {}
+
+    AverageHash(const AverageHash& that) :
+            FragmentHash<vector<bool>>(that.hash_, that.shape_)
     {}
 
     string toString() override 
@@ -70,10 +75,10 @@ public:
         return convertHashToString(hash_);
     }
 
-    AverageHash& buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) override
+    AverageHash* buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) override
     {
         AverageHash val = hex_str_to_hash(fragmentHashString);
-        return val;
+        return new AverageHash(val);
     }
 
 

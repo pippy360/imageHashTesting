@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.2)
 project(imageHashTesting)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -44,7 +44,8 @@ set( TEST_FILES
 find_package( OpenCV REQUIRED )
 
 add_executable(imageHashTesting ${SOURCE_FILES} ${TARGET_H})
-add_executable(test1 ${TEST_FILES})
+add_executable(averageHashTest ${TEST_FILES})
+target_link_libraries(averageHashTest gtest gtest_main)
 
 target_link_libraries( imageHashTesting ${OpenCV_LIBS} )
 

@@ -5,9 +5,9 @@
 
 using namespace hashes;
 
-int main(){
-    AverageHash testHash(vector<bool>());
-    printf("this is a new test\n");
-    return 0;
+TEST(something, here){
+    AverageHash testHash = AverageHash (vector<bool>());
+    AverageHash* testHash2 = testHash.buildHashFromString("7ca4a6eee2a32515");
+    EXPECT_EQ("7ca4a6eee2a32515", testHash2->toString());
 }
 

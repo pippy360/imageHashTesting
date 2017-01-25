@@ -29,6 +29,8 @@ vector
 -
 Keypoint.h
 -
+memory
+-
 
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
 precomp.hpp

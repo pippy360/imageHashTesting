@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <Keypoint.h>
+#include <memory>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ public:
 
     virtual string toString() = 0;
 
-    virtual FragmentHash<T>& buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) = 0;
+    virtual FragmentHash<T>* buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) = 0;
 
     //getters and setters
 
