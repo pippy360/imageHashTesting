@@ -9,8 +9,8 @@
 
 using namespace std;
 
-namespace hashes{
 
+namespace hashes{
 class AverageHash : public FragmentHash<vector<bool>>
 {
 private:

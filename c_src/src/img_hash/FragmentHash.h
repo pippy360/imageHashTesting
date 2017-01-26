@@ -18,8 +18,10 @@ public:
 
     FragmentHash(T hash, std::vector<Keypoint> shape=vector<Keypoint>()):
         hash_(hash),
-        shape_(shape) 
-    {}
+        shape_(shape)
+    {
+        //convert string to hash
+    }
 
     virtual string toString() = 0;
 
