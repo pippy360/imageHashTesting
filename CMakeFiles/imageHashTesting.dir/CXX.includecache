@@ -113,6 +113,8 @@ iostream
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp
 opencv2/opencv.hpp
 -
+img_hash_base.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/precomp.hpp
 opencv2/opencv.hpp

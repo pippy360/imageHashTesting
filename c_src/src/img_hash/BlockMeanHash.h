@@ -1,5 +1,5 @@
-#ifndef average_hash_h
-#define average_hash_h
+#ifndef block_mean_hash_h
+#define block_mean_hash_h
 
 #include <string>
 #include <vector>
@@ -130,6 +130,6 @@ public:
 };
 
 }//end of namespace
-#endif // average_hash_h
+#endif // block_mean_hash_h
 
 

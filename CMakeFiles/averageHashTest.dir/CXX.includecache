@@ -85,6 +85,8 @@ iostream
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp
 opencv2/opencv.hpp
 -
+img_hash_base.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/precomp.hpp
 opencv2/opencv.hpp
@@ -109,6 +111,16 @@ gtest/gtest.h
 /home/linux/imageHashTesting/c_src/test/gtest/gtest.h
 img_hash/BlockMeanHash.h
 /home/linux/imageHashTesting/c_src/test/img_hash/BlockMeanHash.h
+stdio.h
+-
+opencv2/opencv.hpp
+/home/linux/imageHashTesting/c_src/test/opencv2/opencv.hpp
+
+/home/linux/imageHashTesting/c_src/test/perceptualHashTest.cpp
+gtest/gtest.h
+/home/linux/imageHashTesting/c_src/test/gtest/gtest.h
+img_hash/PerceptualHash.h
+/home/linux/imageHashTesting/c_src/test/img_hash/PerceptualHash.h
 stdio.h
 -
 opencv2/opencv.hpp
@@ -170,6 +182,22 @@ memory
 ShapeAndPositionInvariantImage.h
 c_src/src/img_hash/ShapeAndPositionInvariantImage.h
 
+c_src/src/img_hash/PerceptualHash.h
+string
+-
+vector
+-
+memory
+-
+opencv2/opencv.hpp
+c_src/src/img_hash/opencv2/opencv.hpp
+Keypoint.h
+c_src/src/img_hash/Keypoint.h
+FragmentHash.h
+c_src/src/img_hash/FragmentHash.h
+img_hash/img_hash_opencv_module/phash.hpp
+c_src/src/img_hash/img_hash/img_hash_opencv_module/phash.hpp
+
 c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp
 opencv2/opencv.hpp
 -
@@ -185,6 +213,12 @@ c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 opencv2/opencv.hpp
 -
+
+c_src/src/img_hash/img_hash_opencv_module/phash.hpp
+opencv2/opencv.hpp
+-
+img_hash_base.hpp
+c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 
 googletest/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h
