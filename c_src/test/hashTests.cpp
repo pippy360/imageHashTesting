@@ -24,8 +24,11 @@ TEST(AverageHash, basicImageTest){
 
     // AverageHash testHash("7ca4a6eee2a32515");
     AverageHash testHash1(s_img1);
-    AverageHash testHash2(s_img2);    
-    EXPECT_EQ("7ca4a6eee2a32515", testHash1.toString());
-    EXPECT_EQ("7ca4a6eee2a32515", testHash2.toString());
+    AverageHash testHash2(s_img2);
+    EXPECT_GT(5, testHash1.getHammingDistance(testHash2));
+    EXPECT_EQ("8f9397b7b7307357", testHash1.toString());
+    EXPECT_EQ("8f9395b7b7347317", testHash2.toString());
 }
+
+
 

@@ -35,9 +35,11 @@ public:
 
     //getters and setters
 
-    virtual inline T getHash() { return hash_; }
+    virtual inline T getHash() const { return hash_; } 
 
-    virtual vector<Keypoint> getShape() { return shape_; }
+    virtual vector<Keypoint> getShape() const { return shape_; } 
+
+    virtual int getHammingDistance(const FragmentHash<T>& inHash) = 0;
 
 };
 

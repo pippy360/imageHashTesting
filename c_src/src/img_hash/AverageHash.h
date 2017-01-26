@@ -83,6 +83,20 @@ private:
         return matHashToBoolArr(inHash);   
     }
 
+    //returns hamming distance
+    static int getHashDistance(const FragmentHash<vector<bool>>& first, const FragmentHash<vector<bool>>& second){
+        const vector<bool> hash1 = first.getHash();
+        const vector<bool> hash2 = second.getHash();
+        assert(hash1.size() == hash2.size());
+
+        int dist = 0;
+        for (unsigned int i = 0; i < hash1.size(); i++)
+        {
+            dist += (hash1[i] != hash2[i]);
+        }
+        return dist;
+    }
+
 public:
 
     AverageHash(ShapeAndPositionInvariantImage frag):
@@ -105,6 +119,11 @@ public:
     {
         return convertHashToString(hash_);
     }
+    
+    int getHammingDistance(const FragmentHash<vector<bool>>& inHash){
+        return getHashDistance(*this, inHash);
+    }
+
 
 };
 

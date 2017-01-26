@@ -82,19 +82,19 @@ std::vector<bool> dHashSlowWithResizeAndGrayscale(const Mat input_mat)
 }
 
 
-//returns hamming distance
-//int getHashDistance(FragmentHash first, FragmentHash second){
-//	auto hash1 = first.getHash();
-//	auto hash2 = second.getHash();
-//	assert(hash1.size() == hash2.size());
-//
-//	int dist = 0;
-//	for (int i = 0; i < hash1.size(); i++)
-//	{
-//		dist += (hash1[i] != hash2[i]);
-//	}
-//	return dist;
-//}
+// //returns hamming distance
+// int getHashDistance(FragmentHash first, FragmentHash second){
+// 	auto hash1 = first.getHash();
+// 	auto hash2 = second.getHash();
+// 	assert(hash1.size() == hash2.size());
+
+// 	int dist = 0;
+// 	for (int i = 0; i < hash1.size(); i++)
+// 	{
+// 		dist += (hash1[i] != hash2[i]);
+// 	}
+// 	return dist;
+// }
 
 //FragmentHash getHash(ShapeAndPositionInvariantImage frag)
 //{
