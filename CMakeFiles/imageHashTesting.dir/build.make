@@ -57,129 +57,9 @@ include CMakeFiles/imageHashTesting.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/imageHashTesting.dir/flags.make
 
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires:
-
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
-	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides.build
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
-
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires:
-
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
-	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides.build
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
-
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires:
-
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires
-	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides.build
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
-
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires:
-
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires
-	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides.build
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
-
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/phash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires:
-
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires
-	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides.build
-.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides
-
-CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
-
-
 CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o: CMakeFiles/imageHashTesting.dir/flags.make
 CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o: c_src/src/main.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o -c /home/linux/imageHashTesting/c_src/src/main.cc
 
 CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.i: cmake_force
@@ -203,7 +83,7 @@ CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o.provides.build: CMakeFiles/i
 
 CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
 CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o: c_src/src/mainImageProcessingFunctions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o -c /home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.cpp
 
 CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.i: cmake_force
@@ -225,26 +105,146 @@ CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o.pro
 CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o
 
 
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires:
+
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
+	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides.build
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
+
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires:
+
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
+	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides.build
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
+
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires:
+
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires
+	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides.build
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
+
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires:
+
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires
+	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides.build
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
+
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: CMakeFiles/imageHashTesting.dir/flags.make
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/phash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp > CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp -o CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires:
+
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires
+	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides.build
+.PHONY : CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides
+
+CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.provides.build: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
+
+
 # Object files for target imageHashTesting
 imageHashTesting_OBJECTS = \
+"CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o" \
+"CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o" \
 "CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o" \
 "CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o" \
 "CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o" \
 "CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o" \
-"CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o" \
-"CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o" \
-"CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o"
+"CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
 
 # External object files for target imageHashTesting
 imageHashTesting_EXTERNAL_OBJECTS =
 
+imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o
+imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
-imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o
-imageHashTesting: CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o
 imageHashTesting: CMakeFiles/imageHashTesting.dir/build.make
 imageHashTesting: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.2.4.9
 imageHashTesting: /usr/lib/x86_64-linux-gnu/libopencv_ts.so.2.4.9
@@ -273,13 +273,13 @@ CMakeFiles/imageHashTesting.dir/build: imageHashTesting
 
 .PHONY : CMakeFiles/imageHashTesting.dir/build
 
+CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o.requires
+CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o.requires
 CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
 CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
 CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires
 CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o.requires
 CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o.requires
-CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/main.cc.o.requires
-CMakeFiles/imageHashTesting.dir/requires: CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.o.requires
 
 .PHONY : CMakeFiles/imageHashTesting.dir/requires
 

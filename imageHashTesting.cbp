@@ -313,33 +313,43 @@
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.hpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.hpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp">
          <Option target="imageHashTesting"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/main.cc">
          <Option target="imageHashTesting"/>

@@ -29,17 +29,20 @@ SET(TARGET_H
         c_src/src/Triangle.h
         )
 
-set(SOURCE_FILES
+set(IMAGE_HASH_FILES 
         c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
         c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
         c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
         c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
-        c_src/src/img_hash/img_hash_opencv_module/phash.cpp
+        c_src/src/img_hash/img_hash_opencv_module/phash.cpp)
+
+
+set(SOURCE_FILES
         c_src/src/main.cc
-        c_src/src/mainImageProcessingFunctions.cpp)
+        c_src/src/mainImageProcessingFunctions.cpp ${IMAGE_HASH_FILES})
 
 set( TEST_FILES
-        c_src/test/hashTests.cpp)
+        c_src/test/hashTests.cpp ${IMAGE_HASH_FILES})
 
 find_package( OpenCV REQUIRED )
 include_directories(${OpenCV_INCLUDE_DIRS})
