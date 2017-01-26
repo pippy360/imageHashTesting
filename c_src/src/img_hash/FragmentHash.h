@@ -5,6 +5,7 @@
 #include <vector>
 #include <Keypoint.h>
 #include <memory>
+#include "ShapeAndPositionInvariantImage.h"
 
 using namespace std;
 
@@ -16,16 +17,21 @@ protected:
     vector<Keypoint> shape_;
 public:
 
-    FragmentHash(T hash, std::vector<Keypoint> shape=vector<Keypoint>()):
-        hash_(hash),
+    FragmentHash(ShapeAndPositionInvariantImage image)
+    {}
+
+    FragmentHash(string conver, std::vector<Keypoint> shape=vector<Keypoint>()):
         shape_(shape)
     {
         //convert string to hash
     }
 
-    virtual string toString() = 0;
+    FragmentHash(const FragmentHash& that):
+        hash_(that.hash_),
+        shape_(that.shape_)
+    {}
 
-    virtual FragmentHash<T>* buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) = 0;
+    virtual string toString() = 0;
 
     //getters and setters
 

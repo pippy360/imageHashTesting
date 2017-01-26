@@ -4,9 +4,10 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include "opencv2/opencv.hpp"
 #include "Keypoint.h"
 #include "FragmentHash.h"
-
+#include "img_hash/img_hash_opencv_module/average_hash.hpp"
 using namespace std;
 
 
@@ -37,7 +38,7 @@ private:
         return ret;
     }
 
-    static AverageHash hex_str_to_hash(std::string inputString)
+    static vector<bool> hex_str_to_hash(std::string inputString)
     {
         std::vector<bool> hash;
         int size = inputString.size()/2;
@@ -57,30 +58,53 @@ private:
                 hash.push_back(check);			
             }
         }
-        return AverageHash(hash);
+        return hash;
+    }
+
+    static std::vector<bool> matHashToBoolArr(cv::Mat const inHash)
+    {
+        const unsigned char *data = inHash.data;
+        std::vector<bool> v;
+        for (int i = 0; i<8; i++) {
+            unsigned char c = data[i];
+            for (int j = 0; j<8; j++) {
+                int shift = (8 - j)-1;
+                bool val = ((c>>shift) & 1);
+                v.push_back(val);
+            }
+        }
+        return v;
+    }
+
+    static vector<bool> computeHash(cv::Mat const input){
+        cv::Mat inHash;
+        auto algo = cv::img_hash::AverageHash();
+        algo.compute(input, inHash);
+        return matHashToBoolArr(inHash);   
     }
 
 public:
 
-    AverageHash(vector<bool> hash, std::vector<Keypoint> shape=vector<Keypoint>()):
-            FragmentHash<vector<bool>>(hash, shape)
-    {}
+    AverageHash(ShapeAndPositionInvariantImage frag):
+            FragmentHash<vector<bool>>(frag)
+    {
+        hash_ = computeHash(frag.getImageData());
+    }
+
+    AverageHash(string getHashFromString, std::vector<Keypoint> shape=vector<Keypoint>()):
+            FragmentHash<vector<bool>>(getHashFromString, shape)
+    {
+        hash_ = hex_str_to_hash(getHashFromString);
+    }
 
     AverageHash(const AverageHash& that) :
-            FragmentHash<vector<bool>>(that.hash_, that.shape_)
+            FragmentHash(that)
     {}
 
     string toString() override 
     {
         return convertHashToString(hash_);
     }
-
-    AverageHash* buildHashFromString(string fragmentHashString, vector<Keypoint> shape=vector<Keypoint>()) override
-    {
-        AverageHash val = hex_str_to_hash(fragmentHashString);
-        return new AverageHash(val);
-    }
-
 
 };
 

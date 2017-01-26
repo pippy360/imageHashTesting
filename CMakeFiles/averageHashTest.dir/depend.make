@@ -3,8 +3,11 @@
 
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/test/hashTests.cpp
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/Keypoint.h
+CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/ShapeAndPositionInvariantImage.h
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/img_hash/AverageHash.h
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/img_hash/FragmentHash.h
+CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp
+CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: googletest/googletest/include/gtest/gtest-death-test.h
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: googletest/googletest/include/gtest/gtest-message.h
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o: googletest/googletest/include/gtest/gtest-param-test.h

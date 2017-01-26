@@ -81,30 +81,6 @@ std::vector<bool> dHashSlowWithResizeAndGrayscale(const Mat input_mat)
 	return dHashSlowWithoutResizeOrGrayscale(resized_input_mat);
 }
 
-// std::vector<bool> matHashToBoolArr(cv::Mat const inHash)
-// {
-//     const unsigned char *data = inHash.data;
-//     std::vector<bool> v;
-//     for (int i = 0; i<8; i++) {
-//         unsigned char c = data[i];
-//         for (int j = 0; j<8; j++) {
-//             int shift = (8 - j)-1;
-//             bool val = ((c>>shift) & 1);
-//             v.push_back(val);
-//         }
-//     }
-//     return v;
-// }
-
-
-// std::vector<bool> computeHash(cv::Mat const input)
-// {
-//    // cv::Mat inHash;
-//   //  auto algo = cv::img_hash::BlockMeanHash();
-// //    algo.compute(input, inHash);
-//  //   return matHashToBoolArr(inHash);
-// }
-
 
 //returns hamming distance
 //int getHashDistance(FragmentHash first, FragmentHash second){

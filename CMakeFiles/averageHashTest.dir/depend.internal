@@ -4,8 +4,11 @@
 CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o
  /home/linux/imageHashTesting/c_src/test/hashTests.cpp
  c_src/src/Keypoint.h
+ c_src/src/ShapeAndPositionInvariantImage.h
  c_src/src/img_hash/AverageHash.h
  c_src/src/img_hash/FragmentHash.h
+ c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp
+ c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
  googletest/googletest/include/gtest/gtest-death-test.h
  googletest/googletest/include/gtest/gtest-message.h
  googletest/googletest/include/gtest/gtest-param-test.h
