@@ -9,7 +9,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o"
   "/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
   "/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
-  "/home/linux/imageHashTesting/c_src/test/hashTests.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o"
+  "/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o"
+  "/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

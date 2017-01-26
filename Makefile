@@ -421,32 +421,59 @@ c_src/src/mainImageProcessingFunctions.cpp.s:
 	$(MAKE) -f CMakeFiles/imageHashTesting.dir/build.make CMakeFiles/imageHashTesting.dir/c_src/src/mainImageProcessingFunctions.cpp.s
 .PHONY : c_src/src/mainImageProcessingFunctions.cpp.s
 
-c_src/test/hashTests.o: c_src/test/hashTests.cpp.o
+c_src/test/averageHashTest.o: c_src/test/averageHashTest.cpp.o
 
-.PHONY : c_src/test/hashTests.o
+.PHONY : c_src/test/averageHashTest.o
 
 # target to build an object file
-c_src/test/hashTests.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o
-.PHONY : c_src/test/hashTests.cpp.o
+c_src/test/averageHashTest.cpp.o:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o
+.PHONY : c_src/test/averageHashTest.cpp.o
 
-c_src/test/hashTests.i: c_src/test/hashTests.cpp.i
+c_src/test/averageHashTest.i: c_src/test/averageHashTest.cpp.i
 
-.PHONY : c_src/test/hashTests.i
+.PHONY : c_src/test/averageHashTest.i
 
 # target to preprocess a source file
-c_src/test/hashTests.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.i
-.PHONY : c_src/test/hashTests.cpp.i
+c_src/test/averageHashTest.cpp.i:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.i
+.PHONY : c_src/test/averageHashTest.cpp.i
 
-c_src/test/hashTests.s: c_src/test/hashTests.cpp.s
+c_src/test/averageHashTest.s: c_src/test/averageHashTest.cpp.s
 
-.PHONY : c_src/test/hashTests.s
+.PHONY : c_src/test/averageHashTest.s
 
 # target to generate assembly for a file
-c_src/test/hashTests.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.s
-.PHONY : c_src/test/hashTests.cpp.s
+c_src/test/averageHashTest.cpp.s:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.s
+.PHONY : c_src/test/averageHashTest.cpp.s
+
+c_src/test/blockMeanHashTest.o: c_src/test/blockMeanHashTest.cpp.o
+
+.PHONY : c_src/test/blockMeanHashTest.o
+
+# target to build an object file
+c_src/test/blockMeanHashTest.cpp.o:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o
+.PHONY : c_src/test/blockMeanHashTest.cpp.o
+
+c_src/test/blockMeanHashTest.i: c_src/test/blockMeanHashTest.cpp.i
+
+.PHONY : c_src/test/blockMeanHashTest.i
+
+# target to preprocess a source file
+c_src/test/blockMeanHashTest.cpp.i:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.i
+.PHONY : c_src/test/blockMeanHashTest.cpp.i
+
+c_src/test/blockMeanHashTest.s: c_src/test/blockMeanHashTest.cpp.s
+
+.PHONY : c_src/test/blockMeanHashTest.s
+
+# target to generate assembly for a file
+c_src/test/blockMeanHashTest.cpp.s:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.s
+.PHONY : c_src/test/blockMeanHashTest.cpp.s
 
 # Help Target
 help:
@@ -486,9 +513,12 @@ help:
 	@echo "... c_src/src/mainImageProcessingFunctions.o"
 	@echo "... c_src/src/mainImageProcessingFunctions.i"
 	@echo "... c_src/src/mainImageProcessingFunctions.s"
-	@echo "... c_src/test/hashTests.o"
-	@echo "... c_src/test/hashTests.i"
-	@echo "... c_src/test/hashTests.s"
+	@echo "... c_src/test/averageHashTest.o"
+	@echo "... c_src/test/averageHashTest.i"
+	@echo "... c_src/test/averageHashTest.s"
+	@echo "... c_src/test/blockMeanHashTest.o"
+	@echo "... c_src/test/blockMeanHashTest.i"
+	@echo "... c_src/test/blockMeanHashTest.s"
 .PHONY : help
 
 

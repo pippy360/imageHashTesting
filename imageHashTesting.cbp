@@ -308,6 +308,9 @@
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/AverageHash.h">
          <Option target="imageHashTesting"/>
       </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/BlockMeanHash.h">
+         <Option target="imageHashTesting"/>
+      </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h">
          <Option target="imageHashTesting"/>
       </Unit>
@@ -357,7 +360,10 @@
       <Unit filename="/home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.cpp">
          <Option target="imageHashTesting"/>
       </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/test/hashTests.cpp">
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp">
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp">
          <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">

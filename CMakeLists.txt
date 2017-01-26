@@ -23,6 +23,7 @@ include_directories(c_src/src)
 
 SET(TARGET_H
         c_src/src/img_hash/AverageHash.h
+        c_src/src/img_hash/BlockMeanHash.h
         c_src/src/img_hash/FragmentHash.h
         c_src/src/Keypoint.h
         c_src/src/ShapeAndPositionInvariantImage.h
@@ -39,10 +40,13 @@ set(IMAGE_HASH_FILES
 
 set(SOURCE_FILES
         c_src/src/main.cc
-        c_src/src/mainImageProcessingFunctions.cpp ${IMAGE_HASH_FILES})
+	c_src/src/mainImageProcessingFunctions.cpp 
+	${IMAGE_HASH_FILES})
 
 set( TEST_FILES
-        c_src/test/hashTests.cpp ${IMAGE_HASH_FILES})
+        c_src/test/averageHashTest.cpp 
+        c_src/test/blockMeanHashTest.cpp 
+	${IMAGE_HASH_FILES})
 
 find_package( OpenCV REQUIRED )
 include_directories(${OpenCV_INCLUDE_DIRS})

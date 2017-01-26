@@ -51,13 +51,43 @@ CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.c
  /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp
  /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp
  /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/precomp.hpp
-CMakeFiles/averageHashTest.dir/c_src/test/hashTests.cpp.o
- /home/linux/imageHashTesting/c_src/test/hashTests.cpp
+CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o
+ /home/linux/imageHashTesting/c_src/test/averageHashTest.cpp
  c_src/src/Keypoint.h
  c_src/src/ShapeAndPositionInvariantImage.h
  c_src/src/img_hash/AverageHash.h
  c_src/src/img_hash/FragmentHash.h
  c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp
+ c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
+ googletest/googletest/include/gtest/gtest-death-test.h
+ googletest/googletest/include/gtest/gtest-message.h
+ googletest/googletest/include/gtest/gtest-param-test.h
+ googletest/googletest/include/gtest/gtest-printers.h
+ googletest/googletest/include/gtest/gtest-test-part.h
+ googletest/googletest/include/gtest/gtest-typed-test.h
+ googletest/googletest/include/gtest/gtest.h
+ googletest/googletest/include/gtest/gtest_pred_impl.h
+ googletest/googletest/include/gtest/gtest_prod.h
+ googletest/googletest/include/gtest/internal/custom/gtest-port.h
+ googletest/googletest/include/gtest/internal/custom/gtest-printers.h
+ googletest/googletest/include/gtest/internal/gtest-death-test-internal.h
+ googletest/googletest/include/gtest/internal/gtest-filepath.h
+ googletest/googletest/include/gtest/internal/gtest-internal.h
+ googletest/googletest/include/gtest/internal/gtest-linked_ptr.h
+ googletest/googletest/include/gtest/internal/gtest-param-util-generated.h
+ googletest/googletest/include/gtest/internal/gtest-param-util.h
+ googletest/googletest/include/gtest/internal/gtest-port-arch.h
+ googletest/googletest/include/gtest/internal/gtest-port.h
+ googletest/googletest/include/gtest/internal/gtest-string.h
+ googletest/googletest/include/gtest/internal/gtest-tuple.h
+ googletest/googletest/include/gtest/internal/gtest-type-util.h
+CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o
+ /home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp
+ c_src/src/Keypoint.h
+ c_src/src/ShapeAndPositionInvariantImage.h
+ c_src/src/img_hash/BlockMeanHash.h
+ c_src/src/img_hash/FragmentHash.h
+ c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp
  c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
  googletest/googletest/include/gtest/gtest-death-test.h
  googletest/googletest/include/gtest/gtest-message.h

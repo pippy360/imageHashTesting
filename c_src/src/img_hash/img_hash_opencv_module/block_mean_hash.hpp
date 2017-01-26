@@ -43,6 +43,7 @@
 #define __OPENCV_BLOCK_MEAN_HASH_HPP__
 
 #include <opencv2/opencv.hpp>
+#include "img_hash_base.hpp"
 
 namespace cv
 {

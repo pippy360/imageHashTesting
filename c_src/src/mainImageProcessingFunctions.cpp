@@ -33,9 +33,6 @@ const std::vector<Keypoint> getTargetTriangle(int scalex=FRAGMENT_WIDTH, int sca
 namespace cv
 {
 
-
-
-
 std::string getShapeStr(std::vector<Keypoint> shape)
 {
     auto k1 = shape[0];
@@ -80,29 +77,6 @@ std::vector<bool> dHashSlowWithResizeAndGrayscale(const Mat input_mat)
 
 	return dHashSlowWithoutResizeOrGrayscale(resized_input_mat);
 }
-
-
-// //returns hamming distance
-// int getHashDistance(FragmentHash first, FragmentHash second){
-// 	auto hash1 = first.getHash();
-// 	auto hash2 = second.getHash();
-// 	assert(hash1.size() == hash2.size());
-
-// 	int dist = 0;
-// 	for (int i = 0; i < hash1.size(); i++)
-// 	{
-// 		dist += (hash1[i] != hash2[i]);
-// 	}
-// 	return dist;
-// }
-
-//FragmentHash getHash(ShapeAndPositionInvariantImage frag)
-//{
-//	auto hash = dHashSlowWithResizeAndGrayscale(frag.getImageData());
-//	return FragmentHash(hash);
-//}
-
-
 
 Matx33d calcTransformationMatrix(const std::vector<Keypoint>& inputTriangle, const std::vector<Keypoint>& targetTriangle)
 {
