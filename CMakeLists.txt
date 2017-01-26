@@ -42,10 +42,11 @@ set( TEST_FILES
         c_src/test/hashTests.cpp)
 
 find_package( OpenCV REQUIRED )
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(imageHashTesting ${SOURCE_FILES} ${TARGET_H})
 add_executable(averageHashTest ${TEST_FILES})
-target_link_libraries(averageHashTest gtest gtest_main)
+target_link_libraries(averageHashTest gtest gtest_main ${OpenCV_LIBS})
 
 target_link_libraries( imageHashTesting ${OpenCV_LIBS} )
 
@@ -55,3 +56,7 @@ target_link_libraries( imageHashTesting ${OpenCV_LIBS} )
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
+get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${dirs})
+  message(STATUS "dir='${dir}'")
+endforeach()
