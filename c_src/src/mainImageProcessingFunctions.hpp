@@ -275,14 +275,11 @@ template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvaria
 	return hashes;
 }
 
-template<typename T> std::vector<T> getAllTheHashesForImage_debug(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, int DEBUG_NUMBER)
+template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles)
 {
-	auto ret = std::vector<T>();//size==triangles.size()*NUM_OF_ROTATIONS
-	// for (auto tri : triangles)
-	// {
-	for (int i = 0; i < DEBUG_NUMBER; i++)
+	auto ret = std::vector<T>();
+	for (auto tri : triangles)
 	{
-		auto tri = triangles[i];
 		auto hashes = getHashesForTriangle<T>(inputImage, tri);
 		for (auto hash: hashes)
 		{

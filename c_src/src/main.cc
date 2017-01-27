@@ -83,6 +83,26 @@ ShapeAndPositionInvariantImage getLoadedImage(string imageFullPath){
     return ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
 }
 
+void writeHashesToFile(string fullFilePath, vector<string> hashes)
+{
+    std::ofstream outputFile;
+    outputFile.open(fullFilePath, std::ios::out);
+    for (auto hash: hashes)
+    {
+        outputFile << hash << endl;
+    }
+}
+
+template<typename T> void writeHashObjectsToFile(string fullFilePath, vector<T> hashes)
+{
+    vector<string> hashesToString;
+    for (auto hash: hashes)
+    {
+        hashesToString.push_back(hash.toString());
+    }
+    writeHashesToFile(fullFilePath, hashesToString);
+}
+
 int main(int argc, char* argv[])
 {
     if (argc == 1){
@@ -91,14 +111,11 @@ int main(int argc, char* argv[])
     }
 
     std::string imageName = (argc > 2)? argv[2]: "img1";
-    std::string imageFullPath =  "./inputImages/"+ imageName + "/" + imageName + ".jpg";
-    std::string imagePoints =  "./inputImages/"+ imageName + "/keypoints.txt";
+    std::string imageFullPath =  "inputImages/"+ imageName + "/" + imageName + ".jpg";
+    std::string imagePoints =  "inputImages/"+ imageName + "/keypoints.txt";
 
     auto triangles = getTheTris(imagePoints.c_str());
     auto loadedImage = getLoadedImage(imageFullPath);
-    auto hashes = cv::getAllTheHashesForImage_debug<hashes::PerceptualHash>(loadedImage, triangles, 100);
-    for (auto hash: hashes)
-    {
-        cout << hash.toString() << endl;
-    }
+    auto hashes = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, triangles);
+    writeHashObjectsToFile<hashes::PerceptualHash>("inputImages/"+ imageName + "/hashes.txt", hashes);
 }
