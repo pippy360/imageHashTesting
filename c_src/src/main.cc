@@ -9,11 +9,14 @@
 #include <time.h>       /* time */
 
 #include "img_hash/AverageHash.h"
+#include "img_hash/BlockMeanHash.h"
+#include "img_hash/PerceptualHash.h"
 
 //#include "img_hash/FragmentHash.h"
 //#include "ShapeAndPositionInvariantImage.h"
 #include "Triangle.h"
 #include "mainImageProcessingFunctions.hpp"
+#include <boost/program_options.hpp>
 #include <iostream>
 
 
@@ -93,7 +96,7 @@ int main(int argc, char* argv[])
 
     auto triangles = getTheTris(imagePoints.c_str());
     auto loadedImage = getLoadedImage(imageFullPath);
-    auto hashes = cv::getAllTheHashesForImage_debug<hashes::AverageHash>(loadedImage, triangles, 100);
+    auto hashes = cv::getAllTheHashesForImage_debug<hashes::PerceptualHash>(loadedImage, triangles, 100);
     for (auto hash: hashes)
     {
         cout << hash.toString() << endl;

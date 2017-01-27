@@ -5,19 +5,20 @@ set(CMAKE_CXX_STANDARD 11)
 
 
 
+find_package(Boost REQUIRED )
+
+include_directories(${Boost_INCLUDE_DIRS})
+
+
+
 ################################
 # Testing
 ################################
-# This adds another subdirectory, which has 'project(gtest)'.
 add_subdirectory(googletest)
 
 enable_testing()
 
-# Include the gtest library. gtest_SOURCE_DIR is available due to
-    # 'project(gtest)' above.
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-message(STATUS "here ${gtest_SOURCE_DIR}/include ")
-
 
 include_directories(c_src/src)
 

@@ -38,6 +38,22 @@ img_hash/img_hash_opencv_module/average_hash.hpp
 iomanip
 -
 
+/home/linux/imageHashTesting/c_src/src/img_hash/BlockMeanHash.h
+string
+-
+vector
+-
+memory
+-
+opencv2/opencv.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/opencv2/opencv.hpp
+Keypoint.h
+/home/linux/imageHashTesting/c_src/src/img_hash/Keypoint.h
+FragmentHash.h
+/home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h
+img_hash/img_hash_opencv_module/block_mean_hash.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/img_hash/img_hash_opencv_module/block_mean_hash.hpp
+
 /home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h
 string
 -
@@ -49,6 +65,22 @@ memory
 -
 ShapeAndPositionInvariantImage.h
 /home/linux/imageHashTesting/c_src/src/img_hash/ShapeAndPositionInvariantImage.h
+
+/home/linux/imageHashTesting/c_src/src/img_hash/PerceptualHash.h
+string
+-
+vector
+-
+memory
+-
+opencv2/opencv.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/opencv2/opencv.hpp
+Keypoint.h
+/home/linux/imageHashTesting/c_src/src/img_hash/Keypoint.h
+FragmentHash.h
+/home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h
+img_hash/img_hash_opencv_module/phash.hpp
+/home/linux/imageHashTesting/c_src/src/img_hash/img_hash/img_hash_opencv_module/phash.hpp
 
 /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
 precomp.hpp
@@ -159,6 +191,10 @@ time.h
 -
 img_hash/AverageHash.h
 /home/linux/imageHashTesting/c_src/src/img_hash/AverageHash.h
+img_hash/BlockMeanHash.h
+/home/linux/imageHashTesting/c_src/src/img_hash/BlockMeanHash.h
+img_hash/PerceptualHash.h
+/home/linux/imageHashTesting/c_src/src/img_hash/PerceptualHash.h
 Triangle.h
 /home/linux/imageHashTesting/c_src/src/Triangle.h
 mainImageProcessingFunctions.hpp
@@ -192,7 +228,19 @@ opencv2/opencv.hpp
 img_hash_base.hpp
 c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 
+c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp
+opencv2/opencv.hpp
+-
+img_hash_base.hpp
+c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
+
 c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 opencv2/opencv.hpp
 -
+
+c_src/src/img_hash/img_hash_opencv_module/phash.hpp
+opencv2/opencv.hpp
+-
+img_hash_base.hpp
+c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
 

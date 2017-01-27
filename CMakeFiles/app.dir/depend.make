@@ -54,10 +54,14 @@ CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: c_src/
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/ShapeAndPositionInvariantImage.h
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/Triangle.h
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/AverageHash.h
+CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/BlockMeanHash.h
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/FragmentHash.h
+CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/PerceptualHash.h
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/main.cc
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/mainImageProcessingFunctions.hpp
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/Keypoint.h
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp
+CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp
 CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
+CMakeFiles/app.dir/c_src/src/main.cc.o: c_src/src/img_hash/img_hash_opencv_module/phash.hpp
 
