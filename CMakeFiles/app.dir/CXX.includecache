@@ -166,10 +166,6 @@ mainImageProcessingFunctions.hpp
 iostream
 -
 
-/home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.cpp
-mainImageProcessingFunctions.hpp
-/home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp
-
 /home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp
 vector
 -
@@ -187,8 +183,6 @@ ShapeAndPositionInvariantImage.h
 /home/linux/imageHashTesting/c_src/src/ShapeAndPositionInvariantImage.h
 Triangle.h
 /home/linux/imageHashTesting/c_src/src/Triangle.h
-iomanip
--
 
 c_src/src/Keypoint.h
 

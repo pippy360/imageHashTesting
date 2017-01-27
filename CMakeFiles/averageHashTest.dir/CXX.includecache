@@ -153,6 +153,8 @@ FragmentHash.h
 c_src/src/img_hash/FragmentHash.h
 img_hash/img_hash_opencv_module/average_hash.hpp
 c_src/src/img_hash/img_hash/img_hash_opencv_module/average_hash.hpp
+iomanip
+-
 
 c_src/src/img_hash/BlockMeanHash.h
 string

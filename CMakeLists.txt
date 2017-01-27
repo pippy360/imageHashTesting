@@ -29,6 +29,7 @@ SET(TARGET_H
         c_src/src/Keypoint.h
         c_src/src/ShapeAndPositionInvariantImage.h
         c_src/src/Triangle.h
+	c_src/src/mainImageProcessingFunctions.hpp        
         )
 
 set(IMAGE_HASH_FILES 
@@ -39,12 +40,11 @@ set(IMAGE_HASH_FILES
         c_src/src/img_hash/img_hash_opencv_module/phash.cpp)
 
 
-set(SOURCE_FILES
+set(SOURCE_FILE 
         c_src/src/main.cc
-	c_src/src/mainImageProcessingFunctions.cpp 
 	${IMAGE_HASH_FILES})
 
-set( TEST_FILES
+set(TEST_FILES
         c_src/test/averageHashTest.cpp 
         c_src/test/blockMeanHashTest.cpp 
         c_src/test/perceptualHashTest.cpp 
@@ -53,11 +53,11 @@ set( TEST_FILES
 find_package( OpenCV REQUIRED )
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(imageHashTesting ${SOURCE_FILES} ${TARGET_H})
-add_executable(averageHashTest ${TEST_FILES})
-target_link_libraries(averageHashTest gtest gtest_main ${OpenCV_LIBS})
+add_executable(app ${SOURCE_FILE} ${TARGET_H})
+add_executable(averageHashTest ${TEST_FILES} ${TARGET_H})
 
-target_link_libraries( imageHashTesting ${OpenCV_LIBS} )
+target_link_libraries(averageHashTest gtest gtest_main ${OpenCV_LIBS})
+target_link_libraries(app ${OpenCV_LIBS} )
 
 
 # Options. Turn on with 'cmake -Dmyvarname=ON'.

@@ -3,7 +3,7 @@
 /home/linux/imageHashTesting/CMakeFiles/rebuild_cache.dir
 /home/linux/imageHashTesting/CMakeFiles/edit_cache.dir
 /home/linux/imageHashTesting/CMakeFiles/test.dir
-/home/linux/imageHashTesting/CMakeFiles/imageHashTesting.dir
+/home/linux/imageHashTesting/CMakeFiles/app.dir
 /home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir
 /home/linux/imageHashTesting/CMakeFiles/install/strip.dir
 /home/linux/imageHashTesting/CMakeFiles/install/local.dir

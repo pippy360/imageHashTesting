@@ -8,6 +8,7 @@
 #include "Keypoint.h"
 #include "FragmentHash.h"
 #include "img_hash/img_hash_opencv_module/average_hash.hpp"
+#include <iomanip>
 using namespace std;
 
 
