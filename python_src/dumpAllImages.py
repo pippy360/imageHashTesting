@@ -248,7 +248,7 @@ def getMapByImageName(matches):
 	return ret
 
 def dumpTrianglesUsingImg(img, outputFile):
-    	import mainImageProcessingFunctions as mp
+	import mainImageProcessingFunctions as mp
 	imageData = img.imageData	
 	#get the keyPoints
 	keyPoints = mp.getTheKeyPoints(imageData)
@@ -301,10 +301,10 @@ def useTheCCode(fullImagePath):
 
 
 def toFullPath(imgName):
-	return "../input/"+imgName+".jpg"
+	return "input/"+imgName+".jpg"
 
 def toFullPath2(imgName):
-	return "../input/"+imgName
+	return "input/"+imgName
 
 def dumpExcludeList(exList, outputFile):
 	f = open(outputFile,'w+')
@@ -337,17 +337,17 @@ def main():
 	from shutil import copyfile
 	import subprocess
 
-	f = open("../inputImages/imageNames.txt",'w+')
+	f = open("inputImages/imageNames.txt",'w+')
 	for item in items:
 		f.write( item['imgName'] + '\n' )
 
 	for item in items:
 		fullPath = toFullPath(item["imgName"])
 		img = buildImage(fullPath)
-		directory = '../inputImages/'+ item["imgName"]
+		directory = 'inputImages/'+ item["imgName"]
 		if not os.path.exists(directory):
 			os.makedirs(directory)
-		ignoreMe_directory = '../inputImages/'+ item["imgName"] + '/outputFragments'
+		ignoreMe_directory = 'inputImages/'+ item["imgName"] + '/outputFragments'
 		if not os.path.exists(ignoreMe_directory):
 			os.makedirs(ignoreMe_directory)
 		copyfile(fullPath, directory+"/"+item["imgName"]+'.jpg')
@@ -357,8 +357,7 @@ def main():
 		dumpTrianglesUsingImg_max1000(img, outputFile)
 		outputFile = directory + '/excludeList.txt'
 		dumpExcludeList(item["excludeList"], outputFile)
-		os.system("sudo ../src_c/app2 random_dumpHashesToFile "+item["imgName"])
-		#subprocess.call(["sudo", " ])
+		os.system("./app dumpRandom "+item["imgName"])
 
 
 

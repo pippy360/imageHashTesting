@@ -1,1 +1,1 @@
-sudo python ./dumpAllImages.py
+python ./dumpAllImages.py

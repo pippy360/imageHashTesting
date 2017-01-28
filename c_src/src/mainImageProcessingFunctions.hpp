@@ -251,7 +251,7 @@ ShapeAndPositionInvariantImage getFragment(const ShapeAndPositionInvariantImage&
 	return ShapeAndPositionInvariantImage(input_image.getImageName(), input_image.getImageData(), tri.toKeypoints(), "");
 }
 
-template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments)
+template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments, const string STRING_DEBUG_IMAGE_NAME="")
 {
 	auto ret = std::vector<T>();
 	for (auto frag : normalisedFragments)
@@ -259,28 +259,30 @@ template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPo
 		auto calculatedHash = T(frag);
 		ret.push_back(calculatedHash);
 		//DEBUG
-		// cv::imshow("./frag.jpg", frag.getImageData());
-		// cv::waitKey();
+		if(STRING_DEBUG_IMAGE_NAME != ""){
+			cv::imwrite("inputImages/"+STRING_DEBUG_IMAGE_NAME+"/outputFragments/"+calculatedHash.toString()+".jpg", frag.getImageData());
+		}
+		//cv::waitKey();
 		//\DEBUG
 	}
 	return ret;
 }
 
-template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvariantImage& input_image, const Triangle& tri)
+template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvariantImage& input_image, const Triangle& tri, const string STRING_DEBUG_IMAGE_NAME="")
 {
 	auto fragment = getFragment(input_image, tri);
 	auto normalisedFragments = normaliseScaleAndRotationForSingleFrag(fragment);
-	auto hashes = getHashesForFragments<T>(normalisedFragments);
+	auto hashes = getHashesForFragments<T>(normalisedFragments, STRING_DEBUG_IMAGE_NAME);
 
 	return hashes;
 }
 
-template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles)
+template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_IMAGE_NAME="")
 {
 	auto ret = std::vector<T>();
 	for (auto tri : triangles)
 	{
-		auto hashes = getHashesForTriangle<T>(inputImage, tri);
+		auto hashes = getHashesForTriangle<T>(inputImage, tri, STRING_DEBUG_IMAGE_NAME);
 		for (auto hash: hashes)
 		{
 			ret.push_back(hash);

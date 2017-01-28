@@ -35,4 +35,4 @@
 ./CMakeFiles/*
 
 ./CMakeLists.txt
-
+./inputImages/*

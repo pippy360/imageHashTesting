@@ -57,14 +57,14 @@ const std::vector<Triangle> readTheTriangles(std::ifstream *file)
    return triangles;
 }
 
-std::vector<Triangle> getTheTris(const char *trisPath){
+std::vector<Triangle> getTheTris(const string trisPath){
    std::ifstream file(trisPath);
    //std::string filename = readTheName(&file);
    auto tris = readTheTriangles(&file);
    return tris;
 }
 
-std::vector<Triangle> getTheTris_random(const char *trisPath, int numberOfSamples = 1000){
+std::vector<Triangle> getTheTris_random(string trisPath, int numberOfSamples = 1000){
    std::ifstream file(trisPath);
    //std::string filename = readTheName(&file);
    auto tris = readTheTriangles(&file);
@@ -103,19 +103,144 @@ template<typename T> void writeHashObjectsToFile(string fullFilePath, vector<T> 
     writeHashesToFile(fullFilePath, hashesToString);
 }
 
+template<typename T> void dumpHashes(string imageName, string imagePoints, string imageFullPath)
+{
+    auto triangles = getTheTris_random(imagePoints);
+    auto loadedImage = getLoadedImage(imageFullPath);
+    auto hashes = cv::getAllTheHashesForImage<T>(loadedImage, triangles, imageName);
+    writeHashObjectsToFile<T>("inputImages/"+ imageName + "/hashes.txt", hashes);
+}
+
+vector<string> loadImageNames(string filename)
+{
+    vector<string> filenames;
+
+    std::ifstream file(filename);
+    std::string str = "";
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
+        filenames.push_back(str);
+    }
+
+    return filenames;
+}
+
+vector<string> loadExcludeList(string filename)
+{
+    vector<string> filenames;
+
+    std::ifstream file(filename);
+    std::string str = "";
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
+        filenames.push_back(str);
+    }
+
+    return filenames;
+}
+
+template <typename T> std::vector<T> loadHashesFromFile(std::string filename)
+{
+    std::vector<T> ret;
+    std::ifstream file(filename);
+    std::string str = "";
+    while (true)
+    {
+        if(!std::getline(file, str)){
+            break;
+        }
+
+        T fraghash(str);
+        ret.push_back(fraghash);
+        //std::cout << str << " should match: " << cv::convertHashToString(fraghash) << std::endl;
+    }
+    return ret;
+}
+
+bool isInExcludeList(string name, vector<string> excludeList, string imageName){
+    if(name == imageName){
+        return true;
+    }
+    for (auto e: excludeList){
+        if(name == e){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+template <typename T> void printConflicts(string imageName, string imagePoints, string imageFullPath, int threshold = 3)
+{
+    const string hashesFileFullPath = "inputImages/"+ imageName + "/hashes.txt";
+    const string excludeListFullPath = "inputImages/"+ imageName + "/excludeList.txt";
+    auto triangles = getTheTris(imagePoints);
+    auto loadedImage = getLoadedImage(imageFullPath);
+    auto hashes = loadHashesFromFile<T>(hashesFileFullPath);
+    cout << hashes.size() << " hashes found." << endl;    
+    auto imageNames = loadImageNames("inputImages/imageNames.txt");
+    auto excludeList = loadExcludeList(excludeListFullPath);
+    cout << imageNames.size() << " image names found." << endl;
+    int finOutputArr[64] = {0};
+    for (auto name: imageNames)
+    {
+        int outputArr[64] = {0};
+        if ( !isInExcludeList(name, excludeList, imageName) ){
+            cout << "Output for image: " << name << endl;
+            auto toCompareHashes = loadHashesFromFile<T>("inputImages/"+ name + "/hashes.txt");
+            for (auto hash : hashes){
+                for (auto comp: toCompareHashes){
+                    int dist = hash.getHammingDistance(comp);
+                    if (dist < threshold){
+                        cout << "ERROR: dist below threshold" << endl;
+                    }
+
+                    if (dist <= 64){
+                        outputArr[dist] += 1;
+                    }else{
+                        cout << "ERROR: bad hamming distance: " << dist << endl;
+                        exit(1);
+                    }
+                }
+            }
+            for (int i = 0; i<64;i++)
+            {
+                cout << i << ": " << outputArr[i] << endl;
+                finOutputArr[i] += outputArr[i];
+            }
+        }
+    }
+    cout << "finoutput: " << endl;
+    for (int i = 0; i<64;i++)
+    {
+        cout << i << ": " << finOutputArr[i] << endl;
+    }
+}
+
 int main(int argc, char* argv[])
 {
-    if (argc == 1){
+    if (argc < 3){
         printf("error: no args!!!\n");
         return -1;
     }
 
-    std::string imageName = (argc > 2)? argv[2]: "img1";
-    std::string imageFullPath =  "inputImages/"+ imageName + "/" + imageName + ".jpg";
-    std::string imagePoints =  "inputImages/"+ imageName + "/keypoints.txt";
+    string imageName = (argc > 2)? argv[2]: "img1";
+    string imageFullPath =  "inputImages/"+ imageName + "/" + imageName + ".jpg";
+    string imagePoints =    "inputImages/"+ imageName + "/keypoints.txt";
 
-    auto triangles = getTheTris(imagePoints.c_str());
-    auto loadedImage = getLoadedImage(imageFullPath);
-    auto hashes = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, triangles);
-    writeHashObjectsToFile<hashes::PerceptualHash>("inputImages/"+ imageName + "/hashes.txt", hashes);
+    if (argc > 2 && !strcmp(argv[1], "dumpRandom")){
+        cout << "Dumping image hashes for: " << imageName << endl;
+        dumpHashes<hashes::PerceptualHash>(imageName, imagePoints, imageFullPath);
+    }else if (argc > 2 && !strcmp(argv[1], "printConflicts")){
+        cout << "Printing conflicts: " << imageName << endl;
+        printConflicts<hashes::PerceptualHash>(imageName, imagePoints, imageFullPath);
+    }else{
+        cout << "Bad argument: " << argv[1] << endl;
+    }
 }

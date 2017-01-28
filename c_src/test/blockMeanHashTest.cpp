@@ -8,8 +8,8 @@
 using namespace hashes;
 
 TEST(BlockMeanHash, basicSerialiseTest){
-    BlockMeanHash testHash("7ca4a6eee2a32515");
-    EXPECT_EQ("7ca4a6eee2a32515", testHash.toString());
+    BlockMeanHash testHash("184f785970e970e2");
+    EXPECT_EQ("184f785970e970e2", testHash.toString());
 }
 
 TEST(BlockMeanHash, basicImageTest){
