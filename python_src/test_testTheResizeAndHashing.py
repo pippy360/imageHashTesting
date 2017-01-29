@@ -120,8 +120,8 @@ def test():
     import sys
     import cv2
     from hashProvider import getHash
-    imgName = '../input/img1.jpg'
-    imgName2 = '../input/img2.jpg'
+    imgName = 'input/img1.jpg'
+    imgName2 = 'input/img2.jpg'
     twoImagesWithMatchedTriangles = buildTwoImagesWithMatchedTriangles(imgName)
     print '#########test#########'
     tris = twoImagesWithMatchedTriangles.getMatchingTriangles()
@@ -160,3 +160,4 @@ def test():
 #                cv2.imshow('2', im2.normalisedFragment.fragmentImage)
 #                cv2.waitKey()
 test()
+

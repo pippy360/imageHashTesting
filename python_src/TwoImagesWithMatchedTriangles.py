@@ -101,20 +101,35 @@ def _allKeypointsMatch(tri, checkingTri, matchingKeypoints):
     
     return True
 
+def _getTheCorrespondingKeypoint(pt, theMatchedTri, matchingKeypoints):
+    pointToMatch = _getCorrespondingTransformedImagePoint(pt, matchingKeypoints)
+    for pt2 in theMatchedTri:
+        if pointToMatch.pt == pt2.pt:
+            return pointToMatch
+
+    raise ValueError('Bad keypoint!!!')
+
+def organiseTriangle(tri, checkingTri, matchingKeypoints):
+    ret = []
+    for point in tri:
+        ret.append(_getTheCorrespondingKeypoint(point, checkingTri, matchingKeypoints))
+    return ret
+
+
 def _findMatchingTri(tri, transTriMadeOfMatchingPoints, matchingKeypoints):
     for checkingTri in transTriMadeOfMatchingPoints:
         if _allKeypointsMatch(tri, checkingTri, matchingKeypoints):
-            return checkingTri
+            #make sure the order of the returned triangle matches that of tri
+            #so that each matching point has the same index
+            return organiseTriangle(tri, checkingTri, matchingKeypoints)
 
     return None
 
 def _findMatchingTriangles(orgTriMadeOfMatchingPoints, transTriMadeOfMatchingPoints, matchingKeypoints):
     ret = []
     for tri in orgTriMadeOfMatchingPoints:
-        #well...???
         matchedTri = _findMatchingTri(tri, transTriMadeOfMatchingPoints, matchingKeypoints)
         if not matchedTri == None:
-            #append both triangles ??
             ret.append({'originalImageTriangle':tri, 'transformedImageTriangle':matchedTri})
 
     return ret
