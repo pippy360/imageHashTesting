@@ -20,6 +20,10 @@ TEST(readingMatchingTriangles, basicTest){
     auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
 
 
+//    for (auto tri: matchingTris)
+//    {
+//        getAllTheHashesForImage();
+//    }
 }
 
 

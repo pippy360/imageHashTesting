@@ -23,7 +23,7 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <iostream>
 #include "utils/utils.hpp"
-
+#include <tuple>
 
 const std::vector<Triangle> readTheTriangles(std::ifstream *file)
 {
@@ -63,8 +63,9 @@ void print(boost::property_tree::ptree const& pt)
 {
 }
 
-const vector<pair<Triangle, Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file){
-    vector<pair<Triangle, Triangle>> outputTriangles;
+const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file){
+    vector<Triangle> image1OutputTriangles;
+    vector<Triangle> image2OutputTriangles;
     cout << "here..." << endl;
     try
     {
@@ -97,7 +98,8 @@ const vector<pair<Triangle, Triangle>> readMatchingTrianglesFromJsonFile(std::if
                     }
                     Triangle one_t(one);
                     Triangle two_t(two);
-                    outputTriangles.push_back(pair<Triangle, Triangle>(one_t, two_t));
+                    image1OutputTriangles.push_back(one_t);
+                    image2OutputTriangles.push_back(two_t);
                 }
             }
         }
@@ -109,10 +111,10 @@ const vector<pair<Triangle, Triangle>> readMatchingTrianglesFromJsonFile(std::if
         std::cerr << e.what() << std::endl;
     }
 
-    return outputTriangles;
+    return pair<vector<Triangle>, vector<Triangle>>(image1OutputTriangles, image2OutputTriangles);
 }
 
-const vector<pair<Triangle, Triangle>> readMatchingTrianglesFromJsonFile(const string filename) {
+const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(const string filename) {
     std::ifstream file(filename);
     return readMatchingTrianglesFromJsonFile(&file);
 }

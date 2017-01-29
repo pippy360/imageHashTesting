@@ -27,7 +27,7 @@ template<typename T> void dumpHashes(string imageName, string imagePoints, strin
 {
     auto triangles = getTheTris_random(imagePoints);
     auto loadedImage = getLoadedImage(imageFullPath);
-    auto hashes = cv::getAllTheHashesForImage<T>(loadedImage, triangles, imageName);
+    auto hashes = cv::getAllTheHashesForImage<T>(loadedImage, triangles, "inputImages/"+imageName+"/outputFragments");
     writeHashObjectsToFile<T>("inputImages/"+ imageName + "/hashes.txt", hashes);
 }
 
@@ -42,10 +42,10 @@ template <typename T> void testNonMatchingFragmentsForFalsePositive(string image
     auto imageNames = loadImageNames("inputImages/imageNames.txt");
     auto excludeList = loadExcludeList(excludeListFullPath);
     cout << imageNames.size() << " image names found." << endl;
-    int finOutputArr[64] = {0};
+    int finOutputArr[65] = {0};
     for (auto name: imageNames)
     {
-        int outputArr[64] = {0};
+        int outputArr[65] = {0};
         if ( !isInExcludeList(name, excludeList, imageName) ){
             cout << "Output for image: " << name << endl;
             auto toCompareHashes = loadHashesFromFile<T>("inputImages/"+ name + "/hashes.txt");
@@ -78,6 +78,44 @@ template <typename T> void testNonMatchingFragmentsForFalsePositive(string image
     }
 }
 
+template<typename T> vector<int> testMatchingFragments(string imageName) {
+    int finOutputArr[65] = {0};
+    vector<Triangle> imageTris1;
+    vector<Triangle> imageTris2;
+    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile("imageMatchingPairs/"+imageName+"/matchingTriangles.json");
+    auto loadedImage1 = getLoadedImage("imageMatchingPairs/"+imageName+"/img1.jpg");
+    auto loadedImage2 = getLoadedImage("imageMatchingPairs/"+imageName+"/img2.jpg");
+    auto hashes1 = cv::getAllTheHashesForImage<T>(loadedImage1, imageTris1, "imageMatchingPairs/"+imageName+"/outputFragments", "1");
+    auto hashes2 = cv::getAllTheHashesForImage<T>(loadedImage2, imageTris2, "imageMatchingPairs/"+imageName+"/outputFragments", "2");
+    for (int i = 0; i < hashes1.size(); i++)
+    {
+        int dist = hashes1[i].getHammingDistance(hashes2[i]);
+        finOutputArr[dist] += 1;
+        //cout << "Distance of: " << hashes1[i].toString() << " and: " << hashes2[i].toString() << " is: " << dist << endl;
+    }
+    vector<int> ret;
+    for (int i = 0; i < 65; i++) {
+        ret.push_back(finOutputArr[i]);
+    }
+    return ret;
+}
+
+template<typename T> void testMatchingFragmentsForAllInputImages() {
+    //TODO:
+    auto imageNames = loadImageNames("inputImages/imageNames.txt");
+    int finOutputArr[65] = {0};
+    for(auto name: imageNames)
+    {
+        auto tempRes = testMatchingFragments<T>(name);
+        for (int i = 0; i < 65; i++){
+            finOutputArr[i] += tempRes[i];
+        }
+    }
+    for (int i = 0; i < 65; i++) {
+        cout << i << ": " << finOutputArr[i] << endl;
+    }
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 3){
@@ -95,8 +133,11 @@ int main(int argc, char* argv[])
     }else if (argc > 2 && !strcmp(argv[1], "printConflicts")){
         cout << "Printing conflicts: " << imageName << endl;
         testNonMatchingFragmentsForFalsePositive<hashes::PerceptualHash>(imageName, imagePoints, imageFullPath);
+    }else if (argc > 2 && !strcmp(argv[1], "testMatching")){
+        testMatchingFragments<hashes::PerceptualHash>(imageName);
+    }else if (argc > 2 && !strcmp(argv[1], "testAllMatching")){
+        testMatchingFragmentsForAllInputImages<hashes::PerceptualHash>();
     }else{
-        testNonMatchingFragmentsForFalsePositive<hashes::PerceptualHash>(imageName, imagePoints, imageFullPath);
         cout << "Bad argument: " << argv[1] << endl;
     }
 }

@@ -67,6 +67,7 @@ def DEBUG_drawTheTrianglesAndSaveImages(imageName, imageData1, imageData2, tri1,
 
 def DEBUG_saveTheImages(imageName, originalImage, transformedImage):
     import cv2
+    print "writing files..."
     cv2.imwrite('imageMatchingPairs/'+imageName+'/img1.jpg', originalImage)
     cv2.imwrite('imageMatchingPairs/'+imageName+'/img2.jpg', transformedImage)
 
@@ -90,7 +91,7 @@ def dumpJsonForImage(imageName):
     for triObj in tris:
         tri1 = triObj['originalImageTriangle']
         tri2 = triObj['transformedImageTriangle']
-        DEBUG_drawTheTrianglesAndSaveImages(imageName, twoImagesWithMatchedTriangles.originalImage, twoImagesWithMatchedTriangles.transformedImage, tri1, tri2)
+        #DEBUG_drawTheTrianglesAndSaveImages(imageName, twoImagesWithMatchedTriangles.originalImage, twoImagesWithMatchedTriangles.transformedImage, tri1, tri2)
         tempTri = []
         for i in range(3):
             tempTri_i = {}
@@ -111,6 +112,10 @@ def dumpJsonForImage(imageName):
     directory = 'imageMatchingPairs/'+imageName
     if not os.path.exists(directory):
         os.makedirs(directory)
+
+    directory2 = 'imageMatchingPairs/'+imageName +'/outputFragments'
+    if not os.path.exists(directory2):
+        os.makedirs(directory2)
 
     with open('imageMatchingPairs/'+imageName+'/matchingTriangles.json', 'w+') as outfile:
         json.dump(jsonOutput, outfile)

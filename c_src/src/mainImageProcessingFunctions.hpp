@@ -251,16 +251,19 @@ ShapeAndPositionInvariantImage getFragment(const ShapeAndPositionInvariantImage&
 	return ShapeAndPositionInvariantImage(input_image.getImageName(), input_image.getImageData(), tri.toKeypoints(), "");
 }
 
-template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments, const string STRING_DEBUG_IMAGE_NAME="")
+template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	auto ret = std::vector<T>();
-	for (auto frag : normalisedFragments)
+	for (int i = 0; i < normalisedFragments.size(); i++)
 	{
+		auto frag = normalisedFragments[i];
+//	for (auto frag : normalisedFragments)
+//	{
 		auto calculatedHash = T(frag);
 		ret.push_back(calculatedHash);
 		//DEBUG
-		if(STRING_DEBUG_IMAGE_NAME != ""){
-			cv::imwrite("inputImages/"+STRING_DEBUG_IMAGE_NAME+"/outputFragments/"+calculatedHash.toString()+".jpg", frag.getImageData());
+		if(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH != ""){
+			cv::imwrite(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH+"/"+to_string(i)+""+calculatedHash.toString()+"_" + DEBUG_STRING_APPEND + ".jpg", frag.getImageData());
 		}
 		//cv::waitKey();
 		//\DEBUG
@@ -268,21 +271,21 @@ template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPo
 	return ret;
 }
 
-template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvariantImage& input_image, const Triangle& tri, const string STRING_DEBUG_IMAGE_NAME="")
+template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvariantImage& input_image, const Triangle& tri, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	auto fragment = getFragment(input_image, tri);
 	auto normalisedFragments = normaliseScaleAndRotationForSingleFrag(fragment);
-	auto hashes = getHashesForFragments<T>(normalisedFragments, STRING_DEBUG_IMAGE_NAME);
+	auto hashes = getHashesForFragments<T>(normalisedFragments, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
 
 	return hashes;
 }
 
-template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_IMAGE_NAME="")
+template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	auto ret = std::vector<T>();
 	for (auto tri : triangles)
 	{
-		auto hashes = getHashesForTriangle<T>(inputImage, tri, STRING_DEBUG_IMAGE_NAME);
+		auto hashes = getHashesForTriangle<T>(inputImage, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
 		for (auto hash: hashes)
 		{
 			ret.push_back(hash);
