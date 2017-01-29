@@ -9,6 +9,11 @@ public:
 		keypoints_[1] = two;
 		keypoints_[2] = three;
 	}
+	inline Triangle(vector<Keypoint> list){
+		keypoints_[0] = list[0];
+		keypoints_[1] = list[1];
+		keypoints_[2] = list[2];
+	}
 	Keypoint keypoints_[3];
 	std::vector<Keypoint> toKeypoints() const;
 };

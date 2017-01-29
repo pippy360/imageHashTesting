@@ -19,6 +19,8 @@
 #include "Triangle.h"
 #include "mainImageProcessingFunctions.hpp"
 #include <boost/program_options.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 #include <iostream>
 #include "utils/utils.hpp"
 
@@ -57,13 +59,55 @@ const std::vector<Triangle> readTheTriangles(std::ifstream *file)
     return triangles;
 }
 
+void print(boost::property_tree::ptree const& pt)
+{
+}
+
 const vector<pair<Triangle, Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file){
     vector<pair<Triangle, Triangle>> outputTriangles;
+    cout << "here..." << endl;
+    try
+    {
+        boost::property_tree::ptree pt;
+        boost::property_tree::read_json(*file, pt);
 
-    //find the array
-    //start reading and parsing...
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
+        using boost::property_tree::ptree;
+        for (auto it : pt) {
+            if (it.first == "count"){
+                //save count
+                cout << "Number of triangles read: " << it.second.get_value<std::string>() << endl;
+            }
+
+            if (it.first == "triangles") {
+                for (auto tri: it.second) {
+                    vector<Keypoint> one, two;
+                    for (auto tri_point : tri.second) {
+                        vector<Keypoint> bothKp;
+                        for (auto pt_u : tri_point.second) {
+                            vector<double> tempPoint;
+                            for (auto pt : pt_u.second) {
+                                double coord = pt.second.get_value<double>();
+                                tempPoint.push_back(coord);
+                            }
+                            Keypoint kp(tempPoint[0], tempPoint[1]);
+                            bothKp.push_back(kp);
+                        }
+                        one.push_back(bothKp[0]);
+                        two.push_back(bothKp[1]);
+                    }
+                    Triangle one_t(one);
+                    Triangle two_t(two);
+                    outputTriangles.push_back(pair<Triangle, Triangle>(one_t, two_t));
+                }
+            }
+        }
+
+        print(pt);
+    }
+    catch (std::exception const& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
 
     return outputTriangles;
 }
