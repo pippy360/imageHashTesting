@@ -48,6 +48,7 @@
 #include "color_moment_hash.hpp"
 #include "marr_hildreth_hash.hpp"
 #include "phash.hpp"
+#include "PHash_Fast.h"
 //#include "opencv2/img_hash/radial_variance_hash.hpp"
 
 /**

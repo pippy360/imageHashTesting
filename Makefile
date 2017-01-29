@@ -217,13 +217,39 @@ gtest/fast:
 	$(MAKE) -f googletest/googletest/CMakeFiles/gtest.dir/build.make googletest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.o: c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o
+
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.o
+
+# target to build an object file
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o
+
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.i: c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.i
+
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.i
+
+# target to preprocess a source file
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.i
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.i
+
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.s: c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.s
+
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.s
+
+# target to generate assembly for a file
+c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.s
+.PHONY : c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.s
+
 c_src/src/img_hash/img_hash_opencv_module/average_hash.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/average_hash.o
 
 # target to build an object file
 c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 
@@ -233,7 +259,6 @@ c_src/src/img_hash/img_hash_opencv_module/average_hash.i: c_src/src/img_hash/img
 
 # target to preprocess a source file
 c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i
 
@@ -243,7 +268,6 @@ c_src/src/img_hash/img_hash_opencv_module/average_hash.s: c_src/src/img_hash/img
 
 # target to generate assembly for a file
 c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.s
 
@@ -253,7 +277,6 @@ c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.o: c_src/src/img_hash/
 
 # target to build an object file
 c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
 
@@ -263,7 +286,6 @@ c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.i: c_src/src/img_hash/
 
 # target to preprocess a source file
 c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i
 
@@ -273,7 +295,6 @@ c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.s: c_src/src/img_hash/
 
 # target to generate assembly for a file
 c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.s
 
@@ -283,7 +304,6 @@ c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.o: c_src/src/img_has
 
 # target to build an object file
 c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
 
@@ -293,7 +313,6 @@ c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.i: c_src/src/img_has
 
 # target to preprocess a source file
 c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i
 
@@ -303,7 +322,6 @@ c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.s: c_src/src/img_has
 
 # target to generate assembly for a file
 c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.s
 
@@ -313,7 +331,6 @@ c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.o: c_src/src/img_ha
 
 # target to build an object file
 c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o
 
@@ -323,7 +340,6 @@ c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.i: c_src/src/img_ha
 
 # target to preprocess a source file
 c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i
 
@@ -333,7 +349,6 @@ c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.s: c_src/src/img_ha
 
 # target to generate assembly for a file
 c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.s
 
@@ -343,7 +358,6 @@ c_src/src/img_hash/img_hash_opencv_module/phash.o: c_src/src/img_hash/img_hash_o
 
 # target to build an object file
 c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o
 
@@ -353,7 +367,6 @@ c_src/src/img_hash/img_hash_opencv_module/phash.i: c_src/src/img_hash/img_hash_o
 
 # target to preprocess a source file
 c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i
 
@@ -363,7 +376,6 @@ c_src/src/img_hash/img_hash_opencv_module/phash.s: c_src/src/img_hash/img_hash_o
 
 # target to generate assembly for a file
 c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s
 .PHONY : c_src/src/img_hash/img_hash_opencv_module/phash.cpp.s
 
@@ -394,114 +406,6 @@ c_src/src/main.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/c_src/src/main.cc.s
 .PHONY : c_src/src/main.cc.s
 
-c_src/test/averageHashTest.o: c_src/test/averageHashTest.cpp.o
-
-.PHONY : c_src/test/averageHashTest.o
-
-# target to build an object file
-c_src/test/averageHashTest.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o
-.PHONY : c_src/test/averageHashTest.cpp.o
-
-c_src/test/averageHashTest.i: c_src/test/averageHashTest.cpp.i
-
-.PHONY : c_src/test/averageHashTest.i
-
-# target to preprocess a source file
-c_src/test/averageHashTest.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.i
-.PHONY : c_src/test/averageHashTest.cpp.i
-
-c_src/test/averageHashTest.s: c_src/test/averageHashTest.cpp.s
-
-.PHONY : c_src/test/averageHashTest.s
-
-# target to generate assembly for a file
-c_src/test/averageHashTest.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.s
-.PHONY : c_src/test/averageHashTest.cpp.s
-
-c_src/test/blockMeanHashTest.o: c_src/test/blockMeanHashTest.cpp.o
-
-.PHONY : c_src/test/blockMeanHashTest.o
-
-# target to build an object file
-c_src/test/blockMeanHashTest.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o
-.PHONY : c_src/test/blockMeanHashTest.cpp.o
-
-c_src/test/blockMeanHashTest.i: c_src/test/blockMeanHashTest.cpp.i
-
-.PHONY : c_src/test/blockMeanHashTest.i
-
-# target to preprocess a source file
-c_src/test/blockMeanHashTest.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.i
-.PHONY : c_src/test/blockMeanHashTest.cpp.i
-
-c_src/test/blockMeanHashTest.s: c_src/test/blockMeanHashTest.cpp.s
-
-.PHONY : c_src/test/blockMeanHashTest.s
-
-# target to generate assembly for a file
-c_src/test/blockMeanHashTest.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.s
-.PHONY : c_src/test/blockMeanHashTest.cpp.s
-
-c_src/test/perceptualHashTest.o: c_src/test/perceptualHashTest.cpp.o
-
-.PHONY : c_src/test/perceptualHashTest.o
-
-# target to build an object file
-c_src/test/perceptualHashTest.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o
-.PHONY : c_src/test/perceptualHashTest.cpp.o
-
-c_src/test/perceptualHashTest.i: c_src/test/perceptualHashTest.cpp.i
-
-.PHONY : c_src/test/perceptualHashTest.i
-
-# target to preprocess a source file
-c_src/test/perceptualHashTest.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.i
-.PHONY : c_src/test/perceptualHashTest.cpp.i
-
-c_src/test/perceptualHashTest.s: c_src/test/perceptualHashTest.cpp.s
-
-.PHONY : c_src/test/perceptualHashTest.s
-
-# target to generate assembly for a file
-c_src/test/perceptualHashTest.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.s
-.PHONY : c_src/test/perceptualHashTest.cpp.s
-
-c_src/test/testReadingMatchingTrianglesFromJsonFile.o: c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.o
-
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.o
-
-# target to build an object file
-c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.o:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.o
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.o
-
-c_src/test/testReadingMatchingTrianglesFromJsonFile.i: c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.i
-
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.i
-
-# target to preprocess a source file
-c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.i:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.i
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.i
-
-c_src/test/testReadingMatchingTrianglesFromJsonFile.s: c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.s
-
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.s
-
-# target to generate assembly for a file
-c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.s:
-	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.s
-.PHONY : c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -519,6 +423,9 @@ help:
 	@echo "... app"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.o"
+	@echo "... c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.i"
+	@echo "... c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.s"
 	@echo "... c_src/src/img_hash/img_hash_opencv_module/average_hash.o"
 	@echo "... c_src/src/img_hash/img_hash_opencv_module/average_hash.i"
 	@echo "... c_src/src/img_hash/img_hash_opencv_module/average_hash.s"
@@ -537,18 +444,6 @@ help:
 	@echo "... c_src/src/main.o"
 	@echo "... c_src/src/main.i"
 	@echo "... c_src/src/main.s"
-	@echo "... c_src/test/averageHashTest.o"
-	@echo "... c_src/test/averageHashTest.i"
-	@echo "... c_src/test/averageHashTest.s"
-	@echo "... c_src/test/blockMeanHashTest.o"
-	@echo "... c_src/test/blockMeanHashTest.i"
-	@echo "... c_src/test/blockMeanHashTest.s"
-	@echo "... c_src/test/perceptualHashTest.o"
-	@echo "... c_src/test/perceptualHashTest.i"
-	@echo "... c_src/test/perceptualHashTest.s"
-	@echo "... c_src/test/testReadingMatchingTrianglesFromJsonFile.o"
-	@echo "... c_src/test/testReadingMatchingTrianglesFromJsonFile.i"
-	@echo "... c_src/test/testReadingMatchingTrianglesFromJsonFile.s"
 .PHONY : help
 
 

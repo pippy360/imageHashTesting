@@ -43,7 +43,7 @@ set(IMAGE_HASH_FILES
 
 set(SOURCE_FILE 
         c_src/src/main.cc
-	${IMAGE_HASH_FILES})
+	${IMAGE_HASH_FILES} c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.h)
 
 set(TEST_FILES
         c_src/test/averageHashTest.cpp 

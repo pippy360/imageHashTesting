@@ -11,6 +11,7 @@
 #include "img_hash/AverageHash.h"
 #include "img_hash/BlockMeanHash.h"
 #include "img_hash/PerceptualHash.h"
+#include "img_hash/PerceptualHash_Fast.h"
 
 //#include "img_hash/FragmentHash.h"
 //#include "ShapeAndPositionInvariantImage.h"
@@ -116,6 +117,25 @@ template<typename T> void testMatchingFragmentsForAllInputImages() {
     }
 }
 
+template<typename T> int hasingSpeedTestInner(string imageName, vector<Triangle> tris, ShapeAndPositionInvariantImage loadedImage)
+{
+    auto hashes1 = cv::getAllTheHashesForImage<T>(loadedImage, tris, "imageMatchingPairs/"+imageName+"/outputFragments", "1");
+    return 0;
+}
+
+template<typename T> void hasingSpeedTest(string imageName) {
+    vector<Triangle> imageTris1;
+    vector<Triangle> imageTris2;
+    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile("imageMatchingPairs/"+imageName+"/matchingTriangles.json");
+    auto loadedImage1 = getLoadedImage("imageMatchingPairs/"+imageName+"/img1.jpg");
+    for (int i = 0; i < 4; i++) {
+        imageTris2.insert(std::end(imageTris2), std::begin(imageTris2), std::end(imageTris2));
+    }
+    cout << "About to processs " << imageTris2.size() << " triangles" << endl;
+    auto def = hasingSpeedTestInner<T>(imageName, imageTris2, loadedImage1);
+    cout << def << endl;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 3){
@@ -136,7 +156,9 @@ int main(int argc, char* argv[])
     }else if (argc > 2 && !strcmp(argv[1], "testMatching")){
         testMatchingFragments<hashes::PerceptualHash>(imageName);
     }else if (argc > 2 && !strcmp(argv[1], "testAllMatching")){
-        testMatchingFragmentsForAllInputImages<hashes::PerceptualHash>();
+        testMatchingFragmentsForAllInputImages<hashes::PerceptualHash_Fast>();
+    }else if (argc > 2 && !strcmp(argv[1], "speedTest")){
+        hasingSpeedTest<hashes::PerceptualHash_Fast>(imageName);
     }else{
         cout << "Bad argument: " << argv[1] << endl;
     }

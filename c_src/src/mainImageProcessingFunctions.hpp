@@ -180,9 +180,10 @@ Mat formatTransformationMat(const Matx33d transformation_matrix)
 Mat applyTransformationMatrixToImage(Mat inputImage, const Matx33d transformation_matrix)
 {
 	Mat m = formatTransformationMat(transformation_matrix);
-	
-	//Mat outputImage(FRAGMENT_HEIGHT, FRAGMENT_WIDTH, CV_8UC3, Scalar(0,0,0));
-	Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
+
+    //Mat outputImage(FRAGMENT_HEIGHT, FRAGMENT_WIDTH, CV_8UC3, Scalar(0,0,0));
+    Mat outputImage(32, 32, CV_8UC3, Scalar(0,0,0));
+//    	Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
 	warpAffine(inputImage, outputImage, m, outputImage.size());
 	//DEBUG
 	// imshow("fragmentAfterTransformation", outputImage);
@@ -262,9 +263,9 @@ template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPo
 		auto calculatedHash = T(frag);
 		ret.push_back(calculatedHash);
 		//DEBUG
-		if(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH != ""){
-			cv::imwrite(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH+"/"+to_string(i)+""+calculatedHash.toString()+"_" + DEBUG_STRING_APPEND + ".jpg", frag.getImageData());
-		}
+//		if(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH != ""){
+//			cv::imwrite(STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH+"/"+to_string(i)+""+calculatedHash.toString()+"_" + DEBUG_STRING_APPEND + ".jpg", frag.getImageData());
+//		}
 		//cv::waitKey();
 		//\DEBUG
 	}
