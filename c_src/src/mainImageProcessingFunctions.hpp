@@ -50,11 +50,11 @@ std::string getShapeStr(std::vector<Keypoint> shape)
 std::vector<bool> dHashSlowWithoutResizeOrGrayscale(Mat resized_input_mat)
 {
 	std::vector<bool> output;
-	int width_j = resized_input_mat.cols;
-	int height_i = resized_input_mat.rows;
-	for (int i = 0; i < height_i; i++)
+	unsigned int width_j = resized_input_mat.cols;
+	unsigned int height_i = resized_input_mat.rows;
+	for (unsigned int i = 0; i < height_i; i++)
 	{
-		for (int j = 0; j < width_j; j++)// "width_j-1" skip the last run
+		for (unsigned int j = 0; j < width_j; j++)// "width_j-1" skip the last run
 		{
 			if(j == width_j -1 ){
 				continue;
@@ -217,7 +217,7 @@ std::vector<ShapeAndPositionInvariantImage> normaliseScaleAndRotationForSingleFr
 {
 	auto shape = fragment.getShape();
 	auto ret = std::vector<ShapeAndPositionInvariantImage>();
-	for (int i = 0; i < NUM_OF_ROTATIONS; i++)
+	for (unsigned int i = 0; i < NUM_OF_ROTATIONS; i++)
 	{	
 		auto transformationMatrix = calcTransformationMatrixWithShapePreperation(shape, getTargetTriangle(200, 200*.83), i);
 		// std::cout << "transformationMatrix:\n" << transformationMatrix << std::endl;
@@ -255,7 +255,7 @@ ShapeAndPositionInvariantImage getFragment(const ShapeAndPositionInvariantImage&
 template<typename T> std::vector<T> getHashesForFragments(std::vector<ShapeAndPositionInvariantImage>& normalisedFragments, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	auto ret = std::vector<T>();
-	for (int i = 0; i < normalisedFragments.size(); i++)
+	for (unsigned int i = 0; i < normalisedFragments.size(); i++)
 	{
 		auto frag = normalisedFragments[i];
 //	for (auto frag : normalisedFragments)

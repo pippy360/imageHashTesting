@@ -65,7 +65,7 @@ template <typename T> void testNonMatchingFragmentsForFalsePositive(string image
                     }
                 }
             }
-            for (int i = 0; i<64;i++)
+            for (unsigned int i = 0; i<64;i++)
             {
                 cout << i << ": " << outputArr[i] << endl;
                 finOutputArr[i] += outputArr[i];
@@ -73,7 +73,7 @@ template <typename T> void testNonMatchingFragmentsForFalsePositive(string image
         }
     }
     cout << "finoutput: " << endl;
-    for (int i = 0; i<64;i++)
+    for (unsigned int i = 0; i<64;i++)
     {
         cout << i << ": " << finOutputArr[i] << endl;
     }
@@ -88,7 +88,7 @@ template<typename T> vector<int> testMatchingFragments(string imageName) {
     auto loadedImage2 = getLoadedImage("imageMatchingPairs/"+imageName+"/img2.jpg");
     auto hashes1 = cv::getAllTheHashesForImage<T>(loadedImage1, imageTris1, "imageMatchingPairs/"+imageName+"/outputFragments", "1");
     auto hashes2 = cv::getAllTheHashesForImage<T>(loadedImage2, imageTris2, "imageMatchingPairs/"+imageName+"/outputFragments", "2");
-    for (int i = 0; i < hashes1.size(); i++)
+    for (unsigned int i = 0; i < hashes1.size(); i++)
     {
         int dist = hashes1[i].getHammingDistance(hashes2[i]);
         finOutputArr[dist] += 1;

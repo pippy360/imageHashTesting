@@ -49,7 +49,7 @@ set(TEST_FILES
         c_src/test/averageHashTest.cpp 
         c_src/test/blockMeanHashTest.cpp 
         c_src/test/perceptualHashTest.cpp 
-	${IMAGE_HASH_FILES} c_src/test/testReadingMatchingTrianglesFromJsonFile.cpp c_src/test/testReadingMatchingTrianglesFromJsonFile.h)
+	${IMAGE_HASH_FILES} )
 
 find_package( OpenCV REQUIRED )
 include_directories(${OpenCV_INCLUDE_DIRS})
