@@ -502,6 +502,33 @@ c_src/test/perceptualHashTest.cpp.s:
 	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.s
 .PHONY : c_src/test/perceptualHashTest.cpp.s
 
+c_src/test/utilsTest.o: c_src/test/utilsTest.cpp.o
+
+.PHONY : c_src/test/utilsTest.o
+
+# target to build an object file
+c_src/test/utilsTest.cpp.o:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o
+.PHONY : c_src/test/utilsTest.cpp.o
+
+c_src/test/utilsTest.i: c_src/test/utilsTest.cpp.i
+
+.PHONY : c_src/test/utilsTest.i
+
+# target to preprocess a source file
+c_src/test/utilsTest.cpp.i:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.i
+.PHONY : c_src/test/utilsTest.cpp.i
+
+c_src/test/utilsTest.s: c_src/test/utilsTest.cpp.s
+
+.PHONY : c_src/test/utilsTest.s
+
+# target to generate assembly for a file
+c_src/test/utilsTest.cpp.s:
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.s
+.PHONY : c_src/test/utilsTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -549,6 +576,9 @@ help:
 	@echo "... c_src/test/perceptualHashTest.o"
 	@echo "... c_src/test/perceptualHashTest.i"
 	@echo "... c_src/test/perceptualHashTest.s"
+	@echo "... c_src/test/utilsTest.o"
+	@echo "... c_src/test/utilsTest.i"
+	@echo "... c_src/test/utilsTest.s"
 .PHONY : help
 
 

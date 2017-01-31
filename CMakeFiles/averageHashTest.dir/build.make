@@ -129,9 +129,33 @@ CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o.provides: CMa
 CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o.provides.build: CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o
 
 
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o: c_src/test/utilsTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o -c /home/linux/imageHashTesting/c_src/test/utilsTest.cpp
+
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linux/imageHashTesting/c_src/test/utilsTest.cpp > CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.i
+
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linux/imageHashTesting/c_src/test/utilsTest.cpp -o CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.s
+
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.requires:
+
+.PHONY : CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.requires
+
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.provides: CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.requires
+	$(MAKE) -f CMakeFiles/averageHashTest.dir/build.make CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.provides.build
+.PHONY : CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.provides
+
+CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.provides.build: CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o
+
+
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_m
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_m
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hi
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: CMakeFiles/averageHashTest.dir/flags.make
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o: c_src/src/img_hash/img_hash_opencv_module/phash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o -c /home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp
 
 CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.i: cmake_force
@@ -254,6 +278,7 @@ averageHashTest_OBJECTS = \
 "CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o" \
 "CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o" \
 "CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o" \
+"CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o" \
 "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o" \
 "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o" \
 "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o" \
@@ -266,6 +291,7 @@ averageHashTest_EXTERNAL_OBJECTS =
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o
+averageHashTest: CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o
 averageHashTest: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o
@@ -294,7 +320,7 @@ averageHashTest: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.2.4.9
 averageHashTest: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.2.4.9
 averageHashTest: /usr/lib/x86_64-linux-gnu/libopencv_core.so.2.4.9
 averageHashTest: CMakeFiles/averageHashTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable averageHashTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/linux/imageHashTesting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable averageHashTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/averageHashTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -305,6 +331,7 @@ CMakeFiles/averageHashTest.dir/build: averageHashTest
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o.requires
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o.requires
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o.requires
+CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o.requires
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp.o.requires
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp.o.requires
 CMakeFiles/averageHashTest.dir/requires: CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp.o.requires

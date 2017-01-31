@@ -49,6 +49,7 @@ set(TEST_FILES
         c_src/test/averageHashTest.cpp 
         c_src/test/blockMeanHashTest.cpp 
         c_src/test/perceptualHashTest.cpp 
+        c_src/test/utilsTest.cpp 
 	${IMAGE_HASH_FILES} )
 
 find_package( OpenCV REQUIRED )

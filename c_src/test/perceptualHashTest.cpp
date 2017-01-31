@@ -32,4 +32,18 @@ TEST(PerceptualHash, basicImageTest){
 }
 
 
+TEST(PerceptualHash, accuracyTest){
+
+    // string img1FullPath = "./c_src/test/resources/";//TODO: load in the moderat one
+    // auto img1 = cv::imread(img1FullPath);
+	// ShapeAndPositionInvariantImage s_img1("img1", img1, vector<Keypoint>(), img1FullPath);
+
+    // string jsonHashesFileFullPath = "./c_src/test/resources/hashes.json";
+    // readJsonHashFile();
+
+    // cout << "The hamming distance is: " << testHash1.getHammingDistance(testHash2) << endl;
+    // EXPECT_GT(3, testHash1.getHammingDistance(testHash2));
+    // EXPECT_EQ("2c3f116199a05b22", testHash1.toString());
+    // EXPECT_EQ("2e3f116199a05ba2", testHash2.toString());
+}
 

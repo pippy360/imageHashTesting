@@ -77,17 +77,11 @@ private:
     }
 
     static vector<bool> computeHash(cv::Mat const input){
-//        cv::Mat inHash;
-//        auto algo = cv::img_hash::PHash_Fast();
-//        algo.compute(input, inHash);
-//        return matHashToBoolArr(inHash);
-        vector<bool> ret;
-        for(int i = 0; i < 64; i++)
-        {
-            ret.push_back(true);
-        }
-        return ret;
-    }
+        cv::Mat inHash;
+        auto algo = cv::img_hash::PHash_Fast();
+        algo.compute(input, inHash);
+        return matHashToBoolArr(inHash);
+   }
 
     //returns hamming distance
     static int getHashDistance(const FragmentHash<vector<bool>>& first, const FragmentHash<vector<bool>>& second){
