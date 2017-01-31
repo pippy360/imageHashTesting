@@ -297,24 +297,31 @@
 			</Target>
 		</Build>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/Keypoint.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/ShapeAndPositionInvariantImage.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/Triangle.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/AverageHash.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/BlockMeanHash.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/PerceptualHash.h">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp">
@@ -324,40 +331,63 @@
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/main.cc">
 			<Option target="app"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp">
+			<Option target="averageHashTest"/>
 			<Option target="app"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp">
+			<Option target="averageHashTest"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp">
+			<Option target="averageHashTest"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/c_src/test/perceptualHashTest.cpp">
+			<Option target="averageHashTest"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/c_src/test/utilsTest.cpp">
+			<Option target="averageHashTest"/>
 		</Unit>
 		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">
 			<Option target="gtest"/>

@@ -1,6 +1,7 @@
 #ifndef mainImageProcessingFunctions_cpp
 #define mainImageProcessingFunctions_cpp
 
+
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>

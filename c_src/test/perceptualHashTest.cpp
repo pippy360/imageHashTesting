@@ -2,7 +2,9 @@
 #include "img_hash/PerceptualHash.h"
 
 #include <stdio.h>
+#include <img_hash/PerceptualHash_Fast.h>
 #include "opencv2/opencv.hpp"
+#include "utils/utils.hpp"
 
 
 using namespace hashes;
@@ -33,17 +35,20 @@ TEST(PerceptualHash, basicImageTest){
 
 
 TEST(PerceptualHash, accuracyTest){
-
-    // string img1FullPath = "./c_src/test/resources/";//TODO: load in the moderat one
-    // auto img1 = cv::imread(img1FullPath);
-	// ShapeAndPositionInvariantImage s_img1("img1", img1, vector<Keypoint>(), img1FullPath);
-
-    // string jsonHashesFileFullPath = "./c_src/test/resources/hashes.json";
-    // readJsonHashFile();
-
-    // cout << "The hamming distance is: " << testHash1.getHammingDistance(testHash2) << endl;
-    // EXPECT_GT(3, testHash1.getHammingDistance(testHash2));
-    // EXPECT_EQ("2c3f116199a05b22", testHash1.toString());
-    // EXPECT_EQ("2e3f116199a05ba2", testHash2.toString());
+//    auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
+//    auto loadedHashes = readJsonHashesFile<hashes::AverageHash>("c_src/test/resources/savedHashes.json");
+//
+//    string path = "c_src/test/resources/inputMatchingImages/Moderat-Bad-Kingdom-10/";
+//    vector<Triangle> imageTris1;
+//    vector<Triangle> imageTris2;
+//    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile(path+"matchingTriangles.json");
+//    auto loadedImage1 = getLoadedImage(path+"img1.jpg");
+//    auto loadedImage2 = getLoadedImage(path+"img2.jpg");
+//    auto hashes1 = cv::getAllTheHashesForImage<hashes::PerceptualHash_Fast>(loadedImage1, imageTris1, path+"outputFragments", "1");
+//
+//    for (unsigned int i = 0; i < loadedHashes.size(); i++)
+//    {
+//        cout << loadedHashes[i].getHammingDistance(hashes1[i]) << endl;
+//    }
 }
 

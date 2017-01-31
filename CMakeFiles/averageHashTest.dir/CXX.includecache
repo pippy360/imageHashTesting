@@ -133,10 +133,10 @@ stdio.h
 -
 opencv2/opencv.hpp
 /home/linux/imageHashTesting/c_src/test/opencv2/opencv.hpp
+utils/utils.hpp
+/home/linux/imageHashTesting/c_src/test/utils/utils.hpp
 
 /home/linux/imageHashTesting/c_src/test/utilsTest.cpp
-boost/config/compiler/visualc.hpp
--
 boost/property_tree/ptree.hpp
 -
 boost/property_tree/json_parser.hpp

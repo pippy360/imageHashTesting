@@ -1,5 +1,6 @@
 #ifndef utils_utils_hpp
 #define utils_utils_hpp
+
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <fstream>
@@ -25,14 +26,16 @@
 #include "utils/utils.hpp"
 #include <tuple>
 
-const std::vector<Triangle> readTheTriangles(std::ifstream *file)
-{
+using boost::property_tree::ptree;
+using boost::property_tree::read_json;
+using boost::property_tree::write_json;
+
+const std::vector<Triangle> readTheTriangles(std::ifstream *file) {
     std::vector<Triangle> triangles;
     std::string str;
 
-    while (true)
-    {
-        if(!std::getline(*file, str)){
+    while (true) {
+        if (!std::getline(*file, str)) {
             break;
         }
 
@@ -59,21 +62,19 @@ const std::vector<Triangle> readTheTriangles(std::ifstream *file)
     return triangles;
 }
 
-void print(boost::property_tree::ptree const& pt)
-{
+void print(boost::property_tree::ptree const &pt) {
 }
 
-const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file){
+const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file) {
     vector<Triangle> image1OutputTriangles;
     vector<Triangle> image2OutputTriangles;
-    try
-    {
+    try {
         boost::property_tree::ptree pt;
         boost::property_tree::read_json(*file, pt);
 
         using boost::property_tree::ptree;
         for (auto it : pt) {
-            if (it.first == "count"){
+            if (it.first == "count") {
                 //save count
                 cout << "Number of triangles read: " << it.second.get_value<std::string>() << endl;
             }
@@ -105,8 +106,7 @@ const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile
 
         print(pt);
     }
-    catch (std::exception const& e)
-    {
+    catch (std::exception const &e) {
         std::cerr << e.what() << std::endl;
     }
 
@@ -118,59 +118,74 @@ const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile
     return readMatchingTrianglesFromJsonFile(&file);
 }
 
-template<typename T> const vector<T> readJsonHashesFile(std::ifstream *file){
+template<typename T>
+const vector<T> readJsonHashesFile(std::ifstream *file) {
     vector<Triangle> image1OutputTriangles;
     vector<Triangle> image2OutputTriangles;
-    try
-    {
+    try {
         boost::property_tree::ptree pt;
         boost::property_tree::read_json(*file, pt);
 
         for (auto label0 : pt) {
             if (label0.first == "output") {
                 for (auto label1: label0.second) {
-		    if(label1.first == "imageName")
-		    {
-			//save the imageName
-		    }else if(label1.first == "hashes"){
-		    	for(auto hash_item: label1.second)
-			{
-			    cout << "hash: " << hash_item.second.get_value<std::string>() << endl;
-			}
-		    }
+                    if (label1.first == "imageName") {
+                        //save the imageName
+                    } else if (label1.first == "hashes") {
+                        for (auto hash_item: label1.second) {
+                            cout << "hash: " << hash_item.second.get_value<std::string>() << endl;
+                        }
+                    }
                 }
             }
         }
 
         print(pt);
     }
-    catch (std::exception const& e)
-    {
+    catch (std::exception const &e) {
         std::cerr << e.what() << std::endl;
     }
 
     return vector<T>();
 }
 
-template<typename T> const vector<T> readJsonHashesFile(const string filename){
+template<typename T>
+const vector<T> readJsonHashesFile(const string filename) {
     std::ifstream file(filename);
     return readJsonHashesFile<T>(&file);
 }
 
-std::vector<Triangle> getTheTris(const string trisPath){
+template<typename T>
+void dumpHashesToJsonFile(std::ofstream *file, vector<T> hashes) {
+    ptree outputTree, hashesTree;
+    for(auto hash: hashes){
+        hashesTree.push_back(std::make_pair( "", ptree(hash.toString()) ));
+    }
+    outputTree.put_child("output.hashes", hashesTree);
+    std::stringstream ss;
+    write_json(ss, outputTree);
+    *file << ss.str();
+}
+
+template<typename T> void dumpHashesToJsonFile(const string filename, vector<T> hashes) {
+    std::ofstream ofs;
+    ofs.open (filename, std::ofstream::out);
+    dumpHashesToJsonFile<T>(&ofs, hashes);
+}
+
+std::vector<Triangle> getTheTris(const string trisPath) {
     std::ifstream file(trisPath);
     //std::string filename = readTheName(&file);
     auto tris = readTheTriangles(&file);
     return tris;
 }
 
-std::vector<Triangle> getTheTris_random(string trisPath, int numberOfSamples = 1000){
+std::vector<Triangle> getTheTris_random(string trisPath, int numberOfSamples = 1000) {
     std::ifstream file(trisPath);
     //std::string filename = readTheName(&file);
     auto tris = readTheTriangles(&file);
     std::vector<Triangle> ret;
-    for (int i = 0; i<numberOfSamples; i++)
-    {
+    for (int i = 0; i < numberOfSamples; i++) {
         int ran = rand() % tris.size();
         ret.push_back(tris[ran]);
     }
@@ -178,40 +193,35 @@ std::vector<Triangle> getTheTris_random(string trisPath, int numberOfSamples = 1
     return ret;
 }
 
-ShapeAndPositionInvariantImage getLoadedImage(string imageFullPath){
+ShapeAndPositionInvariantImage getLoadedImage(string imageFullPath) {
     cv::Mat img = cv::imread(imageFullPath);
     return ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
 }
 
-void writeHashesToFile(string fullFilePath, vector<string> hashes)
-{
+void writeHashesToFile(string fullFilePath, vector<string> hashes) {
     std::ofstream outputFile;
     outputFile.open(fullFilePath, std::ios::out);
-    for (auto hash: hashes)
-    {
+    for (auto hash: hashes) {
         outputFile << hash << endl;
     }
 }
 
-template<typename T> void writeHashObjectsToFile(string fullFilePath, vector<T> hashes)
-{
+template<typename T>
+void writeHashObjectsToFile(string fullFilePath, vector<T> hashes) {
     vector<string> hashesToString;
-    for (auto hash: hashes)
-    {
+    for (auto hash: hashes) {
         hashesToString.push_back(hash.toString());
     }
     writeHashesToFile(fullFilePath, hashesToString);
 }
 
-vector<string> loadImageNames(string filename)
-{
+vector<string> loadImageNames(string filename) {
     vector<string> filenames;
 
     std::ifstream file(filename);
     std::string str = "";
-    while (true)
-    {
-        if(!std::getline(file, str)){
+    while (true) {
+        if (!std::getline(file, str)) {
             break;
         }
         filenames.push_back(str);
@@ -220,15 +230,13 @@ vector<string> loadImageNames(string filename)
     return filenames;
 }
 
-vector<string> loadExcludeList(string filename)
-{
+vector<string> loadExcludeList(string filename) {
     vector<string> filenames;
 
     std::ifstream file(filename);
     std::string str = "";
-    while (true)
-    {
-        if(!std::getline(file, str)){
+    while (true) {
+        if (!std::getline(file, str)) {
             break;
         }
         filenames.push_back(str);
@@ -237,14 +245,13 @@ vector<string> loadExcludeList(string filename)
     return filenames;
 }
 
-template <typename T> std::vector<T> loadHashesFromFile(std::string filename)
-{
+template<typename T>
+std::vector<T> loadHashesFromFile(std::string filename) {
     std::vector<T> ret;
     std::ifstream file(filename);
     std::string str = "";
-    while (true)
-    {
-        if(!std::getline(file, str)){
+    while (true) {
+        if (!std::getline(file, str)) {
             break;
         }
 
@@ -255,12 +262,12 @@ template <typename T> std::vector<T> loadHashesFromFile(std::string filename)
     return ret;
 }
 
-bool isInExcludeList(string name, vector<string> excludeList, string imageName){
-    if(name == imageName){
+bool isInExcludeList(string name, vector<string> excludeList, string imageName) {
+    if (name == imageName) {
         return true;
     }
-    for (auto e: excludeList){
-        if(name == e){
+    for (auto e: excludeList) {
+        if (name == e) {
             return true;
         }
     }

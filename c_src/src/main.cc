@@ -136,6 +136,18 @@ template<typename T> void hasingSpeedTest(string imageName) {
     cout << def << endl;
 }
 
+void dumpThem(string imageName)
+{
+    vector<Triangle> imageTris1;
+    vector<Triangle> imageTris2;
+    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile("imageMatchingPairs/"+imageName+"/matchingTriangles.json");
+    auto loadedImage1 = getLoadedImage("imageMatchingPairs/"+imageName+"/img1.jpg");
+    auto loadedImage2 = getLoadedImage("imageMatchingPairs/"+imageName+"/img2.jpg");
+    auto hashes1 = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage1, imageTris1, "imageMatchingPairs/"+imageName+"/outputFragments", "1");
+
+    dumpHashesToJsonFile<hashes::PerceptualHash>("c_src/test/resources/savedHashes.json", hashes1);
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 3){
@@ -159,6 +171,8 @@ int main(int argc, char* argv[])
         testMatchingFragmentsForAllInputImages<hashes::PerceptualHash_Fast>();
     }else if (argc > 2 && !strcmp(argv[1], "speedTest")){
         hasingSpeedTest<hashes::PerceptualHash_Fast>(imageName);
+    }else if (argc > 2 && !strcmp(argv[1], "dumpThem")){
+        dumpThem(imageName);
     }else{
         cout << "Bad argument: " << argv[1] << endl;
     }
