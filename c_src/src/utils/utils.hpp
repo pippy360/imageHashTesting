@@ -66,7 +66,6 @@ void print(boost::property_tree::ptree const& pt)
 const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file){
     vector<Triangle> image1OutputTriangles;
     vector<Triangle> image2OutputTriangles;
-    cout << "here..." << endl;
     try
     {
         boost::property_tree::ptree pt;
@@ -117,6 +116,45 @@ const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile
 const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(const string filename) {
     std::ifstream file(filename);
     return readMatchingTrianglesFromJsonFile(&file);
+}
+
+template<typename T> const vector<T> readJsonHashesFile(std::ifstream *file){
+    vector<Triangle> image1OutputTriangles;
+    vector<Triangle> image2OutputTriangles;
+    try
+    {
+        boost::property_tree::ptree pt;
+        boost::property_tree::read_json(*file, pt);
+
+        for (auto label0 : pt) {
+            if (label0.first == "output") {
+                for (auto label1: label0.second) {
+		    if(label1.first == "imageName")
+		    {
+			//save the imageName
+		    }else if(label1.first == "hashes"){
+		    	for(auto hash_item: label1.second)
+			{
+			    cout << "hash: " << hash_item.second.get_value<std::string>() << endl;
+			}
+		    }
+                }
+            }
+        }
+
+        print(pt);
+    }
+    catch (std::exception const& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return vector<T>();
+}
+
+template<typename T> const vector<T> readJsonHashesFile(const string filename){
+    std::ifstream file(filename);
+    return readJsonHashesFile<T>(&file);
 }
 
 std::vector<Triangle> getTheTris(const string trisPath){

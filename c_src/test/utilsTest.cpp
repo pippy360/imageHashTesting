@@ -29,8 +29,8 @@ TEST(readingMatchingTriangles, basicTest){
 
 TEST(utils, jsonParsing_readingInJsonHashesFile){
     //TODO: MAKE SURE BOTH READ AND WRITE TESTS USE DIFFERENT FILES
-    auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
-
+    //auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
+    readJsonHashesFile<hashes::AverageHash>("c_src/test/resources/jsonHashFile.json");
     // for (auto tri: matchingTris)
     // {
     //     //getAllTheHashesForImage();
