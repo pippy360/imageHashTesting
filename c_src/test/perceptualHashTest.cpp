@@ -42,8 +42,14 @@ TEST(PerceptualHash, accuracyTest){
     vector<Triangle> imageTris1;
     vector<Triangle> imageTris2;
     tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile(path+"matchingTriangles.json");
-    auto loadedImage1 = getLoadedImage(path+"img1.jpg");
+    // auto loadedImage1 = getLoadedImage();
     auto loadedImage2 = getLoadedImage(path+"img2.jpg");
+    cv::Mat gray_image;
+    cv::Mat img = cv::imread(path+"img1.jpg");
+    // cv::cvtColor( img, gray_image, CV_BGR2GRAY );
+    // auto loadedImage1 = ShapeAndPositionInvariantImage("", gray_image, std::vector<Keypoint>(), "");
+    auto loadedImage1 = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");    
+    
     auto hashes1 = cv::getAllTheHashesForImage<hashes::PerceptualHash_Fast>(loadedImage1, imageTris1, path+"outputFragments", "1");
 
     int totalDist = 0;
@@ -52,6 +58,6 @@ TEST(PerceptualHash, accuracyTest){
         // cout << "hamming dist: " << loadedHashes[i].getHammingDistance(hashes1[i]) << endl;
         totalDist += loadedHashes[i].getHammingDistance(hashes1[i]);
     }
-    cout << "The total error/hamming distance: " << totalDist << endl;
+    cout << "The total error/hamming distance: " << totalDist << " average error per hash: " << totalDist/loadedHashes.size() << endl;
 }
 

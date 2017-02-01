@@ -184,7 +184,9 @@ Mat applyTransformationMatrixToImage(Mat inputImage, const Matx33d transformatio
 
     //Mat outputImage(FRAGMENT_HEIGHT, FRAGMENT_WIDTH, CV_8UC3, Scalar(0,0,0));
     //Mat outputImage(32, 32, CV_8UC3, Scalar(0,0,0));
-    	Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
+    //Mat outputImage(150*.83, 150, CV_8UC3, Scalar(0,0,0));
+	Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
+	// Mat outputImage(400*.83, 400, CV_8UC3, Scalar(0,0,0));
 	warpAffine(inputImage, outputImage, m, outputImage.size());
 	//DEBUG
 	// imshow("fragmentAfterTransformation", outputImage);

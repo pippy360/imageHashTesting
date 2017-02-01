@@ -127,7 +127,11 @@ template<typename T> void hasingSpeedTest(string imageName) {
     vector<Triangle> imageTris1;
     vector<Triangle> imageTris2;
     tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile("imageMatchingPairs/"+imageName+"/matchingTriangles.json");
-    auto loadedImage1 = getLoadedImage("imageMatchingPairs/"+imageName+"/img1.jpg");
+    cv::Mat gray_image;
+    cv::Mat img = cv::imread("imageMatchingPairs/"+imageName+"/img1.jpg");
+    cv::cvtColor( img, gray_image, CV_BGR2GRAY );
+    auto loadedImage1 = ShapeAndPositionInvariantImage("", gray_image, std::vector<Keypoint>(), "");
+    // auto loadedImage1 = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");   
     for (int i = 0; i < 4; i++) {
         imageTris2.insert(std::end(imageTris2), std::begin(imageTris2), std::end(imageTris2));
     }
