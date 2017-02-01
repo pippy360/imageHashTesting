@@ -38,7 +38,9 @@ set(IMAGE_HASH_FILES
         c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp
         c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp
         c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp
-        c_src/src/img_hash/img_hash_opencv_module/phash.cpp)
+        c_src/src/img_hash/img_hash_opencv_module/phash.cpp
+        c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp
+        )
 
 
 set(SOURCE_FILE 

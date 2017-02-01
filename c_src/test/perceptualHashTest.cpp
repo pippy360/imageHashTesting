@@ -35,20 +35,23 @@ TEST(PerceptualHash, basicImageTest){
 
 
 TEST(PerceptualHash, accuracyTest){
-//    auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
-//    auto loadedHashes = readJsonHashesFile<hashes::AverageHash>("c_src/test/resources/savedHashes.json");
-//
-//    string path = "c_src/test/resources/inputMatchingImages/Moderat-Bad-Kingdom-10/";
-//    vector<Triangle> imageTris1;
-//    vector<Triangle> imageTris2;
-//    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile(path+"matchingTriangles.json");
-//    auto loadedImage1 = getLoadedImage(path+"img1.jpg");
-//    auto loadedImage2 = getLoadedImage(path+"img2.jpg");
-//    auto hashes1 = cv::getAllTheHashesForImage<hashes::PerceptualHash_Fast>(loadedImage1, imageTris1, path+"outputFragments", "1");
-//
-//    for (unsigned int i = 0; i < loadedHashes.size(); i++)
-//    {
-//        cout << loadedHashes[i].getHammingDistance(hashes1[i]) << endl;
-//    }
+    auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
+    auto loadedHashes = readJsonHashesFile<hashes::AverageHash>("c_src/test/resources/savedHashes.json");
+
+    string path = "c_src/test/resources/inputMatchingImages/Moderat-Bad-Kingdom-10/";
+    vector<Triangle> imageTris1;
+    vector<Triangle> imageTris2;
+    tie(imageTris2, imageTris1) = readMatchingTrianglesFromJsonFile(path+"matchingTriangles.json");
+    auto loadedImage1 = getLoadedImage(path+"img1.jpg");
+    auto loadedImage2 = getLoadedImage(path+"img2.jpg");
+    auto hashes1 = cv::getAllTheHashesForImage<hashes::PerceptualHash_Fast>(loadedImage1, imageTris1, path+"outputFragments", "1");
+
+    int totalDist = 0;
+    for (unsigned int i = 0; i < loadedHashes.size(); i++)
+    {
+        // cout << "hamming dist: " << loadedHashes[i].getHammingDistance(hashes1[i]) << endl;
+        totalDist += loadedHashes[i].getHammingDistance(hashes1[i]);
+    }
+    cout << "The total error/hamming distance: " << totalDist << endl;
 }
 

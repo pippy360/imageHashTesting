@@ -120,6 +120,7 @@ const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile
 
 template<typename T>
 const vector<T> readJsonHashesFile(std::ifstream *file) {
+    vector<T> ret;
     vector<Triangle> image1OutputTriangles;
     vector<Triangle> image2OutputTriangles;
     try {
@@ -133,7 +134,8 @@ const vector<T> readJsonHashesFile(std::ifstream *file) {
                         //save the imageName
                     } else if (label1.first == "hashes") {
                         for (auto hash_item: label1.second) {
-                            cout << "hash: " << hash_item.second.get_value<std::string>() << endl;
+                            ret.push_back(T(hash_item.second.get_value<std::string>()));
+                            //cout << "hash: " << hash_item.second.get_value<std::string>() << endl;
                         }
                     }
                 }
@@ -146,7 +148,7 @@ const vector<T> readJsonHashesFile(std::ifstream *file) {
         std::cerr << e.what() << std::endl;
     }
 
-    return vector<T>();
+    return ret;
 }
 
 template<typename T>

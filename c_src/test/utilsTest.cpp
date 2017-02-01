@@ -7,8 +7,8 @@
 #include <sstream>
 #include <string>
 #include "gtest/gtest.h"
-#include "utils/utils.hpp"
-#include "img_hash/PerceptualHash.h"
+// #include "utils/utils.hpp"
+// #include "img_hash/PerceptualHash.h"
 #include <stdio.h>
 
 
@@ -17,7 +17,7 @@
 using namespace std;
 
 TEST(readingMatchingTriangles, basicTest){
-    auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
+    //auto matchingTris = readMatchingTrianglesFromJsonFile("c_src/test/resources/matchingTriangles.json");
 
     // for (auto tri: matchingTris)
     // {
@@ -39,7 +39,7 @@ TEST(utils, jsonParsing_dumpHashesToJsonHashesFile){
     //dump them to the file
     //manually check or call the read test
     //cout << "success" << endl;
-    vector<hashes::PerceptualHash> temp;
-    temp.push_back(hashes::PerceptualHash("4b49e171be8e212a"));
-    dumpHashesToJsonFile<hashes::PerceptualHash>("c_src/test/resources/jsonHashFile_testOutputFile.json", temp);
+    // vector<hashes::PerceptualHash> temp;
+    // temp.push_back(hashes::PerceptualHash("4b49e171be8e212a"));
+    // dumpHashesToJsonFile<hashes::PerceptualHash>("c_src/test/resources/jsonHashFile_testOutputFile.json", temp);
 }
