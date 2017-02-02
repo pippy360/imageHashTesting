@@ -178,14 +178,15 @@ Mat formatTransformationMat(const Matx33d transformation_matrix)
 	return m;
 }
 
-Mat applyTransformationMatrixToImage(Mat inputImage, const Matx33d transformation_matrix)
+Mat applyTransformationMatrixToImage(Mat inputImage, const Matx33d transformation_matrix, int outputTriangleSizeX, int outputTriangleSizeY)
 {
 	Mat m = formatTransformationMat(transformation_matrix);
 
     //Mat outputImage(FRAGMENT_HEIGHT, FRAGMENT_WIDTH, CV_8UC3, Scalar(0,0,0));
-    //Mat outputImage(32, 32, CV_8UC3, Scalar(0,0,0));
-    //Mat outputImage(150*.83, 150, CV_8UC3, Scalar(0,0,0));
-	Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
+    // Mat outputImage(32, 32, CV_8UC3, Scalar(0,0,0));
+    // Mat outputImage(150*.83, 150, CV_8UC3, Scalar(0,0,0));
+	//Mat outputImage(200*.83, 200, CV_8UC3, Scalar(0,0,0));
+	Mat outputImage(outputTriangleSizeY, outputTriangleSizeX, CV_8UC3, Scalar(0,0,0));
 	// Mat outputImage(400*.83, 400, CV_8UC3, Scalar(0,0,0));
 	warpAffine(inputImage, outputImage, m, outputImage.size());
 	//DEBUG
@@ -220,15 +221,17 @@ std::vector<ShapeAndPositionInvariantImage> normaliseScaleAndRotationForSingleFr
 {
 	auto shape = fragment.getShape();
 	auto ret = std::vector<ShapeAndPositionInvariantImage>();
+	int outputTriangleSizeX = 200;
+	int outputTriangleSizeY = 200;
 	for (unsigned int i = 0; i < NUM_OF_ROTATIONS; i++)
 	{	
-		auto transformationMatrix = calcTransformationMatrixWithShapePreperation(shape, getTargetTriangle(200, 200*.83), i);
+		auto transformationMatrix = calcTransformationMatrixWithShapePreperation(shape, getTargetTriangle(outputTriangleSizeX, outputTriangleSizeY), i);
 		// std::cout << "transformationMatrix:\n" << transformationMatrix << std::endl;
 		auto input_img = fragment.getImageData();
 		//DEBUG
 		//drawLines(input_img, shape);
 		//DEBUG
-		auto newImageData = applyTransformationMatrixToImage(input_img, transformationMatrix);
+		auto newImageData = applyTransformationMatrixToImage(input_img, transformationMatrix, outputTriangleSizeX, outputTriangleSizeY);
 		auto t = ShapeAndPositionInvariantImage(fragment.getImageName(), newImageData, shape, fragment.getImageFullPath());
 		//DEBUG
 // 		auto hash_b = dHashSlowWithResizeAndGrayscale(newImageData);
@@ -284,12 +287,37 @@ template<typename T> std::vector<T> getHashesForTriangle(ShapeAndPositionInvaria
 	return hashes;
 }
 
+Triangle resizeTri(Triangle tri, double mult){
+	vector<Keypoint> newKpts;
+	for (auto kp: tri.toKeypoints())
+	{
+		newKpts.push_back( Keypoint(kp.x*mult, kp.y*mult) );
+	}
+	return Triangle(newKpts);
+}
+
+vector<Triangle> resizeAllTris(vector<Triangle> inputTriangles, double mult){
+	auto ret = vector<Triangle>();
+	for (auto tri: inputTriangles){
+		ret.push_back(resizeTri(tri, mult));
+	}
+	return ret;
+}
+
 template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
+	//resize it
+	Mat resizedImage;
+	double mult = 1.0;
+	cv::resize(inputImage.getImageData(), resizedImage, Size(0,0), mult, mult);
+
+	ShapeAndPositionInvariantImage inputImage2("", resizedImage, std::vector<Keypoint>(), "");
+	triangles = resizeAllTris(triangles, mult);
+	//\resize it
 	auto ret = std::vector<T>();
 	for (auto tri : triangles)
 	{
-		auto hashes = getHashesForTriangle<T>(inputImage, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
+		auto hashes = getHashesForTriangle<T>(inputImage2, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
 		for (auto hash: hashes)
 		{
 			ret.push_back(hash);
