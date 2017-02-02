@@ -132,7 +132,7 @@ template<typename T> void hasingSpeedTest(string imageName) {
     cv::cvtColor( img, gray_image, CV_BGR2GRAY );
     auto loadedImage1 = ShapeAndPositionInvariantImage("", gray_image, std::vector<Keypoint>(), "");
     // auto loadedImage1 = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");   
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 7; i++) {
         imageTris2.insert(std::end(imageTris2), std::begin(imageTris2), std::end(imageTris2));
     }
     cout << "About to processs " << imageTris2.size() << " triangles" << endl;

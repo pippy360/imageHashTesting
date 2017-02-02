@@ -253,8 +253,8 @@ def dumpTrianglesUsingImg(img, outputFile):
 	keyPoints = mp.getTheKeyPoints(imageData)
 	#turn the keyPoints into triangles	
 	triangles = mp.getTheTriangles(keyPoints)
-
-	nm.dumpTriangles(triangles, outputFile)
+	print "This man tris: " + str(len(triangles))
+	#nm.dumpTriangles(triangles, outputFile)
 
 def runTheCommand():
     pass
@@ -344,7 +344,7 @@ name8 = "rick4"
 #process10Triangles(toFullPath('img1'))
 #addImageToDB(toFullPath("img1"))
 
-img = buildImage(toFullPath("img1"))
+img = buildImage(toFullPath("rick1"))
 outputFile = './triangle_coords_output.txt'
 dumpTrianglesUsingImg(img, outputFile)
 

@@ -221,8 +221,8 @@ std::vector<ShapeAndPositionInvariantImage> normaliseScaleAndRotationForSingleFr
 {
 	auto shape = fragment.getShape();
 	auto ret = std::vector<ShapeAndPositionInvariantImage>();
-	int outputTriangleSizeX = 200;
-	int outputTriangleSizeY = 200;
+	int outputTriangleSizeX = 60*.83;
+	int outputTriangleSizeY = 60;
 	for (unsigned int i = 0; i < NUM_OF_ROTATIONS; i++)
 	{	
 		auto transformationMatrix = calcTransformationMatrixWithShapePreperation(shape, getTargetTriangle(outputTriangleSizeX, outputTriangleSizeY), i);
@@ -307,20 +307,26 @@ vector<Triangle> resizeAllTris(vector<Triangle> inputTriangles, double mult){
 template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	//resize it
-	Mat resizedImage;
+//	Mat resizedImage;
 	double mult = 1.0;
-	cv::resize(inputImage.getImageData(), resizedImage, Size(0,0), mult, mult);
+//	cv::resize(inputImage.getImageData(), resizedImage, Size(0,0), mult, mult);
 
-	ShapeAndPositionInvariantImage inputImage2("", resizedImage, std::vector<Keypoint>(), "");
+	ShapeAndPositionInvariantImage inputImage2("", inputImage.getImageData(), std::vector<Keypoint>(), "");
 	triangles = resizeAllTris(triangles, mult);
 	//\resize it
-	auto ret = std::vector<T>();
-	for (auto tri : triangles)
-	{
+	auto ret = std::vector<T>(triangles.size()*NUM_OF_ROTATIONS);
+//	for (auto tri : triangles)
+//	{
+    #pragma omp parallel for
+    for (int i = 0; i < triangles.size(); i++) {
+        auto tri = triangles[i];
 		auto hashes = getHashesForTriangle<T>(inputImage2, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
-		for (auto hash: hashes)
-		{
-			ret.push_back(hash);
+//		for (auto hash: hashes)
+//		{
+        for (int j = 0; j < 3; j++)
+        {
+            ret[(i*3)+j] = hashes[j];
+			//ret.push_back(hashes[j]);
 		}
 	}
 	return ret;

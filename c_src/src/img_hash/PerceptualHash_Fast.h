@@ -12,23 +12,20 @@ using namespace std;
 
 
 namespace hashes{
-class PerceptualHash_Fast : public FragmentHash<vector<bool>>
-{
+class PerceptualHash_Fast : public FragmentHash<vector<bool>> {
 private:
     vector<bool> hash;
     vector<Keypoint> shape;
 
-    static std::string convertHashToString(vector<bool> hash)
-    {
+    static std::string convertHashToString(vector<bool> hash) {
         std::string ret = "";
         int h = 0;
-        for (unsigned int i = 0; i < hash.size(); i++)
-        {
-            if (hash[i]){
+        for (unsigned int i = 0; i < hash.size(); i++) {
+            if (hash[i]) {
                 h += pow(2, (i % 8));
             }
 
-            if (i%8 == 7){
+            if (i % 8 == 7) {
                 std::stringstream buffer;
                 buffer << std::hex << std::setfill('0') << std::setw(2) << h;
                 ret += buffer.str();
@@ -38,66 +35,64 @@ private:
         return ret;
     }
 
-    static vector<bool> hex_str_to_hash(std::string inputString)
-    {
+    static vector<bool> hex_str_to_hash(std::string inputString) {
         std::vector<bool> hash;
-        int size = inputString.size()/2;
-        for (int i = 0; i < size; i++)
-        {
-            std::string str2 = inputString.substr(i*2,2);
-            if (str2.empty()){
+        int size = inputString.size() / 2;
+        for (int i = 0; i < size; i++) {
+            std::string str2 = inputString.substr(i * 2, 2);
+            if (str2.empty()) {
                 continue;
             }
 
             unsigned int value = 0;
             std::stringstream SS(str2);
             SS >> std::hex >> value;
-            for (int j = 0; j < 8; j++)
-            {
-                bool check = !!((value>>j)&1);
-                hash.push_back(check);			
+            for (int j = 0; j < 8; j++) {
+                bool check = !!((value >> j) & 1);
+                hash.push_back(check);
             }
         }
         return hash;
     }
 
-    static std::vector<bool> matHashToBoolArr(cv::Mat const inHash)
-    {
+    static std::vector<bool> matHashToBoolArr(cv::Mat const inHash) {
         const unsigned char *data = inHash.data;
         std::vector<bool> v;
-        for (int i = 0; i<8; i++) {
+        for (int i = 0; i < 8; i++) {
             unsigned char c = data[i];
-            for (int j = 0; j<8; j++) {
-                int shift = (8 - j)-1;
-                bool val = ((c>>shift) & 1);
+            for (int j = 0; j < 8; j++) {
+                int shift = (8 - j) - 1;
+                bool val = ((c >> shift) & 1);
                 v.push_back(val);
             }
         }
         return v;
     }
 
-    static vector<bool> computeHash(cv::Mat const input){
+    static vector<bool> computeHash(cv::Mat const input) {
         cv::Mat inHash;
         auto algo = cv::img_hash::PHash_Fast();
         algo.compute(input, inHash);
         return matHashToBoolArr(inHash);
-   }
+    }
 
     //returns hamming distance
-    static int getHashDistance(const FragmentHash<vector<bool>>& first, const FragmentHash<vector<bool>>& second){
+    static int getHashDistance(const FragmentHash<vector<bool>> &first, const FragmentHash<vector<bool>> &second) {
         const vector<bool> hash1 = first.getHash();
         const vector<bool> hash2 = second.getHash();
         assert(hash1.size() == hash2.size());
 
         int dist = 0;
-        for (unsigned int i = 0; i < hash1.size(); i++)
-        {
+        for (unsigned int i = 0; i < hash1.size(); i++) {
             dist += (hash1[i] != hash2[i]);
         }
         return dist;
     }
 
 public:
+
+    PerceptualHash_Fast()
+    {}
 
     PerceptualHash_Fast(ShapeAndPositionInvariantImage frag):
             FragmentHash<vector<bool>>(frag)

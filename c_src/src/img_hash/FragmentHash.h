@@ -17,6 +17,9 @@ protected:
     vector<Keypoint> shape_;
 public:
 
+    FragmentHash()
+    {}
+
     FragmentHash(ShapeAndPositionInvariantImage image)
     {}
 
