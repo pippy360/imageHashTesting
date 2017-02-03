@@ -146,31 +146,11 @@ opencv2/opencv.hpp
 utils/utils.hpp
 /home/linux/imageHashTesting/c_src/test/utils/utils.hpp
 
-/home/linux/imageHashTesting/c_src/test/utilsTest.cpp
-boost/property_tree/ptree.hpp
--
-boost/property_tree/json_parser.hpp
--
-boost/foreach.hpp
--
-cassert
--
-exception
--
+c_src/src/Keypoint.h
 iostream
--
-sstream
 -
 string
 -
-gtest/gtest.h
-/home/linux/imageHashTesting/c_src/test/gtest/gtest.h
-stdio.h
--
-opencv2/opencv.hpp
-/home/linux/imageHashTesting/c_src/test/opencv2/opencv.hpp
-
-c_src/src/Keypoint.h
 
 c_src/src/ShapeAndPositionInvariantImage.h
 string

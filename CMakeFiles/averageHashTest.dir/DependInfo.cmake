@@ -13,9 +13,16 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/averageHashTest.cpp.o"
   "/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/blockMeanHashTest.cpp.o"
   "/home/linux/imageHashTesting/c_src/test/perceptualHashTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/perceptualHashTest.cpp.o"
-  "/home/linux/imageHashTesting/c_src/test/utilsTest.cpp" "/home/linux/imageHashTesting/CMakeFiles/averageHashTest.dir/c_src/test/utilsTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "googletest/googletest/include"
+  "googletest/googletest"
+  "c_src/src"
+  "/usr/include/opencv"
+  )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
@@ -23,13 +30,5 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/linux/imageHashTesting/googletest/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
 
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "googletest/googletest/include"
-  "googletest/googletest"
-  "c_src/src"
-  "/usr/include/opencv"
-  )
-set(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-set(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
-set(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

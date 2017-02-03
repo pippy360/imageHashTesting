@@ -6,8 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
   "CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
   "CMakeFiles/app.dir/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o"
-  "app.pdb"
-  "app"
+  "bin/app.pdb"
+  "bin/app"
 )
 
 # Per-language clean rules from dependency scanning.

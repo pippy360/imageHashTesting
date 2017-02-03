@@ -17,19 +17,59 @@
             <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="install/strip">
+      <Target title="list_install_components">
          <Option working_dir="/home/linux/imageHashTesting" />
          <Option type="4" />
          <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 install/strip" />
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 list_install_components" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install">
+         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 install" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="test">
+         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 test" />
             <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
             <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
             <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
       <Target title="app">
-         <Option output="/home/linux/imageHashTesting/app" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option output="/home/linux/imageHashTesting/bin/app" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -55,8 +95,8 @@
          </MakeCommands>
       </Target>
       <Target title="app/fast">
-         <Option output="/home/linux/imageHashTesting/app" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option output="/home/linux/imageHashTesting/bin/app" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -82,8 +122,8 @@
          </MakeCommands>
       </Target>
       <Target title="averageHashTest">
-         <Option output="/home/linux/imageHashTesting/averageHashTest" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option output="/home/linux/imageHashTesting/bin/averageHashTest" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -109,8 +149,8 @@
          </MakeCommands>
       </Target>
       <Target title="averageHashTest/fast">
-         <Option output="/home/linux/imageHashTesting/averageHashTest" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option output="/home/linux/imageHashTesting/bin/averageHashTest" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
          <Option object_output="./" />
          <Option type="1" />
          <Option compiler="gcc" />
@@ -135,61 +175,75 @@
             <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
          </MakeCommands>
       </Target>
-      <Target title="edit_cache">
-         <Option working_dir="/home/linux/imageHashTesting" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 edit_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="rebuild_cache">
-         <Option working_dir="/home/linux/imageHashTesting" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 rebuild_cache" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="install">
-         <Option working_dir="/home/linux/imageHashTesting" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 install" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="list_install_components">
-         <Option working_dir="/home/linux/imageHashTesting" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 list_install_components" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="test">
-         <Option working_dir="/home/linux/imageHashTesting" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 test" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
       <Target title="install/local">
          <Option working_dir="/home/linux/imageHashTesting" />
          <Option type="4" />
          <MakeCommands>
             <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 install/local" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="install/strip">
+         <Option working_dir="/home/linux/imageHashTesting" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 install/strip" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="utilsTest">
+         <Option output="/home/linux/imageHashTesting/bin/utilsTest" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/linux/imageHashTesting/c_src/src" />
+            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
+            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 utilsTest" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="utilsTest/fast">
+         <Option output="/home/linux/imageHashTesting/bin/utilsTest" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/linux/imageHashTesting/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/linux/imageHashTesting/c_src/src" />
+            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
+            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/opencv" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 utilsTest/fast" />
             <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
             <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
             <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/Makefile&quot;  VERBOSE=1 clean" />
@@ -296,59 +350,113 @@
          </MakeCommands>
       </Target>
       </Build>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/src/main.cc">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/test/perceptualHashTest.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/c_src/test/utilsTest.cpp">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest_main.cc">
-      </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/Keypoint.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/ShapeAndPositionInvariantImage.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/Triangle.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/AverageHash.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/BlockMeanHash.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/FragmentHash.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/PerceptualHash.h">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.h">
+         <Option target="app"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/average_hash.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/block_mean_hash.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/color_moment_hash.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.cpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/img_hash/img_hash_opencv_module/phash.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/src/main.cc">
+         <Option target="app"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp">
+         <Option target="app"/>
+         <Option target="averageHashTest"/>
+         <Option target="utilsTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/averageHashTest.cpp">
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/blockMeanHashTest.cpp">
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/perceptualHashTest.cpp">
+         <Option target="averageHashTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/c_src/test/utilsTest.cpp">
+         <Option target="utilsTest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">
+         <Option target="gtest"/>
+      </Unit>
+      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest_main.cc">
+         <Option target="gtest_main"/>
       </Unit>
       <Unit filename="/home/linux/imageHashTesting/CMakeLists.txt">
           <Option virtualFolder="CMake Files\" />

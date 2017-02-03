@@ -318,12 +318,12 @@ template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInva
 //	for (auto tri : triangles)
 //	{
     #pragma omp parallel for
-    for (int i = 0; i < triangles.size(); i++) {
+    for (unsigned int i = 0; i < triangles.size(); i++) {
         auto tri = triangles[i];
 		auto hashes = getHashesForTriangle<T>(inputImage2, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
 //		for (auto hash: hashes)
 //		{
-        for (int j = 0; j < 3; j++)
+        for (unsigned int j = 0; j < 3; j++)
         {
             ret[(i*3)+j] = hashes[j];
 			//ret.push_back(hashes[j]);

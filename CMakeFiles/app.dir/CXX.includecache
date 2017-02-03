@@ -299,6 +299,10 @@ tuple
 -
 
 c_src/src/Keypoint.h
+iostream
+-
+string
+-
 
 c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.h
 opencv2/opencv.hpp

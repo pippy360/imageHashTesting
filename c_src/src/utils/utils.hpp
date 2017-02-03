@@ -65,6 +65,56 @@ const std::vector<Triangle> readTheTriangles(std::ifstream *file) {
 void print(boost::property_tree::ptree const &pt) {
 }
 
+double getKeypointDistance(Keypoint one, Keypoint two)
+{
+	return sqrt( pow( one.x-two.x, 2.0 ) + pow( one.y-two.y, 2.0 ) );
+}
+
+vector<Keypoint> findKeypointsXDistanceAway(Keypoint one, Keypoint two, vector<Keypoint> otherKeypoints, double distanceThreshold)
+{
+	vector<Keypoint> result;
+	for (auto cmpKp : otherKeypoints)
+	{
+		if(getKeypointDistance(one, cmpKp) > distanceThreshold
+			&& getKeypointDistance(two, cmpKp) > distanceThreshold)
+		{
+			result.push_back(cmpKp);
+		}
+	}
+	return result;
+}
+
+//NOTE: otherKeypoints may contain centerKeypoint
+vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector<Keypoint> otherKeypoints, double distanceThreshold)
+{
+	vector<Triangle> result;
+	for (auto iterKeypoint: otherKeypoints)
+	{
+		if(getKeypointDistance(iterKeypoint, centerKeypoint) > distanceThreshold)
+		{
+			vector<Keypoint> finalKeypoints = findKeypointsXDistanceAway(iterKeypoint, centerKeypoint, otherKeypoints, distanceThreshold);
+			for (auto finKp : finalKeypoints)
+			{
+				result.push_back(Triangle(centerKeypoint, iterKeypoint, finKp));
+			}
+		}
+	}
+	return result;
+}
+
+vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double distanceThreshold)
+{
+	vector<Triangle> outputTriangles;
+	for (auto keypoint: keypoints)
+	{
+		auto triangles = buildTrianglesForSingleKeypoint(keypoint, keypoints, distanceThreshold);
+		for (auto tri : triangles){
+			outputTriangles.push_back(tri);
+		}
+	}
+	return outputTriangles;
+}
+
 const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file) {
     vector<Triangle> image1OutputTriangles;
     vector<Triangle> image2OutputTriangles;
