@@ -124,6 +124,21 @@ template<typename T> int hasingSpeedTestInner(string imageName, vector<Triangle>
     return 0;
 }
 
+
+template<typename T> vector<T> hasingSpeedTestInner_full(string imageName, vector<Triangle> tris, ShapeAndPositionInvariantImage loadedImage)
+{
+    return cv::getAllTheHashesForImage<T>(loadedImage, tris, "imageMatchingPairs/"+imageName+"/outputFragments", "1");
+}
+
+template<typename T> void hasingSpeedTestFull(string imageName) {
+    auto triangles = getTriangles("inputImages/"+imageName+"/keypoints2.json");
+    cv::Mat img = cv::imread("imageMatchingPairs/"+imageName+"/img1.jpg");
+    auto loadedImage1 = ShapeAndPositionInvariantImage("", img, std::vector<Keypoint>(), "");
+    cout << "About to processs " << triangles.size() << " triangles" << endl;
+    auto def = hasingSpeedTestInner_full<T>(imageName, triangles, loadedImage1);
+    cout << def.size() << endl;
+}
+
 template<typename T> void hasingSpeedTest(string imageName) {
     vector<Triangle> imageTris1;
     vector<Triangle> imageTris2;
@@ -202,14 +217,16 @@ void findMatchingHashInRedis(string imageName){
         }
         exit(1);
     }
-
+    cout << "finished hashing" << endl;
 //    vector<hashes::PerceptualHash_Fast> result;
     vector<string> result;
     for (auto hash : hashes)
     {
         reply = (redisReply *) redisCommand(c,"GET %s", hash.toString().c_str());
-        string str(reply->str);
-        result.push_back(str);
+        if(reply->str != nullptr){
+            string str(reply->str);
+            result.push_back(str);
+        }
     }
     for (auto t_str : result)
     {
@@ -240,7 +257,7 @@ int main(int argc, char* argv[])
     }else if (argc > 2 && !strcmp(argv[1], "testAllMatching")){
         testMatchingFragmentsForAllInputImages<hashes::PerceptualHash_Fast>();
     }else if (argc > 2 && !strcmp(argv[1], "speedTest")){
-        hasingSpeedTest<hashes::PerceptualHash_Fast>(imageName);
+        hasingSpeedTestFull<hashes::PerceptualHash_Fast>(imageName);
     }else if (argc > 2 && !strcmp(argv[1], "dumpThem")){
         dumpThem(imageName);
     }else if (argc > 2 && !strcmp(argv[1], "addRedisImage")){
