@@ -11,6 +11,7 @@
 #include "utils/utils.hpp"
 // #include "img_hash/PerceptualHash.h"
 #include <stdio.h>
+#include "hiredis/hiredis.h"
 
 
 #include "opencv2/opencv.hpp"
@@ -45,24 +46,61 @@ TEST(utils, jsonParsing_dumpHashesToJsonHashesFile){
     // dumpHashesToJsonFile<hashes::PerceptualHash>("c_src/test/resources/jsonHashFile_testOutputFile.json", temp);
 }
 
+TEST(utils, readKeypointsJsonFile){
+//    string filename = "../c_src/test/resources/keypoints.json";
+//    vector<Keypoint> output = readKeypointsFromJsonFile(filename);
+//    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 150, 300);
+//
+//    for(auto kp : output)
+//    {
+//        cout << "out: " << kp.toString() << endl;
+//    }
+}
+
 string prettyPrintTriangle(Triangle tri)
 {
     string ret = "";
     for (auto kp: tri.toKeypoints())
     {
-        ret += kp.toString();
+        ret += kp.toString() + ", ";
     }
     return ret;
-} 
-
-TEST(utils, keypointsToTriangles){
-    vector<Keypoint> inputKeypoints;
-    inputKeypoints.push_back(Keypoint(0,0));
-    inputKeypoints.push_back(Keypoint(1,1));
-    inputKeypoints.push_back(Keypoint(2,2));
-    vector<Triangle> ret = buildTrianglesFromKeypoints(inputKeypoints, 1);
-    for (auto tri: ret)
-    {
-        cout << prettyPrintTriangle(tri) << endl;
-    }
 }
+
+TEST(utils, keypointsToTriangles1){
+
+//    vector<Keypoint> inputKeypoints;
+//    inputKeypoints.push_back(Keypoint(0,0));
+//    inputKeypoints.push_back(Keypoint(1,1));
+//    inputKeypoints.push_back(Keypoint(2,2));
+//    vector<Triangle> ret = buildTrianglesFromKeypoints(inputKeypoints, 1);
+//    for (auto tri: ret)
+//    {
+//        cout << prettyPrintTriangle(tri) << endl;
+//    }
+
+}
+
+TEST(utils, keypointsToTriangles2){
+//    vector<Keypoint> inputKeypoints;
+//    inputKeypoints.push_back(Keypoint(0,0));
+//    inputKeypoints.push_back(Keypoint(1,1));
+//    inputKeypoints.push_back(Keypoint(1.1,-.01));
+//    inputKeypoints.push_back(Keypoint(-.01,1.1));
+//    vector<Triangle> ret = buildTrianglesFromKeypoints(inputKeypoints, 1);
+//    for (auto tri: ret)
+//    {
+//        cout << prettyPrintTriangle(tri) << endl;
+//    }
+}
+
+TEST(utils, keypointsToTriangles3){
+//    string filename = "../inputImages/img1/keypoints2.txt";
+//    vector<Keypoint> output = readKeypointsFromJsonFile(filename);
+//    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 150, 300);
+//    for (auto tri: ret)
+//    {
+//        cout << prettyPrintTriangle(tri) << endl;
+//    }
+}
+

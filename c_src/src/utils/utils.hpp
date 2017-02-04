@@ -62,6 +62,44 @@ const std::vector<Triangle> readTheTriangles(std::ifstream *file) {
     return triangles;
 }
 
+vector<Keypoint> readKeypointsFromJsonFile(std::ifstream *file)
+{
+    vector<Keypoint> result;
+    try {
+        boost::property_tree::ptree pt;
+        boost::property_tree::read_json(*file, pt);
+
+        for (auto label0 : pt) {
+            if (label0.first == "output") {
+                for (auto label1: label0.second) {
+                    if (label1.first == "keypoints") {
+                        for (auto kp : label1.second){
+                            double x, y;
+                            for (auto pt : kp.second){
+                                if(pt.first == "x"){
+                                    x = pt.second.get_value<double>();
+                                }else{
+                                    y = pt.second.get_value<double>();
+                                }
+                            }
+                            result.push_back(Keypoint(x, y));
+                        }
+                    }
+                }
+            }
+        }
+    } catch (std::exception const &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    return result;
+}
+
+vector<Keypoint> readKeypointsFromJsonFile(string filename)
+{
+    std::ifstream file(filename);
+    return readKeypointsFromJsonFile(&file);
+}
+
 void print(boost::property_tree::ptree const &pt) {
 }
 
@@ -70,13 +108,15 @@ double getKeypointDistance(Keypoint one, Keypoint two)
 	return sqrt( pow( one.x-two.x, 2.0 ) + pow( one.y-two.y, 2.0 ) );
 }
 
-vector<Keypoint> findKeypointsXDistanceAway(Keypoint one, Keypoint two, vector<Keypoint> otherKeypoints, double distanceThreshold)
+vector<Keypoint> findKeypointsWithInRangeFromTwoPoints(Keypoint one, Keypoint two, vector<Keypoint> otherKeypoints, double lowerThreshold, double upperThreshold)
 {
 	vector<Keypoint> result;
 	for (auto cmpKp : otherKeypoints)
 	{
-		if(getKeypointDistance(one, cmpKp) > distanceThreshold
-			&& getKeypointDistance(two, cmpKp) > distanceThreshold)
+        double distanceFromPointOne = getKeypointDistance(one, cmpKp);
+        double distanceFromPointTwo = getKeypointDistance(two, cmpKp);
+		if(distanceFromPointOne > lowerThreshold && distanceFromPointOne < upperThreshold
+                && distanceFromPointTwo > lowerThreshold && distanceFromPointTwo < upperThreshold)
 		{
 			result.push_back(cmpKp);
 		}
@@ -84,35 +124,77 @@ vector<Keypoint> findKeypointsXDistanceAway(Keypoint one, Keypoint two, vector<K
 	return result;
 }
 
+bool isInKeypointExcludeList(Keypoint keypoint, vector<Keypoint> excludeList) {
+    for (auto kp : excludeList)
+    {
+        if(kp.x == keypoint.x && kp.y == keypoint.y){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool shouldPointBeExcluded(Keypoint pt, vector<Keypoint> previouslyProcessedPoints, vector<Keypoint> currentProcessedPoints, Keypoint currentTopLevelPoint, Keypoint currentSecondLevelPoint)
+{
+    return isInKeypointExcludeList(pt, previouslyProcessedPoints)
+           || isInKeypointExcludeList(pt, currentProcessedPoints)
+           || currentTopLevelPoint == pt
+           || currentSecondLevelPoint == pt
+            ;
+}
+
 //NOTE: otherKeypoints may contain centerKeypoint
-vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector<Keypoint> otherKeypoints, double distanceThreshold)
+vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector<Keypoint> otherKeypoints, vector<Keypoint> previouslyProcessedPoints, double lowerThreshold, double upperThreshold)
 {
 	vector<Triangle> result;
+    vector<Keypoint> currentProcessedPoints;//a collection of points we have processed since entering this function
 	for (auto iterKeypoint: otherKeypoints)
 	{
-		if(getKeypointDistance(iterKeypoint, centerKeypoint) > distanceThreshold)
+        if(isInKeypointExcludeList(iterKeypoint, previouslyProcessedPoints) || iterKeypoint == centerKeypoint) {
+            continue;
+        }
+
+        double distance = getKeypointDistance(iterKeypoint, centerKeypoint);
+		if(distance > lowerThreshold && distance < upperThreshold)
 		{
-			vector<Keypoint> finalKeypoints = findKeypointsXDistanceAway(iterKeypoint, centerKeypoint, otherKeypoints, distanceThreshold);
+			vector<Keypoint> finalKeypoints = findKeypointsWithInRangeFromTwoPoints(iterKeypoint, centerKeypoint, otherKeypoints, lowerThreshold, upperThreshold);
 			for (auto finKp : finalKeypoints)
 			{
+                //check if this combination of points will make a triangle we have already created
+                if(shouldPointBeExcluded(finKp, previouslyProcessedPoints, currentProcessedPoints, centerKeypoint, iterKeypoint)){
+                    continue;
+                }
 				result.push_back(Triangle(centerKeypoint, iterKeypoint, finKp));
 			}
 		}
+        currentProcessedPoints.push_back(iterKeypoint);
 	}
 	return result;
 }
 
-vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double distanceThreshold)
+vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double lowerThreshold=150, double upperThreshold=300)
 {
 	vector<Triangle> outputTriangles;
+    vector<Keypoint> processedPoints;
 	for (auto keypoint: keypoints)
 	{
-		auto triangles = buildTrianglesForSingleKeypoint(keypoint, keypoints, distanceThreshold);
+		auto triangles = buildTrianglesForSingleKeypoint(keypoint, keypoints, processedPoints, lowerThreshold, upperThreshold);
 		for (auto tri : triangles){
 			outputTriangles.push_back(tri);
 		}
+        processedPoints.push_back(keypoint);
 	}
 	return outputTriangles;
+}
+
+vector<Triangle> buildTrianglesFromKeypointJsonFile(string filename){
+    vector<Keypoint> output = readKeypointsFromJsonFile(filename);
+    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 150, 300);
+    return ret;
+}
+
+vector<Triangle> getTriangles(string filename){
+    return buildTrianglesFromKeypointJsonFile(filename);
 }
 
 const pair<vector<Triangle>, vector<Triangle>> readMatchingTrianglesFromJsonFile(std::ifstream *file) {
@@ -314,7 +396,7 @@ std::vector<T> loadHashesFromFile(std::string filename) {
     return ret;
 }
 
-bool isInExcludeList(string name, vector<string> excludeList, string imageName) {
+bool isInImageNameExcludeList(string name, vector<string> excludeList, string imageName) {
     if (name == imageName) {
         return true;
     }

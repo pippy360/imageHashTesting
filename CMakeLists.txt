@@ -3,13 +3,14 @@ project(imageHashTesting)
 
 set(CMAKE_CXX_STANDARD 11)
 
-
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 find_package(Boost REQUIRED)
 
-#find_package(Redis REQUIRED)
+#find_package(hiredis REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories(include)
 
 find_package(OpenMP REQUIRED)
 
@@ -26,6 +27,8 @@ enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 include_directories(c_src/src)
+
+include_directories(include)
 
 SET(TARGET_H
         c_src/src/img_hash/AverageHash.h
@@ -70,13 +73,14 @@ add_executable(utilsTest c_src/test/utilsTest.cpp  ${TARGET_H})
 target_link_libraries(utilsTest gtest gtest_main ${OpenCV_LIBS})
 
 target_link_libraries(averageHashTest gtest gtest_main ${OpenCV_LIBS})
-target_link_libraries(app ${OpenCV_LIBS} )
-
+link_directories(lib)
+target_link_libraries(app ${OpenCV_LIBS})
+target_link_libraries(app ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhiredis.a)
 
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 
 
-set(CMAKE_CXX_FLAGS "-fopenmp -g -Wall /usr/local/lib/libhiredis.a")
+set(CMAKE_CXX_FLAGS "-fopenmp -g -Wall")
 
 
 

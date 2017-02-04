@@ -23,6 +23,9 @@ public:
 		return ss.str();
 	}
 
+	inline bool operator==(const Keypoint& rhs){
+		return (x == rhs.x && y == rhs.y);
+	}
 };
 
 

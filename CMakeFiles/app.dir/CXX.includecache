@@ -239,6 +239,8 @@ iostream
 -
 utils/utils.hpp
 /home/linux/imageHashTesting/c_src/src/utils/utils.hpp
+hiredis/hiredis.h
+/home/linux/imageHashTesting/c_src/src/hiredis/hiredis.h
 
 /home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp
 vector
@@ -331,4 +333,28 @@ opencv2/opencv.hpp
 -
 img_hash_base.hpp
 c_src/src/img_hash/img_hash_opencv_module/img_hash_base.hpp
+
+include/hiredis/hiredis.h
+read.h
+include/hiredis/read.h
+stdarg.h
+-
+sys/time.h
+-
+stdint.h
+-
+sds.h
+include/hiredis/sds.h
+
+include/hiredis/read.h
+stdio.h
+-
+
+include/hiredis/sds.h
+sys/types.h
+-
+stdarg.h
+-
+stdint.h
+-
 

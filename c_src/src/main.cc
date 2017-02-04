@@ -20,6 +20,7 @@
 #include <boost/program_options.hpp>
 #include <iostream>
 #include "utils/utils.hpp"
+#include "hiredis/hiredis.h"
 
 using namespace std;
 
@@ -47,7 +48,7 @@ template <typename T> void testNonMatchingFragmentsForFalsePositive(string image
     for (auto name: imageNames)
     {
         int outputArr[65] = {0};
-        if ( !isInExcludeList(name, excludeList, imageName) ){
+        if ( !isInImageNameExcludeList(name, excludeList, imageName) ){
             cout << "Output for image: " << name << endl;
             auto toCompareHashes = loadHashesFromFile<T>("inputImages/"+ name + "/hashes.txt");
             for (auto hash : hashes){
@@ -152,6 +153,71 @@ void dumpThem(string imageName)
     dumpHashesToJsonFile<hashes::PerceptualHash>("c_src/test/resources/savedHashes.json", hashes1);
 }
 
+void addAllHashesToRedis(string imageName){
+    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints2.json");
+    auto loadedImage = getLoadedImage("../inputImages/"+imageName+"/"+imageName+".jpg");
+    auto hashes = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, tris, "../inputImages/"+imageName+"/outputFragments", "1");
+
+    redisContext *c;
+//    redisReply *reply;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+
+    struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+    c = redisConnectWithTimeout(hostname, port, timeout);
+    if (c == NULL || c->err) {
+        if (c) {
+            printf("Connection error: %s\n", c->errstr);
+            redisFree(c);
+        } else {
+            printf("Connection error: can't allocate redis context\n");
+        }
+        exit(1);
+    }
+
+    for (auto hash : hashes)
+    {
+        redisCommand(c,"SET %s %s", hash.toString().c_str(), imageName.c_str());
+    }
+}
+
+void findMatchingHashInRedis(string imageName){
+    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints2.json");
+    auto loadedImage = getLoadedImage("../inputImages/"+imageName+"/"+imageName+".jpg");
+    auto hashes = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, tris, "../inputImages/"+imageName+"/outputFragments", "1");
+
+    redisContext *c;
+    redisReply *reply;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+
+    struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+    c = redisConnectWithTimeout(hostname, port, timeout);
+    if (c == NULL || c->err) {
+        if (c) {
+            printf("Connection error: %s\n", c->errstr);
+            redisFree(c);
+        } else {
+            printf("Connection error: can't allocate redis context\n");
+        }
+        exit(1);
+    }
+
+//    vector<hashes::PerceptualHash_Fast> result;
+    vector<string> result;
+    for (auto hash : hashes)
+    {
+        reply = (redisReply *) redisCommand(c,"GET %s", hash.toString().c_str());
+        string str(reply->str);
+        result.push_back(str);
+    }
+    for (auto t_str : result)
+    {
+        cout << "Match Found: " << t_str << endl;
+    }
+    cout << "Number of matches: " << result.size() << endl;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc < 3){
@@ -177,6 +243,10 @@ int main(int argc, char* argv[])
         hasingSpeedTest<hashes::PerceptualHash_Fast>(imageName);
     }else if (argc > 2 && !strcmp(argv[1], "dumpThem")){
         dumpThem(imageName);
+    }else if (argc > 2 && !strcmp(argv[1], "addRedisImage")){
+        addAllHashesToRedis(imageName);
+    }else if (argc > 2 && !strcmp(argv[1], "checkRedisImage")){
+        findMatchingHashInRedis(imageName);
     }else{
         cout << "Bad argument: " << argv[1] << endl;
     }
