@@ -1172,3 +1172,97 @@ make[1]: Leaving directory `/home/linux/imageHashTesting/CMakeFiles/CMakeTmp'
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2593291849/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2593291849.dir/build.make CMakeFiles/cmTryCompileExec2593291849.dir/build
+make[1]: Entering directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2593291849.dir/src.c.o
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec2593291849.dir/src.c.o   -c /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec2593291849
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2593291849.dir/link.txt --verbose=1
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTryCompileExec2593291849.dir/src.c.o  -o cmTryCompileExec2593291849 -rdynamic 
+make[1]: Leaving directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1660487969/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1660487969.dir/build.make CMakeFiles/cmTryCompileExec1660487969.dir/build
+make[1]: Entering directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1660487969.dir/src.cxx.o
+/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec1660487969.dir/src.cxx.o -c /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1660487969
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1660487969.dir/link.txt --verbose=1
+/usr/bin/c++    -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTryCompileExec1660487969.dir/src.cxx.o  -o cmTryCompileExec1660487969 -rdynamic 
+make[1]: Leaving directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3430844207/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3430844207.dir/build.make CMakeFiles/cmTryCompileExec3430844207.dir/build
+make[1]: Entering directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3430844207.dir/CheckIncludeFiles.c.o
+/usr/bin/cc   -fopenmp    -o CMakeFiles/cmTryCompileExec3430844207.dir/CheckIncludeFiles.c.o   -c /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3430844207
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3430844207.dir/link.txt --verbose=1
+/usr/bin/cc   -fopenmp     CMakeFiles/cmTryCompileExec3430844207.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3430844207 -rdynamic 
+make[1]: Leaving directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+
+
+Determining if the pthread_create exist passed with the following output:
+Change Dir: /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1470284223/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1470284223.dir/build.make CMakeFiles/cmTryCompileExec1470284223.dir/build
+make[1]: Entering directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1470284223.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fopenmp    -o CMakeFiles/cmTryCompileExec1470284223.dir/CheckSymbolExists.c.o   -c /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1470284223
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1470284223.dir/link.txt --verbose=1
+/usr/bin/cc   -fopenmp     CMakeFiles/cmTryCompileExec1470284223.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1470284223 -rdynamic 
+make[1]: Leaving directory '/home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp'
+
+File /home/tomnomnom6/imageHashTesting/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

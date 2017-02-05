@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.0)
 project(imageHashTesting)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -80,7 +80,7 @@ target_link_libraries(app ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhiredis.a)
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 
 
-set(CMAKE_CXX_FLAGS "-fopenmp -g -Wall")
+set(CMAKE_CXX_FLAGS "-std=c++11 -fopenmp -g -Wall")
 
 
 
