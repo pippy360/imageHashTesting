@@ -21,6 +21,7 @@
 #include <iostream>
 #include "utils/utils.hpp"
 #include "hiredis/hiredis.h"
+#include <map>
 
 using namespace std;
 
@@ -220,17 +221,35 @@ void findMatchingHashInRedis(string imageName){
     cout << "finished hashing" << endl;
 //    vector<hashes::PerceptualHash_Fast> result;
     vector<string> result;
-    for (auto hash : hashes)
+//    for (auto hash : hashes)
+//    {
+    int batchSize = 1000;
+    for (unsigned int i = 0; i < hashes.size(); i++)
     {
-        reply = (redisReply *) redisCommand(c,"GET %s", hash.toString().c_str());
-        if(reply->str != nullptr){
-            string str(reply->str);
-            result.push_back(str);
+        unsigned int j = 0;
+        for(;i < hashes.size() && j < batchSize; j++, i++){
+            auto hash = hashes[i];
+            redisAppendCommand(c,"GET %s", hash.toString().c_str());
         }
+
+        for(; j > 0; j--){
+            int r = redisGetReply(c, (void **) &reply );
+            if(reply->str != nullptr){
+                string str(reply->str);
+                result.push_back(str);
+            }
+        }
+
     }
+    std::map<string,int> mymap;
     for (auto t_str : result)
     {
-        cout << "Match Found: " << t_str << endl;
+        mymap[t_str] = mymap[t_str] + 1;
+    }
+    cout << "Matches:" << endl;
+    for(auto const& ent1 : mymap)
+    {
+        cout << ent1.first << ": " << ent1.second << endl;
     }
     cout << "Number of matches: " << result.size() << endl;
 }

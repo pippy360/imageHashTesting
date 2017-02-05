@@ -175,15 +175,28 @@ vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector
 vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double lowerThreshold=150, double upperThreshold=300)
 {
 	vector<Triangle> outputTriangles;
-    vector<Keypoint> processedPoints;
-	for (auto keypoint: keypoints)
-	{
-		auto triangles = buildTrianglesForSingleKeypoint(keypoint, keypoints, processedPoints, lowerThreshold, upperThreshold);
-		for (auto tri : triangles){
-			outputTriangles.push_back(tri);
-		}
-        processedPoints.push_back(keypoint);
-	}
+//	for (auto keypoint: keypoints)
+//	{
+    //FIXME: this multi-threading needs to be improved
+    #pragma omp parallel
+    {
+        vector<Triangle> vec_private;
+        #pragma omp for nowait schedule(static)
+        for (unsigned int i = 0; i < keypoints.size(); i++)
+        {
+            vector<Keypoint>::const_iterator first = keypoints.begin();
+            vector<Keypoint>::const_iterator last = keypoints.begin() + i;
+            vector<Keypoint> processedPoints(first, last);
+            auto keypoint = keypoints[i];
+            auto triangles = buildTrianglesForSingleKeypoint(keypoint, keypoints, processedPoints, lowerThreshold, upperThreshold);
+            for (auto tri : triangles){
+                vec_private.push_back(tri);
+            }
+            processedPoints.push_back(keypoint);
+        }
+        #pragma omp critical
+        outputTriangles.insert(outputTriangles.end(), vec_private.begin(), vec_private.end());
+    }
 	return outputTriangles;
 }
 

@@ -241,6 +241,8 @@ utils/utils.hpp
 /home/linux/imageHashTesting/c_src/src/utils/utils.hpp
 hiredis/hiredis.h
 /home/linux/imageHashTesting/c_src/src/hiredis/hiredis.h
+map
+-
 
 /home/linux/imageHashTesting/c_src/src/mainImageProcessingFunctions.hpp
 vector
