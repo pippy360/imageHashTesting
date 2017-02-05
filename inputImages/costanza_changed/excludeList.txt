@@ -1,0 +1,3 @@
+dots
+img1
+img2

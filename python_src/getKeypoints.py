@@ -147,7 +147,6 @@ items = [
 	#	{'imgName': "img2", 'excludeList': ["img1"]},
 	{'imgName': "lennaWithGreenDots", 'excludeList': []},
 	{'imgName': "2f95f3e1294c759ec23c8e6a21bb2cca", 'excludeList': []},
-	#{'imgName': "dots", 'excludeList': ["img1"]},
 	{'imgName': "moderat-bad-kingdom", 'excludeList': []},
 	{'imgName': "mountains_orginal_dots", 'excludeList': []},
 	{'imgName': "Moderat-Bad-Kingdom", 'excludeList': []},
@@ -159,7 +158,18 @@ items = [
 	{'imgName': "rick3", 'excludeList': ["rick1", "rick2"]},
 	{'imgName': "upload02", 'excludeList': []},
 	{'imgName': "_vector__natsu_and_happy___ninjas__by_coolez-d89c2au", 'excludeList': []},
-	{'imgName': "img1", 'excludeList': ["img2", "dots"]}
+	{'imgName': "dots", 'excludeList': ["img1", "img2", "costanza_changed"]},
+	{'imgName': "costanza_changed", 'excludeList': ["dots", "img1", "img2"]},
+	{'imgName': "lennaWithGreenDotsInTriangle", 'excludeList': []},
+	{'imgName': "lennaWithGreenDotsInTriangle1", 'excludeList': []},
+	{'imgName': "lennaWithGreenDotsInTriangle2", 'excludeList': []},
+	{'imgName': "lennaWithGreenDotsInTriangle3", 'excludeList': []},
+	{'imgName': "small_lenna1", 'excludeList': []},
+	{'imgName': "small_lenna2", 'excludeList': []},
+	{'imgName': "small_lenna3", 'excludeList': []},
+	{'imgName': "small_lenna4", 'excludeList': []},
+	{'imgName': "img2", 'excludeList': ["dots", "img1", "costanza_changed"]},
+	{'imgName': "img1", 'excludeList': ["img2", "dots", "costanza_changed"]}
 ]
 
 

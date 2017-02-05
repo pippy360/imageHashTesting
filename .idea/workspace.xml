@@ -2,15 +2,15 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
     <generated>
+      <config projectName="imageHashTesting" targetName="imageHashTesting" />
+      <config projectName="MyProject" targetName="project1_lib" />
       <config projectName="imageHashTesting" targetName="test1" />
-      <config projectName="imageHashTesting" targetName="gtest" />
+      <config projectName="imageHashTesting" targetName="gtest_main" />
+      <config projectName="imageHashTesting" targetName="app" />
       <config projectName="MyProject" targetName="project1" />
       <config projectName="imageHashTesting" targetName="utilsTest" />
-      <config projectName="imageHashTesting" targetName="app" />
       <config projectName="imageHashTesting" targetName="averageHashTest" />
-      <config projectName="MyProject" targetName="project1_lib" />
-      <config projectName="imageHashTesting" targetName="gtest_main" />
-      <config projectName="imageHashTesting" targetName="imageHashTesting" />
+      <config projectName="imageHashTesting" targetName="gtest" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -20,15 +20,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ede67e5b-e5c7-40d5-9cf2-bb25ece52606" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.bin" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/app" afterPath="$PROJECT_DIR$/bin/app" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/averageHashTest" afterPath="$PROJECT_DIR$/bin/averageHashTest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/utilsTest" afterPath="$PROJECT_DIR$/bin/utilsTest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeCache.txt" afterPath="$PROJECT_DIR$/CMakeCache.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/CXX.includecache" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c_src/src/main.cc" afterPath="$PROJECT_DIR$/c_src/src/main.cc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c_src/src/utils/utils.hpp" afterPath="$PROJECT_DIR$/c_src/src/utils/utils.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/build.make" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/depend.internal" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/depend.internal" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/depend.make" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/depend.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/flags.make" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/link.txt" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/app.dir/progress.make" afterPath="$PROJECT_DIR$/CMakeFiles/app.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/build.make" afterPath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/flags.make" afterPath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/link.txt" afterPath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/progress.make" afterPath="$PROJECT_DIR$/CMakeFiles/averageHashTest.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.c" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/feature_tests.cxx" afterPath="$PROJECT_DIR$/CMakeFiles/feature_tests.cxx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/build.make" afterPath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/flags.make" afterPath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/link.txt" afterPath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/progress.make" afterPath="$PROJECT_DIR$/CMakeFiles/utilsTest.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CTestTestfile.cmake" afterPath="$PROJECT_DIR$/CTestTestfile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake_install.cmake" afterPath="$PROJECT_DIR$/cmake_install.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/googletest/CMakeFiles/CMakeDirectoryInformation.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/googletest/CMakeFiles/progress.marks" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/CTestTestfile.cmake" afterPath="$PROJECT_DIR$/googletest/CTestTestfile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/Makefile" afterPath="$PROJECT_DIR$/googletest/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/cmake_install.cmake" afterPath="$PROJECT_DIR$/googletest/cmake_install.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/CMakeDirectoryInformation.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/build.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/flags.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/link.txt" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/progress.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/build.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/flags.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/flags.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/link.txt" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/progress.make" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/gtest_main.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/googletest/googletest/CMakeFiles/progress.marks" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/CTestTestfile.cmake" afterPath="$PROJECT_DIR$/googletest/googletest/CTestTestfile.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/Makefile" afterPath="$PROJECT_DIR$/googletest/googletest/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/googletest/googletest/cmake_install.cmake" afterPath="$PROJECT_DIR$/googletest/googletest/cmake_install.cmake" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inputImages/imageNames.txt" afterPath="$PROJECT_DIR$/inputImages/imageNames.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inputImages/rick1/excludeList.txt" afterPath="$PROJECT_DIR$/inputImages/rick1/excludeList.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inputImages/img1/excludeList.txt" afterPath="$PROJECT_DIR$/inputImages/img1/excludeList.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python_src/getKeypoints.py" afterPath="$PROJECT_DIR$/python_src/getKeypoints.py" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -54,7 +102,7 @@
       <file leaf-file-name="main.cc" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c_src/src/main.cc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
+            <state relative-caret-position="9">
               <caret line="225" column="23" lean-forward="false" selection-start-line="225" selection-start-column="23" selection-end-line="225" selection-end-column="23" />
               <folding>
                 <element signature="e#470#491#0" expanded="true" />
@@ -74,8 +122,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rick3.jpg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rick3.jpg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input/rick3.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="img1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/img1.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dots.jpg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/input/dots.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mountains_orginal_dots.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/mountains_orginal_dots.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="more.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/more.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -91,23 +167,10 @@
       <file leaf-file-name="getKeypoints.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_src/getKeypoints.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3582">
-              <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+            <state relative-caret-position="-301">
+              <caret line="169" column="29" lean-forward="false" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utilsTest.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c_src/test/utilsTest.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1746">
-              <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="99" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-                <element signature="e#328#346#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,18 +182,6 @@
             <state relative-caret-position="-3271">
               <caret line="174" column="44" lean-forward="false" selection-start-line="174" selection-start-column="17" selection-end-line="174" selection-end-column="44" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainImageProcessingFunctions.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c_src/src/mainImageProcessingFunctions.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5742">
-              <caret line="319" column="20" lean-forward="false" selection-start-line="319" selection-start-column="20" selection-end-line="319" selection-end-column="20" />
-              <folding>
-                <element signature="e#11000#11012#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -226,9 +277,9 @@
         <option value="$PROJECT_DIR$/inputImages/img1/keypoints.txt" />
         <option value="$PROJECT_DIR$/c_src/test/utilsTest.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/python_src/getKeypoints.py" />
         <option value="$PROJECT_DIR$/c_src/src/utils/utils.hpp" />
         <option value="$PROJECT_DIR$/c_src/src/main.cc" />
+        <option value="$PROJECT_DIR$/python_src/getKeypoints.py" />
       </list>
     </option>
   </component>
@@ -240,10 +291,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="51" />
-    <option name="y" value="24" />
-    <option name="width" value="2509" />
-    <option name="height" value="1416" />
+    <option name="x" value="1305" />
+    <option name="y" value="52" />
+    <option name="width" value="1254" />
+    <option name="height" value="1388" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -735,7 +786,7 @@
       <workItem from="1486207298046" duration="9473000" />
       <workItem from="1486242539153" duration="5083000" />
       <workItem from="1486259153303" duration="1180000" />
-      <workItem from="1486317997968" duration="7891000" />
+      <workItem from="1486317997968" duration="9259000" />
     </task>
     <servers />
   </component>
@@ -772,7 +823,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95369000" />
+    <option name="totallyTimeSpent" value="96737000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -784,10 +835,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="24" width="2509" height="1416" extended-state="6" />
+    <frame x="1305" y="52" width="1254" height="1388" extended-state="5" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08967716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17942584" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20563595" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -821,13 +872,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/c_src/src/img_hash/img_hash_opencv_module/phash.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/boost/property_tree/detail/ptree_implementation.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11376">
@@ -1057,11 +1101,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input/mountains_orginal_dots.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input/Moderat-Bad-Kingdom-10.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1087,17 +1126,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input/img1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/input/Moderat-Bad-Kingdom_1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input/more.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1123,35 +1152,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_src/getKeypoints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3582">
-          <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/c_src/src/utils/utils.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3271">
           <caret line="174" column="44" lean-forward="false" selection-start-line="174" selection-start-column="17" selection-end-line="174" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c_src/src/main.cc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="225" column="23" lean-forward="false" selection-start-line="225" selection-start-column="23" selection-end-line="225" selection-end-column="23" />
-          <folding>
-            <element signature="e#470#491#0" expanded="true" />
-            <element signature="e#4685#4697#0" expanded="true" />
-            <element signature="e#4963#4975#0" expanded="true" />
-            <element signature="e#5229#5241#0" expanded="true" />
-            <element signature="e#5738#5750#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,6 +1171,50 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input/rick3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/mountains_orginal_dots.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/more.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_src/getKeypoints.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-301">
+          <caret line="169" column="29" lean-forward="false" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c_src/src/main.cc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="225" column="23" lean-forward="false" selection-start-line="225" selection-start-column="23" selection-end-line="225" selection-end-column="23" />
+          <folding>
+            <element signature="e#470#491#0" expanded="true" />
+            <element signature="e#4685#4697#0" expanded="true" />
+            <element signature="e#4963#4975#0" expanded="true" />
+            <element signature="e#5229#5241#0" expanded="true" />
+            <element signature="e#5738#5750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/img1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input/dots.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
