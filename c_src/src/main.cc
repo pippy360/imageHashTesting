@@ -223,7 +223,7 @@ void findMatchingHashInRedis(string imageName){
     vector<string> result;
 //    for (auto hash : hashes)
 //    {
-    int batchSize = 1000;
+    unsigned int batchSize = 1000;
     for (unsigned int i = 0; i < hashes.size(); i++)
     {
         unsigned int j = 0;
@@ -233,7 +233,8 @@ void findMatchingHashInRedis(string imageName){
         }
 
         for(; j > 0; j--){
-            int r = redisGetReply(c, (void **) &reply );
+            redisGetReply(c, (void **) &reply );
+            //unsigned int r = redisGetReply(c, (void **) &reply );
             if(reply->str != nullptr){
                 string str(reply->str);
                 result.push_back(str);
