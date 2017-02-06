@@ -235,12 +235,11 @@ void findMatchingHashInRedis(string imageName){
         for(; j > 0; j--){
             redisGetReply(c, (void **) &reply );
             //unsigned int r = redisGetReply(c, (void **) &reply );
-	if (reply->type == REDIS_REPLY_ARRAY) {
-        	for (j = 0; j < reply->elements; j++) {
-                	string str(reply->str);
-                	result.push_back(str);
-       		}
-    	}
+		for (unsigned int k = 0; k < reply->elements; k++)
+		{
+			string str(reply->element[k]->str);
+                        result.push_back(str);
+		}
         }
 
     }
