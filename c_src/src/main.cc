@@ -193,7 +193,7 @@ void addAllHashesToRedis(string imageName){
 
     for (auto hash : hashes)
     {
-        redisCommand(c,"SET %s %s", hash.toString().c_str(), imageName.c_str());
+        redisCommand(c,"SADD %s %s", hash.toString().c_str(), imageName.c_str());
     }
 }
 
@@ -229,16 +229,18 @@ void findMatchingHashInRedis(string imageName){
         unsigned int j = 0;
         for(;i < hashes.size() && j < batchSize; j++, i++){
             auto hash = hashes[i];
-            redisAppendCommand(c,"GET %s", hash.toString().c_str());
+            redisAppendCommand(c,"SMEMBERS %s", hash.toString().c_str());
         }
 
         for(; j > 0; j--){
             redisGetReply(c, (void **) &reply );
             //unsigned int r = redisGetReply(c, (void **) &reply );
-            if(reply->str != nullptr){
-                string str(reply->str);
-                result.push_back(str);
-            }
+	if (reply->type == REDIS_REPLY_ARRAY) {
+        	for (j = 0; j < reply->elements; j++) {
+                	string str(reply->str);
+                	result.push_back(str);
+       		}
+    	}
         }
 
     }
