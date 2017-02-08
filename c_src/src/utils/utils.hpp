@@ -202,7 +202,7 @@ vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double 
 
 vector<Triangle> buildTrianglesFromKeypointJsonFile(string filename){
     vector<Keypoint> output = readKeypointsFromJsonFile(filename);
-    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 150, 300);
+    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 100, 500);
     return ret;
 }
 
