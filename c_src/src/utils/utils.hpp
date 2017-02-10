@@ -30,6 +30,50 @@ using boost::property_tree::ptree;
 using boost::property_tree::read_json;
 using boost::property_tree::write_json;
 
+namespace pt = boost::property_tree;
+
+Triangle getTriangleFromRedisEntry(string jsonStr)
+{
+    pt::ptree root;
+    pt::read_json(jsonStr, root);
+
+    vector<Keypoint> keypoints;
+    for (auto pt_j: root.get_child("triangle"))
+    {
+        double x = pt_j.second.get<double>("x");
+        double y = pt_j.second.get<double>("y");
+        keypoints.push_back(Keypoint(x,y));        
+    }
+    return Triangle(keypoints);
+}
+
+string getImageNameFromRedisEntry(string redisEntry)
+{
+    pt::ptree root;
+    pt::read_json(redisEntry, root);
+    return "";//root.get_child("imageName").second;
+}
+
+string convertToRedisEntryJson(string imageName, Triangle tri){
+    pt::ptree root;
+    root.put("imageName", imageName);
+
+    //add each point of the triangle
+    pt::ptree points;
+    for (auto pt : tri.toKeypoints())
+    {
+        pt::ptree point;
+        point.put("x", pt.x);
+        point.put("y", pt.y);
+        // points.push_back(point);
+    }
+    // root.put("triangle", points);
+
+    std::ostringstream buf;
+    // write_json (buf, root);
+    return buf.str();
+}
+
 const std::vector<Triangle> readTheTriangles(std::ifstream *file) {
     std::vector<Triangle> triangles;
     std::string str;

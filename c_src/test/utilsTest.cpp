@@ -104,3 +104,26 @@ TEST(utils, keypointsToTriangles3){
 //    }
 }
 
+TEST(utils, convertingToRedisEntryJson){
+    string imageName = "img1";
+    Keypoint one(100, 200);
+    Keypoint two(100, 200);
+    Keypoint three(100, 200);
+    Triangle tri(one, two, three);
+    convertToRedisEntryJson(imageName, tri);
+}
+
+TEST(utils, convertingFromRedisEntryJson){
+    // string redisEntry = "{
+    //     \"imageName\" : \"img1\",
+    //     \"triangle\" : [
+    //         {\"x\" : 200, \"y\" : 200},
+    //         {\"x\" : 200, \"y\" : 200},
+    //         {\"x\" : 200, \"y\" : 200}
+    //     ]
+    // }";
+    string redisEntry = "";
+    getTriangleFromRedisEntry(redisEntry);
+    getImageNameFromRedisEntry(redisEntry);
+}
+

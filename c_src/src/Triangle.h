@@ -20,7 +20,7 @@ public:
 
 inline std::vector<Keypoint> Triangle::toKeypoints() const
 {
-	auto ret = std::vector<Keypoint>();
+	std::vector<Keypoint> ret;
 	for (int i = 0; i < 3; i++)
 	{
 		ret.push_back(keypoints_[i]);
