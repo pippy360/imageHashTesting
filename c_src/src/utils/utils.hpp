@@ -106,38 +106,6 @@ string convertToRedisEntryJson(string imageName, Triangle tri){
     return buf.str();
 }
 
-const std::vector<Triangle> readTheTriangles(std::ifstream *file) {
-    std::vector<Triangle> triangles;
-    std::string str;
-
-    while (true) {
-        if (!std::getline(*file, str)) {
-            break;
-        }
-
-        double x1 = atof(str.c_str());
-        std::getline(*file, str);
-        double y1 = atof(str.c_str());
-        Keypoint k1(x1, y1);
-
-        std::getline(*file, str);
-        double x2 = atof(str.c_str());
-        std::getline(*file, str);
-        double y2 = atof(str.c_str());
-        Keypoint k2(x2, y2);
-
-        std::getline(*file, str);
-        double x3 = atof(str.c_str());
-        std::getline(*file, str);
-        double y3 = atof(str.c_str());
-        Keypoint k3(x3, y3);
-
-        Triangle t(k1, k2, k3);
-        triangles.push_back(t);
-    }
-    return triangles;
-}
-
 vector<Keypoint> readKeypointsFromJsonFile(std::ifstream *file)
 {
     vector<Keypoint> result;
@@ -394,26 +362,6 @@ template<typename T> void dumpHashesToJsonFile(const string filename, vector<T> 
     std::ofstream ofs;
     ofs.open (filename, std::ofstream::out);
     dumpHashesToJsonFile<T>(&ofs, hashes);
-}
-
-std::vector<Triangle> getTheTris(const string trisPath) {
-    std::ifstream file(trisPath);
-    //std::string filename = readTheName(&file);
-    auto tris = readTheTriangles(&file);
-    return tris;
-}
-
-std::vector<Triangle> getTheTris_random(string trisPath, int numberOfSamples = 1000) {
-    std::ifstream file(trisPath);
-    //std::string filename = readTheName(&file);
-    auto tris = readTheTriangles(&file);
-    std::vector<Triangle> ret;
-    for (int i = 0; i < numberOfSamples; i++) {
-        int ran = rand() % tris.size();
-        ret.push_back(tris[ran]);
-    }
-
-    return ret;
 }
 
 ShapeAndPositionInvariantImage getLoadedImage(string imageFullPath) {
