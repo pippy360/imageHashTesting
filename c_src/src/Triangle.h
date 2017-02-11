@@ -43,6 +43,18 @@ public:
         }
         return ret;
     }
+
+    double calcArea() {
+        double x0 = keypoints_[0].x;
+        double x1 = keypoints_[1].x;
+        double x2 = keypoints_[2].x;
+
+        double y0 = keypoints_[0].y;
+        double y1 = keypoints_[1].y;
+        double y2 = keypoints_[2].y;
+
+        return std::abs(x0 * (y1 - y2) + x1 * (y2 - y0) + x2 * (y0 - y1)) / 2;
+    }
 };
 
 

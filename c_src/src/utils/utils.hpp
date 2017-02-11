@@ -33,21 +33,37 @@ using boost::property_tree::write_json;
 namespace pt = boost::property_tree;
 
 
+static unsigned long x=123456789, y=362436069, z=521288629;
+
+unsigned long xorshf96(void) {          //period 2^96-1
+    unsigned long t;
+    x ^= x << 16;
+    x ^= x >> 5;
+    x ^= x << 1;
+
+    t = x;
+    x = y;
+    y = z;
+    z = t ^ x ^ y;
+
+    return z;
+}
+
 void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool randomColours = true){
     auto keypoints = tri.toKeypoints();
     auto prevPoint = keypoints.back();
 //    for (auto currentPoint: keypoints)
 //    {
+    int r = (int) xorshf96();
+    int g = (int) xorshf96();
+    int b = (int) xorshf96();
     for (int i = 0; i < 3; i++){
         auto currentPoint = keypoints[i];
-        int r = (i==0);
-        int g = (i==1);
-        int b = (i==2);
 
-        cv::line(inputImage, cv::Point(currentPoint.x, currentPoint.y), cv::Point(prevPoint.x, prevPoint.y),
-                 cv::Scalar(255*b,255*g,255*r));
+        cv::line(inputImage, cv::Point(prevPoint.x, prevPoint.y), cv::Point(currentPoint.x, currentPoint.y),
+                 cv::Scalar(b,g,r));
         cv::imshow("something", inputImage);
-        cv::waitKey(0);
+        cv::waitKey(10);
         prevPoint = currentPoint;
     }
 }
@@ -208,7 +224,10 @@ vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector
                 if(shouldPointBeExcluded(finKp, previouslyProcessedPoints, currentProcessedPoints, centerKeypoint, iterKeypoint)){
                     continue;
                 }
-				result.push_back(Triangle(centerKeypoint, iterKeypoint, finKp));
+                Triangle testingTri(centerKeypoint, iterKeypoint, finKp);
+                if(testingTri.calcArea() > 200){
+                    result.push_back(testingTri);
+                }
 			}
 		}
         currentProcessedPoints.push_back(iterKeypoint);
