@@ -1,1 +1,0 @@
-python ./dumpAllImages.py

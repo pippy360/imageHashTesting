@@ -156,6 +156,7 @@ items = [
 	{'imgName': "rick1", 'excludeList': ["rick3", "rick2"]},
 	{'imgName': "rick2", 'excludeList': ["rick1", "rick3"]},
 	{'imgName': "rick3", 'excludeList': ["rick1", "rick2"]},
+	{'imgName': "rick_crop1", 'excludeList': ["rick1", "rick2"]},
 	{'imgName': "upload02", 'excludeList': []},
 	{'imgName': "_vector__natsu_and_happy___ninjas__by_coolez-d89c2au", 'excludeList': []},
 	{'imgName': "dots", 'excludeList': ["img1", "img2", "costanza_changed"]},
