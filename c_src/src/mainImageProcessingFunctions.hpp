@@ -304,7 +304,7 @@ vector<Triangle> resizeAllTris(vector<Triangle> inputTriangles, double mult){
 	return ret;
 }
 
-template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
+template<typename T> vector<pair<Triangle, T>> getAllTheHashesForImage(ShapeAndPositionInvariantImage inputImage, std::vector<Triangle> triangles, const string STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH="", const string DEBUG_STRING_APPEND="")
 {
 	//resize it
 //	Mat resizedImage;
@@ -314,19 +314,15 @@ template<typename T> std::vector<T> getAllTheHashesForImage(ShapeAndPositionInva
 	ShapeAndPositionInvariantImage inputImage2("", inputImage.getImageData(), std::vector<Keypoint>(), "");
 	triangles = resizeAllTris(triangles, mult);
 	//\resize it
-	auto ret = std::vector<T>(triangles.size()*NUM_OF_ROTATIONS);
-//	for (auto tri : triangles)
-//	{
+	vector<pair<Triangle, T>> ret(triangles.size()*NUM_OF_ROTATIONS);
     #pragma omp parallel for
     for (unsigned int i = 0; i < triangles.size(); i++) {
         auto tri = triangles[i];
 		auto hashes = getHashesForTriangle<T>(inputImage2, tri, STRING_DEBUG_FRAGMENT_DUMP_FOLDER_PATH, DEBUG_STRING_APPEND);
-//		for (auto hash: hashes)
-//		{
+
         for (unsigned int j = 0; j < 3; j++)
         {
-            ret[(i*3)+j] = hashes[j];
-			//ret.push_back(hashes[j]);
+            ret[(i*3)+j] = pair<Triangle, T>(tri, hashes[j]);
 		}
 	}
 	return ret;

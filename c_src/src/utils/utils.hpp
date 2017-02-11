@@ -32,10 +32,40 @@ using boost::property_tree::write_json;
 
 namespace pt = boost::property_tree;
 
-Triangle getTriangleFromRedisEntry(string jsonStr)
+
+void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool randomColours = true){
+    auto keypoints = tri.toKeypoints();
+    auto prevPoint = keypoints.back();
+//    for (auto currentPoint: keypoints)
+//    {
+    for (int i = 0; i < 3; i++){
+        auto currentPoint = keypoints[i];
+        int r = (i==0);
+        int g = (i==1);
+        int b = (i==2);
+
+        cv::line(inputImage, cv::Point(currentPoint.x, currentPoint.y), cv::Point(prevPoint.x, prevPoint.y),
+                 cv::Scalar(255*b,255*g,255*r));
+        cv::imshow("something", inputImage);
+        cv::waitKey(0);
+        prevPoint = currentPoint;
+    }
+}
+
+
+void drawTrianglesOntoImage(vector<Triangle> tris, cv::Mat inputImage, bool randomColours = true)
+{
+    for (auto tri: tris){
+        drawSingleTriangleOntoImage(tri, inputImage, randomColours);
+    }
+}
+
+Triangle getTriangleFromRedisEntry(string redisEntry)
 {
     pt::ptree root;
-    pt::read_json(jsonStr, root);
+    std::stringstream ss;
+    ss << redisEntry;
+    pt::read_json(ss, root);
 
     vector<Keypoint> keypoints;
     for (auto pt_j: root.get_child("triangle"))
@@ -50,8 +80,10 @@ Triangle getTriangleFromRedisEntry(string jsonStr)
 string getImageNameFromRedisEntry(string redisEntry)
 {
     pt::ptree root;
-    pt::read_json(redisEntry, root);
-    return "";//root.get_child("imageName").second;
+    std::stringstream ss;
+    ss << redisEntry;
+    pt::read_json(ss, root);
+    return root.get<string>("imageName");
 }
 
 string convertToRedisEntryJson(string imageName, Triangle tri){
@@ -65,12 +97,12 @@ string convertToRedisEntryJson(string imageName, Triangle tri){
         pt::ptree point;
         point.put("x", pt.x);
         point.put("y", pt.y);
-        // points.push_back(point);
+        points.push_back(std::make_pair("", point));
     }
-    // root.put("triangle", points);
+    root.add_child("triangle", points);
 
     std::ostringstream buf;
-    // write_json (buf, root);
+    write_json(buf, root, false);
     return buf.str();
 }
 
@@ -246,7 +278,7 @@ vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double 
 
 vector<Triangle> buildTrianglesFromKeypointJsonFile(string filename){
     vector<Keypoint> output = readKeypointsFromJsonFile(filename);
-    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 100, 500);
+    vector<Triangle> ret = buildTrianglesFromKeypoints(output, 50, 400);
     return ret;
 }
 

@@ -105,25 +105,53 @@ TEST(utils, keypointsToTriangles3){
 }
 
 TEST(utils, convertingToRedisEntryJson){
-    string imageName = "img1";
-    Keypoint one(100, 200);
-    Keypoint two(100, 200);
-    Keypoint three(100, 200);
-    Triangle tri(one, two, three);
-    convertToRedisEntryJson(imageName, tri);
+//    string imageName = "img1";
+//    Keypoint one(100, 200);
+//    Keypoint two(200, 300);
+//    Keypoint three(400, 500);
+//    Triangle tri(one, two, three);
+//    cout << "This is what the generated json looks like: " << convertToRedisEntryJson(imageName, tri) << endl;
 }
 
 TEST(utils, convertingFromRedisEntryJson){
-    // string redisEntry = "{
-    //     \"imageName\" : \"img1\",
-    //     \"triangle\" : [
-    //         {\"x\" : 200, \"y\" : 200},
-    //         {\"x\" : 200, \"y\" : 200},
-    //         {\"x\" : 200, \"y\" : 200}
-    //     ]
-    // }";
-    string redisEntry = "";
-    getTriangleFromRedisEntry(redisEntry);
-    getImageNameFromRedisEntry(redisEntry);
+//     string redisEntry = "{"
+//         "\"imageName\" : \"img1\","
+//         "\"triangle\" : ["
+//             "{\"x\" : 200, \"y\" : 300},"
+//             "{\"x\" : 400, \"y\" : 500},"
+//             "{\"x\" : 600, \"y\" : 700}"
+//         "]"
+//     "}";
+//    auto tri = getTriangleFromRedisEntry(redisEntry);
+//    cout << "ImageName: " << getImageNameFromRedisEntry(redisEntry) << endl;
+//    cout << "Triangle: " << tri.toString() << endl;
 }
+
+TEST(utils, fullRedisEntryJsonIntigrationTest){
+//     string redisEntry = "{"
+//         "\"imageName\" : \"img1\","
+//         "\"triangle\" : ["
+//             "{\"x\" : 200, \"y\" : 300},"
+//             "{\"x\" : 400, \"y\" : 500},"
+//             "{\"x\" : 600, \"y\" : 700}"
+//         "]"
+//     "}";
+//    auto tri = getTriangleFromRedisEntry(redisEntry);
+//    string imageName = getImageNameFromRedisEntry(redisEntry);
+//    cout << "Full test: " << convertToRedisEntryJson(imageName, tri) << endl;
+}
+
+TEST(utils, testTheTriangleDrawing){
+    Keypoint one(100, 100);
+    Keypoint two(200, 100);
+    Keypoint three(200, 200);
+    Triangle tri(one, two, three);
+    vector<Triangle> tris;
+    tris.push_back(tri);
+    auto img = cv::imread("../c_src/test/resources/inputMatchingImages/Moderat-Bad-Kingdom-10/img1.jpg");
+    drawSingleTriangleOntoImage(tri, img);
+}
+
+
+
 
