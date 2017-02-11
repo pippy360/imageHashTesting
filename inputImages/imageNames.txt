@@ -9,6 +9,13 @@ Moderat-Bad-Kingdom-10
 rick1
 rick2
 rick3
+rick_crop_1
+rick_crop_2
+rick_crop_3
+rick_crop_4
+rick_crop_5
+rick_full_1
+rick_full_2
 upload02
 _vector__natsu_and_happy___ninjas__by_coolez-d89c2au
 dots
@@ -20,6 +27,9 @@ lennaWithGreenDotsInTriangle3
 small_lenna1
 small_lenna2
 small_lenna3
+small_lenna4
+testImage1
+testImage2
 small_lenna4
 img2
 img1
