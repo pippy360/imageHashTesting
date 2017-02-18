@@ -35,6 +35,8 @@ using namespace std;
 
 static unsigned long x=123456789, y=362436069, z=521288629;
 
+void drawShape_inner(cv::Mat mat);
+
 unsigned long xorshf96(void) {          //period 2^96-1
     unsigned long t;
     x ^= x << 16;
@@ -49,6 +51,20 @@ unsigned long xorshf96(void) {          //period 2^96-1
     return z;
 }
 
+void util_drawShape(vector<Keypoint> points, cv::Mat inputImage, bool randomColours = true){
+    auto prevPoint = points.back();
+
+    int r = (int) xorshf96();
+    int g = (int) xorshf96();
+    int b = (int) xorshf96();
+    for (auto currentPoint : points){
+
+        cv::line(inputImage, cv::Point(prevPoint.x, prevPoint.y), cv::Point(currentPoint.x, currentPoint.y),
+                 cv::Scalar(b,g,r));
+
+        prevPoint = currentPoint;
+    }
+}
 
 cv::Size calcBoundingRectangleOfShape(cv::Mat shape) {
     vector<cv::Point> convertedMat;
@@ -65,7 +81,22 @@ cv::Size calcBoundingRectangleOfShape(cv::Mat shape) {
     return resultRect.size();
 }
 
-std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, double rotation, double scale) {
+void drawShape_inner(cv::Mat shape, cv::Mat DEBUG_IMAGE) {
+    vector<Keypoint> convertedMat;
+    cout << "shape: " << shape << endl;
+    for (int i = 0; i < shape.cols; i++) {
+        //grab the two points
+        double x = shape.at<double>(i);
+        double y = shape.at<double>(shape.cols + i);
+        Keypoint tempPt(x, y);
+        convertedMat.push_back(tempPt);
+        cout << "X: " << x << ", Y: " << y << endl;
+    }
+    util_drawShape(convertedMat, DEBUG_IMAGE);
+}
+
+std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, double rotation, double scale)
+{
 
     //input image bounding rectangle
     double xlen = inputImageSize.width;
@@ -95,7 +126,7 @@ std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, d
                         0.0, 0.0, 1.0);
 
     //get the shape of the output image
-    cv::Mat temp = cv::Mat(transpose1_m)*cv::Mat(rotate_m)*cv::Mat(scale_m);
+    cv::Mat temp = cv::Mat(scale_m)*cv::Mat(rotate_m)*cv::Mat(transpose1_m);
     cv::Mat outputImageShape = temp*cv::Mat(inputImageShape);
     cv::Size newImageSize = calcBoundingRectangleOfShape(outputImageShape);
 
