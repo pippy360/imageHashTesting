@@ -25,20 +25,22 @@ void runTheTest()
     //apply a big transformation to it, resize the image if you have to
     //create a getKeyPointsFunction you can call from the c++ side
 
-    double rotation = 45;
+    double rotation = 0;
     double scale = 1;
-    Mat transformationMartix;
-    Size newImageSize;
-    Mat inputImage = cv::imread("./input/lennaWithGreenDots.jpg");
-    tie(transformationMartix, newImageSize) = calcTransformationMatrix(inputImage.size(), rotation, scale);
-    cout << "Size: " << newImageSize << endl;
-    cout << "The output mat: " << endl;
-    cout << Mat(transformationMartix) << endl;
+    for (int i = 0; i<360; i++){
+        Mat transformationMartix;
+        Size newImageSize;
+        Mat inputImage = cv::imread("./input/lennaWithGreenDots.jpg");
+        tie(transformationMartix, newImageSize) = calcTransformationMatrix(inputImage.size(), rotation+1, scale);
+        cout << "Size: " << newImageSize << endl;
+        cout << "The output mat: " << endl;
+        cout << Mat(transformationMartix) << endl;
 
-    Mat outputImage(newImageSize.height, newImageSize.width, CV_8UC3, Scalar(0,0,0));
-    warpAffine(inputImage, outputImage, formatTransformationMat2(transformationMartix), outputImage.size());
-    imshow("output", outputImage);
-    waitKey();
+        Mat outputImage(newImageSize.height, newImageSize.width, CV_8UC3, Scalar(0,0,0));
+        warpAffine(inputImage, outputImage, formatTransformationMat2(transformationMartix), outputImage.size());
+        imshow("output", outputImage);
+        waitKey();
+    }
 //    //Then apply it
 //    //Then get the keypoints for both images
 //    //Then calc the transformation matrix and project both keypoints to both...
