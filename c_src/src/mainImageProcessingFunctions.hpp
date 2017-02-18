@@ -328,7 +328,6 @@ template<typename T> vector<pair<Triangle, T>> getAllTheHashesForImage(ShapeAndP
 	return ret;
 }
 
-
 }//namespace cv
 
 #endif//mainImageProcessingFunctions_cpp

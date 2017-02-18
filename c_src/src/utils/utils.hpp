@@ -31,7 +31,7 @@ using boost::property_tree::read_json;
 using boost::property_tree::write_json;
 
 namespace pt = boost::property_tree;
-
+using namespace std;
 
 static unsigned long x=123456789, y=362436069, z=521288629;
 
@@ -47,6 +47,67 @@ unsigned long xorshf96(void) {          //period 2^96-1
     z = t ^ x ^ y;
 
     return z;
+}
+
+
+cv::Size calcBoundingRectangleOfShape(cv::Mat shape) {
+    vector<cv::Point> convertedMat;
+    cout << "shape: " << shape << endl;
+    for (int i = 0; i < shape.cols; i++) {
+        //grab the two points
+        double x = shape.at<double>(i);
+        double y = shape.at<double>(shape.cols + i);
+        cv::Point tempPt(x, y);
+        convertedMat.push_back(tempPt);
+        cout << "X: " << x << ", Y: " << y << endl;
+    }
+    auto resultRect = cv::boundingRect( cv::Mat(convertedMat) );
+    return resultRect.size();
+}
+
+std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, double rotation, double scale) {
+
+    //input image bounding rectangle
+    double xlen = inputImageSize.width;
+    double ylen = inputImageSize.height;
+    cv::Matx34d inputImageShape(
+                               0.0, xlen, xlen,  0.0,
+                               0.0,  0.0, ylen, ylen,
+                               1.0,  1.0,  1.0,  1.0
+                            );
+
+    //transpose center of input image to 0,0
+    cv::Matx33d transpose1_m(
+                              1.0, 0.0, -(inputImageSize.width/2),
+                              0.0, 1.0, -(inputImageSize.height/2),
+                              0.0, 0.0, 1.0
+                            );
+    //then rotate
+    cv::Mat rotate_m3x2 = cv::getRotationMatrix2D(cv::Point2f(0, 0), rotation, 1.0);
+    cv::Matx33d rotate_m(
+            rotate_m3x2.at<double>(0), rotate_m3x2.at<double>(1), rotate_m3x2.at<double>(2),
+            rotate_m3x2.at<double>(3), rotate_m3x2.at<double>(4), rotate_m3x2.at<double>(5),
+            0.0, 0.0, 1.0
+    );
+    //then scale
+    cv::Matx33d scale_m(scale, 0.0, 0.0,
+                        0.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0);
+
+    //get the shape of the output image
+    cv::Mat temp = cv::Mat(transpose1_m)*cv::Mat(rotate_m)*cv::Mat(scale_m);
+    cv::Mat outputImageShape = temp*cv::Mat(inputImageShape);
+    cv::Size newImageSize = calcBoundingRectangleOfShape(outputImageShape);
+
+    //then move the image center to the new center
+    cv::Matx33d transpose2_m(  1.0, 0.0, (newImageSize.width/2),
+                               0.0, 1.0, (newImageSize.height/2),
+                               0.0, 0.0, 1.0 );
+    cout << "The transpose mat:" << endl;
+    cout << cv::Mat(transpose1_m) << endl;
+    cout << cv::Mat(rotate_m) << endl;
+    cv::Mat ret = cv::Mat(transpose2_m)*cv::Mat(scale_m)*cv::Mat(rotate_m)*cv::Mat(transpose1_m);//*cv::Mat(rotate_m);
+    return pair<cv::Mat, cv::Size>(ret, newImageSize);
 }
 
 void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool randomColours = true){

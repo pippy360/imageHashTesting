@@ -1,171 +1,171 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CodeBlocks_project_file>
-   <FileVersion major="1" minor="6" />
-   <Project>
-      <Option title="gtest" />
-      <Option makefile_is_custom="1" />
-      <Option compiler="gcc" />
-      <Option virtualFolders="CMake Files\;CMake Files\googletest\;CMake Files\googletest\googletest\;CMake Files\googletest\googletest\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\share\;CMake Files\..\..\..\usr\share\OpenCV\;" />
-      <Build>
-      <Target title="all">
-         <Option working_dir="/home/linux/imageHashTesting/googletest/googletest" />
-         <Option type="4" />
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 all" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="gtest">
-         <Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting/googletest/googletest" />
-         <Option object_output="./" />
-         <Option type="2" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
-            <Add directory="/home/linux/imageHashTesting/include" />
-            <Add directory="/usr/include" />
-            <Add directory="/usr/include/c++/4.8" />
-            <Add directory="/usr/include/c++/4.8/backward" />
-            <Add directory="/usr/include/x86_64-linux-gnu" />
-            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
-            <Add directory="/usr/local/include" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="gtest/fast">
-         <Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting/googletest/googletest" />
-         <Option object_output="./" />
-         <Option type="2" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
-            <Add directory="/home/linux/imageHashTesting/include" />
-            <Add directory="/usr/include" />
-            <Add directory="/usr/include/c++/4.8" />
-            <Add directory="/usr/include/c++/4.8/backward" />
-            <Add directory="/usr/include/x86_64-linux-gnu" />
-            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
-            <Add directory="/usr/local/include" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="gtest_main">
-         <Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest_main.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting/googletest/googletest" />
-         <Option object_output="./" />
-         <Option type="2" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
-            <Add directory="/home/linux/imageHashTesting/include" />
-            <Add directory="/usr/include" />
-            <Add directory="/usr/include/c++/4.8" />
-            <Add directory="/usr/include/c++/4.8/backward" />
-            <Add directory="/usr/include/x86_64-linux-gnu" />
-            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
-            <Add directory="/usr/local/include" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      <Target title="gtest_main/fast">
-         <Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest_main.a" prefix_auto="0" extension_auto="0" />
-         <Option working_dir="/home/linux/imageHashTesting/googletest/googletest" />
-         <Option object_output="./" />
-         <Option type="2" />
-         <Option compiler="gcc" />
-         <Compiler>
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest" />
-            <Add directory="/home/linux/imageHashTesting/googletest/googletest/include" />
-            <Add directory="/home/linux/imageHashTesting/include" />
-            <Add directory="/usr/include" />
-            <Add directory="/usr/include/c++/4.8" />
-            <Add directory="/usr/include/c++/4.8/backward" />
-            <Add directory="/usr/include/x86_64-linux-gnu" />
-            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
-            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
-            <Add directory="/usr/local/include" />
-         </Compiler>
-         <MakeCommands>
-            <Build command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast" />
-            <CompileFile command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
-            <Clean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-            <DistClean command="/usr/bin/make -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean" />
-         </MakeCommands>
-      </Target>
-      </Build>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">
-         <Option target="gtest"/>
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest_main.cc">
-         <Option target="gtest_main"/>
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\googletest\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\googletest\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\googletest\googletest\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\googletest\googletest\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
-          <Option virtualFolder="CMake Files\googletest\googletest\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
-          <Option virtualFolder="CMake Files\googletest\googletest\cmake\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
-          <Option virtualFolder="CMake Files\googletest\googletest\cmake\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
-          <Option virtualFolder="CMake Files\googletest\googletest\cmake\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
-          <Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVConfig.cmake">
-          <Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVModules.cmake">
-          <Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\" />
-      </Unit>
-      <Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVModules-release.cmake">
-          <Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\" />
-      </Unit>
-   </Project>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="gtest"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\googletest\;CMake Files\googletest\googletest\;CMake Files\googletest\googletest\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\share\;CMake Files\..\..\..\usr\share\OpenCV\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/linux/imageHashTesting/googletest/googletest"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main">
+				<Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest_main.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/imageHashTesting/googletest/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/linux/imageHashTesting/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main/fast">
+				<Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest_main.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/imageHashTesting/googletest/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/linux/imageHashTesting/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/imageHashTesting/googletest/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/linux/imageHashTesting/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="/home/linux/imageHashTesting/googletest/googletest/libgtest.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/imageHashTesting/googletest/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/linux/imageHashTesting/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest/include"/>
+					<Add directory="/home/linux/imageHashTesting/googletest/googletest"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/linux/imageHashTesting/googletest/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/src/gtest_main.cc">
+			<Option target="gtest_main"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\googletest\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\googletest\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\googletest\googletest\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\googletest\googletest\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\googletest\googletest\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/googletest/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\googletest\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
+		</Unit>
+		<Unit filename="/home/linux/imageHashTesting/../../../usr/share/OpenCV/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
+		</Unit>
+	</Project>
 </CodeBlocks_project_file>

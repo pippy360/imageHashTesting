@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/marr_hildreth_hash.cpp.o"
   "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/phash.cpp.o"
   "CMakeFiles/averageHashTest.dir/c_src/src/img_hash/img_hash_opencv_module/PHash_Fast.cpp.o"
+  "CMakeFiles/averageHashTest.dir/c_src/test/fullKeypointAccuracyTest.cpp.o"
   "bin/averageHashTest.pdb"
   "bin/averageHashTest"
 )
