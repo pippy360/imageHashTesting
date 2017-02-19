@@ -119,6 +119,8 @@ img_hash.hpp
 /home/linux/imageHashTesting/c_src/test/fullKeypointAccuracyTest.cpp
 gtest/gtest.h
 /home/linux/imageHashTesting/c_src/test/gtest/gtest.h
+boost/bimap.hpp
+-
 opencv2/opencv.hpp
 /home/linux/imageHashTesting/c_src/test/opencv2/opencv.hpp
 utils/utils.hpp
@@ -130,6 +132,8 @@ c_src/src/Keypoint.h
 iostream
 -
 string
+-
+math.h
 -
 
 c_src/src/ShapeAndPositionInvariantImage.h

@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 
+#include <boost/bimap.hpp>
+
 #include "opencv2/opencv.hpp"
 #include "utils/utils.hpp"
 
@@ -83,6 +85,29 @@ TEST(utilsTest, testingTheConvertingOfKeypoints) {
 //    applyTransformationMatrixToKeypointVector(keypointsForImageOne, );
 }
 
+typedef boost::bimap< Keypoint, Keypoint > MatchingKeypointMap;
+
+MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoints, vector<Keypoint> image2Keypoints, cv::Mat transformationMatFromImage1To2)
+{
+    MatchingKeypointMap result;
+    vector<Keypoint> oneToTwo = applyTransformationMatrixToKeypointVector(image1Keypoints, transformationMatFromImage1To2);
+
+    double threshold = 4.0;
+    for (auto kp : image1Keypoints)
+    {
+        //check the dist
+        for (auto kp2 : image2Keypoints)
+        {
+            if (getKeypointDistance(kp, kp2) < threshold)
+            {
+                result.insert({kp, kp2});
+            }
+        }
+    }
+
+    return result;
+}
+
 TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     double rotation = 45;
     double scale = 1;
@@ -107,6 +132,12 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     drawKeypoints(twoToOne, inputImage, cv::Scalar(0,255,0));
     drawKeypoints(keypointsImage2, outputImage);
     drawKeypoints(oneToTwo, outputImage, cv::Scalar(0,255,0));
+    auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2);
+    for (auto entry : tempMap)
+    {
+        drawSingleKeypoint(entry.left, outputImage, cv::Scalar(255,0,0));
+        drawSingleKeypoint(entry.right, outputImage, cv::Scalar(255,0,0));
+    }
     cv::imshow("image1", inputImage);
     cv::imshow("image2", outputImage);
     cv::waitKey();

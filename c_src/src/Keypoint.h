@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>   
 #include <string>  
-
+#include <math.h>
 
 using namespace std;
 
@@ -23,8 +23,12 @@ public:
 		return ss.str();
 	}
 
-	inline bool operator==(const Keypoint& rhs){
+	inline bool operator==(const Keypoint& rhs) const {
 		return (x == rhs.x && y == rhs.y);
+	}
+
+	inline bool operator<(const Keypoint& rhs) const {
+		return true;
 	}
 };
 
