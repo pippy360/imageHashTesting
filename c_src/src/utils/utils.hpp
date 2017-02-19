@@ -51,6 +51,73 @@ unsigned long xorshf96(void) {          //period 2^96-1
     return z;
 }
 
+
+cv::Mat convertKeypointsVectorToMat(vector<Keypoint> kps)
+{
+    cv::Mat ret = cv::Mat::zeros(3, kps.size(), CV_64F);
+
+    for (unsigned int i = 0; i < kps.size(); i++)
+    {
+        auto k = kps[i];
+        ret.at<double>(0, i) = k.x;
+        ret.at<double>(1, i) = k.y;
+        ret.at<double>(2, i) = 1;
+    }
+    return ret;
+}
+
+vector<Keypoint> convertMatToKeypointsVector(cv::Mat inputPoints)
+{
+    vector<Keypoint> ret;
+    for (signed int i = 0; i < inputPoints.cols; i++)//signed just to surpress warning
+    {
+        double x = inputPoints.at<double>(0, i);
+        double y = inputPoints.at<double>(1, i);
+        Keypoint temp(x, y);
+        ret.push_back(temp);
+    }
+    return ret;
+}
+
+
+vector<Keypoint> applyTransformationMatrixToKeypointVector(vector<Keypoint> keypoints, cv::Mat transformationMat)
+{
+    cv::Mat keypointMat = convertKeypointsVectorToMat(keypoints);
+    cv::Mat transKeypointMat = transformationMat*keypointMat;
+    return convertMatToKeypointsVector(transKeypointMat);
+}
+
+void drawSingleKeypoint(Keypoint kp, cv::Mat inputImage, cv::Scalar colour=cv::Scalar(0,0,255)){
+    cv::circle(inputImage, cv::Point(kp.x, kp.y), 2, colour);
+}
+
+void drawKeypoints(vector<Keypoint> keypoints, cv::Mat inputImage, cv::Scalar colour=cv::Scalar(0,0,255))
+{
+    for(auto kp : keypoints)
+    {
+        drawSingleKeypoint(kp, inputImage, colour);
+    }
+}
+
+vector<Keypoint> readKeypointsFromJsonFile(string filename);
+
+vector<Keypoint> getKeypoints(cv::Mat inputImage)
+{
+    //clear any ones that existed before hand!!!
+    //TODO:
+    //save the image
+    cv::imwrite("tempImage.jpg", inputImage);
+    //call the python on the image
+    FILE* file = popen("python ./python_src/dumpKeypointsToJson.py ./tempImage.jpg ./tempOutputKeypoints.json", "r");
+    // use fscanf to read:
+    char buffer[101];
+    fscanf(file, "%100s", buffer);
+    pclose(file);
+    //save the keypoints to the output file
+    return readKeypointsFromJsonFile("./tempOutputKeypoints.json");
+    //read the output file and get the keypoints (we already have a script for this!!!)
+}
+
 void util_drawShape(vector<Keypoint> points, cv::Mat inputImage, bool randomColours = true){
     auto prevPoint = points.back();
 
@@ -83,14 +150,14 @@ cv::Size calcBoundingRectangleOfShape(cv::Mat shape) {
 
 void drawShape_inner(cv::Mat shape, cv::Mat DEBUG_IMAGE) {
     vector<Keypoint> convertedMat;
-    cout << "shape: " << shape << endl;
+//    cout << "shape: " << shape << endl;
     for (int i = 0; i < shape.cols; i++) {
         //grab the two points
         double x = shape.at<double>(i);
         double y = shape.at<double>(shape.cols + i);
         Keypoint tempPt(x, y);
         convertedMat.push_back(tempPt);
-        cout << "X: " << x << ", Y: " << y << endl;
+//        cout << "X: " << x << ", Y: " << y << endl;
     }
     util_drawShape(convertedMat, DEBUG_IMAGE);
 }
@@ -134,9 +201,6 @@ std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, d
     cv::Matx33d transpose2_m(  1.0, 0.0, (newImageSize.width/2),
                                0.0, 1.0, (newImageSize.height/2),
                                0.0, 0.0, 1.0 );
-    cout << "The transpose mat:" << endl;
-    cout << cv::Mat(transpose1_m) << endl;
-    cout << cv::Mat(rotate_m) << endl;
     cv::Mat ret = cv::Mat(transpose2_m)*cv::Mat(scale_m)*cv::Mat(rotate_m)*cv::Mat(transpose1_m);//*cv::Mat(rotate_m);
     return pair<cv::Mat, cv::Size>(ret, newImageSize);
 }
