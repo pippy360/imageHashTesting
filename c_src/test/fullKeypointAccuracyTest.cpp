@@ -93,14 +93,15 @@ MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoin
     vector<Keypoint> oneToTwo = applyTransformationMatrixToKeypointVector(image1Keypoints, transformationMatFromImage1To2);
 
     double threshold = 4.0;
-    for (auto kp : image1Keypoints)
+    for (auto kp : image2Keypoints)
     {
         //check the dist
-        for (auto kp2 : image2Keypoints)
+        for (unsigned int i = 0; i < oneToTwo.size(); i++)
         {
-            if (getKeypointDistance(kp, kp2) < threshold)
+            if (getKeypointDistance(kp, oneToTwo[i]) < threshold)
             {
-                result.insert({kp, kp2});
+                auto kp2 = image1Keypoints[i];
+                result.insert({kp2, kp});
             }
         }
     }
@@ -133,15 +134,16 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     drawKeypoints(keypointsImage2, outputImage);
     drawKeypoints(oneToTwo, outputImage, cv::Scalar(0,255,0));
     auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2, transformationMartix);
+    cout << "The size of the map: " << tempMap.left.size() << endl;
     for (auto entry : tempMap.left)
     {
-        drawSingleKeypoint(entry.first, outputImage, cv::Scalar(255,0,0));
+        drawSingleKeypoint(entry.first, inputImage, cv::Scalar(255,0,0));
         drawSingleKeypoint(entry.second, outputImage, cv::Scalar(255,0,0));
     }
-    // cv::imwrite("image1.jpg", inputImage);
-    // cv::imwrite("image2.jpg", outputImage);
-    //cv::waitKey();
 
+    cv::imshow("image1.jpg", inputImage);
+    cv::imshow("image2.jpg", outputImage);
+    cv::waitKey();
 }
 
 
