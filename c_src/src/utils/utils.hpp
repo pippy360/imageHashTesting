@@ -135,14 +135,14 @@ void util_drawShape(vector<Keypoint> points, cv::Mat inputImage, bool randomColo
 
 cv::Size calcBoundingRectangleOfShape(cv::Mat shape) {
     vector<cv::Point> convertedMat;
-    cout << "shape: " << shape << endl;
+//    cout << "shape: " << shape << endl;
     for (int i = 0; i < shape.cols; i++) {
         //grab the two points
         double x = shape.at<double>(i);
         double y = shape.at<double>(shape.cols + i);
         cv::Point tempPt(x, y);
         convertedMat.push_back(tempPt);
-        cout << "X: " << x << ", Y: " << y << endl;
+//        cout << "X: " << x << ", Y: " << y << endl;
     }
     auto resultRect = cv::boundingRect( cv::Mat(convertedMat) );
     return resultRect.size();

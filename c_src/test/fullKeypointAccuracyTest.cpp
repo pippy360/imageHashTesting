@@ -92,7 +92,7 @@ MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoin
     MatchingKeypointMap result;
     vector<Keypoint> oneToTwo = applyTransformationMatrixToKeypointVector(image1Keypoints, transformationMatFromImage1To2);
 
-    double threshold = 4.0;
+    double threshold = 2.0;
     for (auto kp : image2Keypoints)
     {
         //check the dist
@@ -112,13 +112,13 @@ MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoin
 TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     double rotation = 45;
     double scale = 1;
-    Mat inputImage = cv::imread("./input/lennaWithGreenDots.jpg");
+    Mat inputImage = cv::imread("./input/rick1.jpg");
     Mat transformationMartix;
     Size newImageSize;
     tie(transformationMartix, newImageSize) = calcTransformationMatrix(inputImage.size(), rotation, scale);
-    cout << "Size: " << newImageSize << endl;
-    cout << "The output mat: " << endl;
-    cout << Mat(transformationMartix) << endl;
+//    cout << "Size: " << newImageSize << endl;
+//    cout << "The output mat: " << endl;
+//    cout << Mat(transformationMartix) << endl;
 
     Mat outputImage(newImageSize.height, newImageSize.width, CV_8UC3, Scalar(0,0,0));
     warpAffine(inputImage, outputImage, formatTransformationMat2(transformationMartix), outputImage.size());
@@ -134,7 +134,10 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     drawKeypoints(keypointsImage2, outputImage);
     drawKeypoints(oneToTwo, outputImage, cv::Scalar(0,255,0));
     auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2, transformationMartix);
-    cout << "The size of the map: " << tempMap.left.size() << endl;
+    cout << "Number of matching keypints:   " << tempMap.left.size() << endl;
+    cout << "Number of keypoints in image1: " << keypointsImage1.size() << " image2: " << keypointsImage2.size() << endl;
+    cout << "average:   " << ((keypointsImage1.size() + keypointsImage2.size())/2) << endl;
+    cout << "%average:  " << 100.0*(float)(tempMap.left.size())/(float)((keypointsImage1.size() + keypointsImage2.size())/2) << "%" << endl;
     for (auto entry : tempMap.left)
     {
         drawSingleKeypoint(entry.first, inputImage, cv::Scalar(255,0,0));
