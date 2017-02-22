@@ -132,15 +132,15 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     drawKeypoints(twoToOne, inputImage, cv::Scalar(0,255,0));
     drawKeypoints(keypointsImage2, outputImage);
     drawKeypoints(oneToTwo, outputImage, cv::Scalar(0,255,0));
-    auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2);
-    for (auto entry : tempMap)
+    auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2, transformationMartix);
+    for (auto entry : tempMap.left)
     {
-        drawSingleKeypoint(entry.left, outputImage, cv::Scalar(255,0,0));
-        drawSingleKeypoint(entry.right, outputImage, cv::Scalar(255,0,0));
+        drawSingleKeypoint(entry.first, outputImage, cv::Scalar(255,0,0));
+        drawSingleKeypoint(entry.second, outputImage, cv::Scalar(255,0,0));
     }
-    cv::imshow("image1", inputImage);
-    cv::imshow("image2", outputImage);
-    cv::waitKey();
+    // cv::imwrite("image1.jpg", inputImage);
+    // cv::imwrite("image2.jpg", outputImage);
+    //cv::waitKey();
 
 }
 
