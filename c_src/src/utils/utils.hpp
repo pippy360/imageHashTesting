@@ -10,6 +10,7 @@
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <math.h>
 
 #include "img_hash/AverageHash.h"
 #include "img_hash/BlockMeanHash.h"
@@ -162,7 +163,7 @@ void drawShape_inner(cv::Mat shape, cv::Mat DEBUG_IMAGE) {
     util_drawShape(convertedMat, DEBUG_IMAGE);
 }
 
-std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, double rotation, double scale)
+std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, double rotation, double scale, bool keepArea=true)
 {
 
     //input image bounding rectangle
@@ -188,8 +189,10 @@ std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, d
             0.0, 0.0, 1.0
     );
     //then scale
-    cv::Matx33d scale_m(scale, 0.0, 0.0,
-                        0.0, 1.0, 0.0,
+    double scaleX = (keepArea)? sqrt(scale):     scale;
+    double scaleY = (keepArea)? 1.0/sqrt(scale): 1.0;
+    cv::Matx33d scale_m(scaleX, 0.0, 0.0,
+                        0.0, scaleY, 0.0,
                         0.0, 0.0, 1.0);
 
     //get the shape of the output image
@@ -205,7 +208,7 @@ std::pair<cv::Mat, cv::Size> calcTransformationMatrix(cv::Size inputImageSize, d
     return pair<cv::Mat, cv::Size>(ret, newImageSize);
 }
 
-void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool randomColours = true){
+void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool setColour = false, cv::Scalar colourInput = cv::Scalar(0,0,0)){
     auto keypoints = tri.toKeypoints();
     auto prevPoint = keypoints.back();
 //    for (auto currentPoint: keypoints)
@@ -215,11 +218,12 @@ void drawSingleTriangleOntoImage(Triangle tri, cv::Mat inputImage, bool randomCo
     int b = (int) xorshf96();
     for (int i = 0; i < 3; i++){
         auto currentPoint = keypoints[i];
+        auto colour = (setColour)? colourInput: cv::Scalar(b,g,r);
 
         cv::line(inputImage, cv::Point(prevPoint.x, prevPoint.y), cv::Point(currentPoint.x, currentPoint.y),
-                 cv::Scalar(b,g,r));
-        cv::imshow("something", inputImage);
-        cv::waitKey(10);
+                 colour);
+        //cv::imshow("something", inputImage);
+        //cv::waitKey(10);
         prevPoint = currentPoint;
     }
 }
@@ -391,7 +395,7 @@ vector<Triangle> buildTrianglesForSingleKeypoint(Keypoint centerKeypoint, vector
 	return result;
 }
 
-vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double lowerThreshold=150, double upperThreshold=300)
+vector<Triangle> buildTrianglesFromKeypoints(vector<Keypoint> keypoints, double lowerThreshold=150, double upperThreshold=500)
 {
 	vector<Triangle> outputTriangles;
 //	for (auto keypoint: keypoints)

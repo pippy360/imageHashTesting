@@ -26,10 +26,20 @@ public:
 	inline bool operator==(const Keypoint& rhs) const {
 		return (x == rhs.x && y == rhs.y);
 	}
-
-	inline bool operator<(const Keypoint& rhs) const {
-		return true;
-	}
 };
+
+namespace std {
+
+    template <>
+    struct hash<Keypoint>
+    {
+        std::size_t operator()(const Keypoint& k) const
+        {
+            using std::hash;
+            return ((hash<double>()(k.x) ^ (hash<double>()(k.y) << 1)) >> 1);
+        }
+    };
+
+}
 
 

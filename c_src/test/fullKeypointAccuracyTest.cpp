@@ -4,6 +4,7 @@
 
 #include "opencv2/opencv.hpp"
 #include "utils/utils.hpp"
+#include <unordered_map>
 
 using namespace cv;
 using namespace std;
@@ -85,7 +86,7 @@ TEST(utilsTest, testingTheConvertingOfKeypoints) {
 //    applyTransformationMatrixToKeypointVector(keypointsForImageOne, );
 }
 
-typedef boost::bimap< Keypoint, Keypoint > MatchingKeypointMap;
+typedef std::unordered_map<Keypoint, Keypoint> MatchingKeypointMap;
 
 MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoints, vector<Keypoint> image2Keypoints, cv::Mat transformationMatFromImage1To2)
 {
@@ -93,15 +94,15 @@ MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoin
     vector<Keypoint> oneToTwo = applyTransformationMatrixToKeypointVector(image1Keypoints, transformationMatFromImage1To2);
 
     double threshold = 2.0;
-    for (auto kp : image2Keypoints)
+    for (auto keypointFromImage2 : image2Keypoints)
     {
         //check the dist
         for (unsigned int i = 0; i < oneToTwo.size(); i++)
         {
-            if (getKeypointDistance(kp, oneToTwo[i]) < threshold)
+            if (getKeypointDistance(keypointFromImage2, oneToTwo[i]) < threshold)
             {
-                auto kp2 = image1Keypoints[i];
-                result.insert({kp2, kp});
+                auto keyPointFromImage1 = image1Keypoints[i];
+                result.insert({keyPointFromImage1, keypointFromImage2});
             }
         }
     }
@@ -109,16 +110,82 @@ MatchingKeypointMap getMatchingKeypointsTwoWayMap(vector<Keypoint> image1Keypoin
     return result;
 }
 
-TEST(utilsTest, testingTheConvertingOfKeypoints2) {
+typedef std::unordered_map<Triangle, Triangle> MatchingTriangleMap;
+
+tuple<vector<Keypoint>, vector<Keypoint>> splitKeypointMap(MatchingKeypointMap map){
+    vector<Keypoint> kp1;
+    vector<Keypoint> kp2;
+
+    for (auto entry: map)
+    {
+        kp1.push_back(entry.first);
+        kp2.push_back(entry.second);
+    }
+    return tuple<vector<Keypoint>, vector<Keypoint>>(kp1, kp2);
+}
+
+Triangle convertTriangleUsingMap(Triangle triangle, MatchingKeypointMap oneToTwo) {
+    vector<Keypoint> result;
+    for (auto kp: triangle.toKeypoints())
+    {
+        result.push_back(oneToTwo[kp]);
+    }
+    return result;
+}
+
+MatchingTriangleMap buildMatchingTriMap(vector<Triangle> tris1, vector<Triangle> tris2, MatchingKeypointMap unorderedMap) {
+    MatchingTriangleMap result;
+    for (auto tri1: tris1)
+    {
+        for (auto tri2: tris2)
+        {
+            Triangle tri1Convert = convertTriangleUsingMap(tri1, unorderedMap);
+            if (tri1Convert == tri2)
+            {
+                result.insert({tri1, tri2});
+                break;
+            }
+        }
+    }
+
+    return result;
+}
+
+MatchingTriangleMap getMatchingTriangleTwoWayMap(MatchingKeypointMap oneToTwo) {
+
+    vector<Keypoint> image1Kp;
+    vector<Keypoint> image2Kp;
+    tie(image1Kp, image2Kp) = splitKeypointMap(oneToTwo);
+
+    auto tris1 = buildTrianglesFromKeypoints(image1Kp);
+    auto tris2 = buildTrianglesFromKeypoints(image2Kp);
+
+    return buildMatchingTriMap(tris1, tris2, oneToTwo);
+}
+
+unsigned long xorshf962(void) {          //period 2^96-1
+    unsigned long t;
+    x ^= x << 16;
+    x ^= x >> 5;
+    x ^= x << 1;
+
+    t = x;
+    x = y;
+    y = z;
+    z = t ^ x ^ y;
+
+    return z;
+}
+
+
+TEST(utilsTest, testingTheConvertingOfKeypoints2)
+{
     double rotation = 45;
-    double scale = 1;
-    Mat inputImage = cv::imread("./input/rick1.jpg");
+    double scale = 2;
+    Mat inputImage = cv::imread("./input/lennaWithGreenDots.jpg");
     Mat transformationMartix;
     Size newImageSize;
     tie(transformationMartix, newImageSize) = calcTransformationMatrix(inputImage.size(), rotation, scale);
-//    cout << "Size: " << newImageSize << endl;
-//    cout << "The output mat: " << endl;
-//    cout << Mat(transformationMartix) << endl;
 
     Mat outputImage(newImageSize.height, newImageSize.width, CV_8UC3, Scalar(0,0,0));
     warpAffine(inputImage, outputImage, formatTransformationMat2(transformationMartix), outputImage.size());
@@ -134,14 +201,36 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2) {
     drawKeypoints(keypointsImage2, outputImage);
     drawKeypoints(oneToTwo, outputImage, cv::Scalar(0,255,0));
     auto tempMap = getMatchingKeypointsTwoWayMap(keypointsImage1, keypointsImage2, transformationMartix);
-    cout << "Number of matching keypints:   " << tempMap.left.size() << endl;
+
+    cout << "Number of matching keypints:   " << tempMap.size() << endl;
     cout << "Number of keypoints in image1: " << keypointsImage1.size() << " image2: " << keypointsImage2.size() << endl;
     cout << "average:   " << ((keypointsImage1.size() + keypointsImage2.size())/2) << endl;
-    cout << "%average:  " << 100.0*(float)(tempMap.left.size())/(float)((keypointsImage1.size() + keypointsImage2.size())/2) << "%" << endl;
-    for (auto entry : tempMap.left)
+    cout << "%average:  " << 100.0*(float)(tempMap.size())/(float)((keypointsImage1.size() + keypointsImage2.size())/2) << "%" << endl;
+
+    for (auto entry : tempMap)
     {
         drawSingleKeypoint(entry.first, inputImage, cv::Scalar(255,0,0));
         drawSingleKeypoint(entry.second, outputImage, cv::Scalar(255,0,0));
+    }
+
+    MatchingTriangleMap tempTriangleMap = getMatchingTriangleTwoWayMap(tempMap);
+    auto allTrisImage1 = buildTrianglesFromKeypoints(keypointsImage1);
+    auto allTrisImage2 = buildTrianglesFromKeypoints(keypointsImage2);
+
+    cout << "Number of matching Triangles:   " << tempTriangleMap.size() << endl;
+    cout << "Number of Triangles in image1: " << allTrisImage1.size() << " image2: " << allTrisImage2.size() << endl;
+    cout << "average:  " << ((allTrisImage1.size() + allTrisImage2.size())/2) << endl;
+    cout << "%average: " << 100.0*(float)(tempTriangleMap.size())/(float)((allTrisImage1.size() + allTrisImage2.size())/2) << "%" << endl;
+
+    for (auto entry: tempTriangleMap)
+    {
+        bool setColour = true;
+        int r = (int) xorshf962();
+        int g = (int) xorshf962();
+        int b = (int) xorshf962();
+        cv::Scalar colour(b,g,r);
+        drawSingleTriangleOntoImage(entry.first, inputImage, setColour, colour);
+        drawSingleTriangleOntoImage(entry.second, outputImage, setColour, colour);
     }
 
     cv::imshow("image1.jpg", inputImage);

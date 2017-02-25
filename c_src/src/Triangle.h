@@ -55,7 +55,46 @@ public:
 
         return std::abs(x0 * (y1 - y2) + x1 * (y2 - y0) + x2 * (y0 - y1)) / 2;
     }
+
+    bool hasMatchingKeypoint(Keypoint checkingKeypoint, const Triangle &triangle) const {
+        for (auto kp: triangle.toKeypoints())
+        {
+            if (checkingKeypoint == kp) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    inline bool operator==(const Triangle& rhs) const {
+        for (auto kp: keypoints_)
+        {
+            if(hasMatchingKeypoint(kp, rhs))
+            {
+                //check next keypoint
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
 };
+
+namespace std {
+
+    template <>
+    struct hash<Triangle>
+    {
+        std::size_t operator()(const Triangle& k) const
+        {
+            using std::hash;
+            auto kps = k.toKeypoints();
+            return ((hash<Keypoint>()(kps[0]) ^ (hash<Keypoint>()(kps[1]) << 1)) >> 1 ^ hash<Keypoint>()(kps[2]));
+        }
+    };
+
+}
+
 
 
 #endif //SRC_TRIANGLE_H
