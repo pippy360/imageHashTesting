@@ -217,7 +217,17 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2)
     auto allTrisImage1 = buildTrianglesFromKeypoints(keypointsImage1);
     auto allTrisImage2 = buildTrianglesFromKeypoints(keypointsImage2);
 
+    vector<Keypoint> image1Kp;
+    vector<Keypoint> image2Kp;
+    tie(image1Kp, image2Kp) = splitKeypointMap(tempMap);
+
+    auto tris1 = buildTrianglesFromKeypoints(image1Kp);
+    auto tris2 = buildTrianglesFromKeypoints(image2Kp);
+
     cout << "Number of matching Triangles:   " << tempTriangleMap.size() << endl;
+    cout << "Number of Triangles made of matching points in image1: " << tris1.size() << " image2: " << tris2.size() << endl;
+    cout << "average:  " << ((tris1.size() + tris2.size())/2) << endl;
+    cout << "%average: " << 100.0*(float)(tempTriangleMap.size())/(float)((tris1.size() + tris2.size())/2) << "%" << endl;
     cout << "Number of Triangles in image1: " << allTrisImage1.size() << " image2: " << allTrisImage2.size() << endl;
     cout << "average:  " << ((allTrisImage1.size() + allTrisImage2.size())/2) << endl;
     cout << "%average: " << 100.0*(float)(tempTriangleMap.size())/(float)((allTrisImage1.size() + allTrisImage2.size())/2) << "%" << endl;
