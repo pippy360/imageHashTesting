@@ -178,6 +178,16 @@ unsigned long xorshf962(void) {          //period 2^96-1
 }
 
 
+void dumpMathcingKeypointTestingInfoToJson(unsigned int count, unsigned int totalCount, unsigned int cout,
+                                           MatchingKeypointMap map, unsigned int imagesCount, unsigned int image1Count,
+                                           unsigned int image2Count, unsigned int trianglesTotalCount,
+                                           unsigned int image2TrianglesTotalCount)
+{
+    //dump it!!!
+
+
+}
+
 TEST(utilsTest, testingTheConvertingOfKeypoints2)
 {
     double rotation = 45;
@@ -213,6 +223,10 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2)
         drawSingleKeypoint(entry.second, outputImage, cv::Scalar(255,0,0));
     }
 
+    cv::imwrite("image1_keypoints.jpg", inputImage);
+    cv::imwrite("image2_keypoints.jpg", outputImage);
+
+
     MatchingTriangleMap tempTriangleMap = getMatchingTriangleTwoWayMap(tempMap);
     auto allTrisImage1 = buildTrianglesFromKeypoints(keypointsImage1);
     auto allTrisImage2 = buildTrianglesFromKeypoints(keypointsImage2);
@@ -243,9 +257,27 @@ TEST(utilsTest, testingTheConvertingOfKeypoints2)
         drawSingleTriangleOntoImage(entry.second, outputImage, setColour, colour);
     }
 
-    cv::imshow("image1.jpg", inputImage);
-    cv::imshow("image2.jpg", outputImage);
-    cv::waitKey();
+    //keypoints
+    unsigned int matchingKeypointsCount = tempMap.size();
+    unsigned int image1KeypointsTotalCount = keypointsImage1.size();
+    unsigned int image2KeypointsTotalCout = keypointsImage2.size();
+    auto matchingKeypoints = tempMap;
+
+    //triangles
+    unsigned int matchingTrianglesInBothImagesCount = tempTriangleMap.size();
+    unsigned int trianglesMadeOfMatchingKeypointsInImage1Count = tris1.size();
+    unsigned int trianglesMadeOfMatchingKeypointsInImage2Count = tris2.size();
+    unsigned int image1TrianglesTotalCount = allTrisImage1.size();
+    unsigned int image2TrianglesTotalCount = allTrisImage2.size();
+    auto matchingTriangles = tempTriangleMap;
+
+    dumpMathcingKeypointTestingInfoToJson(matchingKeypointsCount, image1KeypointsTotalCount, image2KeypointsTotalCout,
+                                          matchingKeypoints, matchingTrianglesInBothImagesCount, trianglesMadeOfMatchingKeypointsInImage1Count,
+                                          trianglesMadeOfMatchingKeypointsInImage2Count, image1TrianglesTotalCount, image2TrianglesTotalCount );
+
+    cv::imwrite("image1_triangles.jpg", inputImage);
+    cv::imwrite("image2_triangles.jpg", outputImage);
+//    cv::waitKey();
 }
 
 
