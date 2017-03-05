@@ -398,6 +398,9 @@ def genImagesWithDisplayFix(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):
 	
 	xs, ys, dxdt, dydt, d2xdt, d2ydt, s, curvature, dxcurvature, dx2curvature, fullLength_s, fx_s, fy_s =_parameterizeFunctionWRTArcLength(org_x, org_y)
 
+	curvature_f = UnivariateSpline(s, curvature, k=3, s=1.0/80.0)
+	curvature = curvature_f(s)
+
 	finalVals = argrelextrema(curvature, np.greater, order=2)
 
 	#print "finalVals"
@@ -419,14 +422,14 @@ def genImagesWithDisplayFix(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):
 			pt = (temp2[i], temp3[i])
 			fin_pts.append(pt)
 
-#	plot(s, curvature, 'b', color='b')
+	# plot(s, curvature, 'b', color='b')
 #	plot(temp2, temp3, 'b', color='b')
 	#plot(fx_s(finalVals), fy_s(finalVals), 'ro', color='r')
 	#plot(temp4, temp, 'ro', color='r')
 	
 #	plot(xs, ys, 'b', color='b')
 #	plot(temp2, temp3, 'ro', color='r')
-#	show()
+	# show()
 
 #	for i in range(len(dx2curvature)):
 #		plotting.plotItAtIndex(xs, ys, dxdt, dydt, d2xdt, d2ydt, s, curvature, dxcurvature, dx2curvature, i, fullLength_s)
