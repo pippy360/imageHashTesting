@@ -4,72 +4,8 @@ import keypoints as kp
 import sys
 
 
-
-
-items = [
-	#	{'imgName': "img2", 'excludeList': ["img1"]},
-	{'imgName': "lennaWithGreenDots", 'excludeList': []},
-	{'imgName': "2f95f3e1294c759ec23c8e6a21bb2cca", 'excludeList': []},
-	{'imgName': "moderat-bad-kingdom", 'excludeList': []},
-	{'imgName': "mountains_orginal_dots", 'excludeList': []},
-	{'imgName': "Moderat-Bad-Kingdom", 'excludeList': []},
-	{'imgName': "Moderat-Bad-Kingdom6_2", 'excludeList': []},
-	{'imgName': "Moderat-Bad-Kingdom_1", 'excludeList': []},
-	{'imgName': "Moderat-Bad-Kingdom-10", 'excludeList': []},
-	{'imgName': "rick1", 'excludeList': ["rick3", "rick2"]},
-	{'imgName': "rick2", 'excludeList': ["rick1", "rick3"]},
-	{'imgName': "rick3", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_crop_1", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_crop_2", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_crop_3", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_crop_4", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_crop_5", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_full_1", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "rick_full_2", 'excludeList': ["rick1", "rick2"]},
-	{'imgName': "upload02", 'excludeList': []},
-	{'imgName': "_vector__natsu_and_happy___ninjas__by_coolez-d89c2au", 'excludeList': []},
-	{'imgName': "dots", 'excludeList': ["img1", "img2", "costanza_changed"]},
-	{'imgName': "costanza_changed", 'excludeList': ["dots", "img1", "img2"]},
-	{'imgName': "lennaWithGreenDotsInTriangle", 'excludeList': []},
-	{'imgName': "lennaWithGreenDotsInTriangle1", 'excludeList': []},
-	{'imgName': "lennaWithGreenDotsInTriangle2", 'excludeList': []},
-	{'imgName': "lennaWithGreenDotsInTriangle3", 'excludeList': []},
-	{'imgName': "small_lenna1", 'excludeList': []},
-	{'imgName': "small_lenna2", 'excludeList': []},
-	{'imgName': "small_lenna3", 'excludeList': []},
-	{'imgName': "small_lenna4", 'excludeList': []},
-	{'imgName': "testImage1", 'excludeList': []},
-	{'imgName': "testImage2", 'excludeList': []},
-	{'imgName': "small_lenna4", 'excludeList': []},
-	{'imgName': "img2", 'excludeList': ["dots", "img1", "costanza_changed"]},
-	{'imgName': "img1", 'excludeList': ["img2", "dots", "costanza_changed"]}
-]
-
-
-# {
-# 	"output":
-# 		{
-# 			"keypoints":
-# 				[
-# 					{
-# 						"x" : 200.4,
-# 						"y" : 100.1
-# 					},
-# 					{
-# 						"x" : 123.4,
-# 						"y" : 456.1
-# 					}
-# 				]
-# 		}
-# }
-
-
-def dumpKeypoints(img, filename):
+def dumpToJson(kps, filename):
 	import json
-	import edgeFinder
-	import getKeypointsFromEdges
-	edges = edgeFinder.getTheEdges(img)
-	kps = getKeypointsFromEdges.getKeypointsFromEdges(edges)
 	calcdKeypoints = []
 	for kp in kps:
 		tempObj = {}
@@ -83,6 +19,47 @@ def dumpKeypoints(img, filename):
 
 	f = open(filename,'w+')
 	f.write( json.dumps(output) )
+
+
+def drawKeypointsOntoImage(img, kps):
+	for kp in kps:
+		cv2.circle(img, (int(kp[0]), int(kp[1])) , 3, (0,0,255), 2)
+
+
+def dumpKeypoints(img, filename):
+	import edgeFinder
+	import getKeypointsFromEdges
+	gaussW = 91
+	edges = edgeFinder.getTheEdges(img, gaussW)
+
+	######################################### DEBUG
+	print "Showing edges on image..."
+	for edge in edges:
+		cv2.drawContours(img, [edge], 0, (0,255,0), 1)
+	cv2.imshow("dd", img)
+	cv2.waitKey()
+
+	img2 = img.copy()
+	img2 = cv2.GaussianBlur(img2,(gaussW,gaussW),0)
+	img2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
+	ret,img2 = cv2.threshold(img2,100,255,cv2.THRESH_BINARY)
+	for edge in edges:
+		cv2.drawContours(img2, [edge], 0, (0,255,0), 1)
+
+	cv2.imshow("dd", img2)
+	cv2.waitKey()
+	######################################### /DEBUG
+
+	kps = getKeypointsFromEdges.getKeypointsFromEdges(edges)
+
+	######################################### DEBUG
+	print "Showing keypoints on image..."
+	drawKeypointsOntoImage(img, kps)
+	cv2.imshow("dd", img)
+	cv2.waitKey()
+	######################################### /DEBUG
+
+	dumpToJson(kps, filename)
 
 def toFullPath(imgName):
 	return "input/"+imgName+".jpg"

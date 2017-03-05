@@ -1,27 +1,25 @@
-import numpy as np
 import matplotlib
 matplotlib.use('Agg')
-import time
-
-import matplotlib.pyplot as plt
-import math
-from math import pi
-from scipy.interpolate import UnivariateSpline, interp1d
-from scipy.integrate import quad, cumtrapz
-from scipy import interpolate
-from scipy.interpolate import CubicSpline
-import scipy
-import numpy as np
 import pylab
-from numpy import sin,pi,linspace
 from pylab import plot,show,subplot, axhline, axis, axes
-import sys
-from scipy import signal
-from scipy.signal import argrelextrema
-import new_shapes as ns
-import plotting
 ####### gen points ########
 g_name = "image"
+g_enable_plotting = True
+
+
+def plotTwoFuncsVsOrgPoints(tList, fx_t, org_x, fy_t, org_y):
+    if not g_enable_plotting:
+        return
+    #PLOT
+    subplot(211)
+    plot(tList, org_x, 'x', color="red")
+    plot(tList, fx_t(tList), 'b', color="blue")
+    subplot(212)
+    plot(tList, org_y, 'x', color="red")
+    plot(tList, fy_t(tList), 'b', color="blue")
+    #plot(fx_t(tList), fy_t(tList), 'b', color="blue")
+    show()
+    #PLOT
 
 def plotItAtIndex(xs, ys, dxdt, dydt, d2xdt, d2ydt, s, curvature, dxcurvature, dx2curvature, idx, fullLength_s):
     fullLen = len(s)
