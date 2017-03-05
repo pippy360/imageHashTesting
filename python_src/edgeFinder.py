@@ -19,7 +19,7 @@ def getTheKeypoints_inner(img, gaussW):
 	print len(contours)
 
 	filteredContours = []
-	area_here = 1000 #FIXME:
+	area_here = 100 #FIXME:
 	area_here_max = 600
 	for cnt in contours:
 		if cv2.contourArea(cnt) > area_here:

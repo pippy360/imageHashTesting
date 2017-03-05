@@ -12,13 +12,12 @@ def cntToPoints(cnt):
     return ret
 
 def getKeypointsFromEdges(edges):
-    finCnts = []
+    ret = []
 
     for cnt in edges:
 
-        ret = cntToPoints(cnt)
-        pts = kp.getKeypoints(np.array(ret))
-        finCnts.extend( pts )
+        temp_pts = cntToPoints(cnt)
+        ret.extend(kp.getKeypoints(np.array(temp_pts)))
 
-    print "Number of keypoints: " + str(len(finCnts))
-    return finCnts
+    print "Number of keypoints: " + str(len(ret))
+    return ret

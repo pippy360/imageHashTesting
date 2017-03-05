@@ -1,7 +1,4 @@
-import numpy as np
 import cv2
-import keypoints as kp
-import sys
 
 
 def dumpToJson(kps, filename):
@@ -9,9 +6,10 @@ def dumpToJson(kps, filename):
 	calcdKeypoints = []
 	for kp in kps:
 		tempObj = {}
-		tempObj["x"] = kp[0]
-		tempObj["y"] = kp[1]
+		tempObj["x"] = int(kp[0])
+		tempObj["y"] = int(kp[1])
 		calcdKeypoints.append(tempObj)
+
 	keyPoints = {}
 	keyPoints['keypoints'] = calcdKeypoints
 	output = {}
@@ -29,15 +27,15 @@ def drawKeypointsOntoImage(img, kps):
 def dumpKeypoints(img, filename):
 	import edgeFinder
 	import getKeypointsFromEdges
-	gaussW = 91
+	gaussW = 51
 	edges = edgeFinder.getTheEdges(img, gaussW)
 
 	######################################### DEBUG
 	print "Showing edges on image..."
 	for edge in edges:
 		cv2.drawContours(img, [edge], 0, (0,255,0), 1)
-	cv2.imshow("dd", img)
-	cv2.waitKey()
+	# cv2.imshow("dd", img)
+	# cv2.waitKey()
 
 	img2 = img.copy()
 	img2 = cv2.GaussianBlur(img2,(gaussW,gaussW),0)
@@ -46,8 +44,8 @@ def dumpKeypoints(img, filename):
 	for edge in edges:
 		cv2.drawContours(img2, [edge], 0, (0,255,0), 1)
 
-	cv2.imshow("dd", img2)
-	cv2.waitKey()
+	# cv2.imshow("dd", img2)
+	# cv2.waitKey()
 	######################################### /DEBUG
 
 	kps = getKeypointsFromEdges.getKeypointsFromEdges(edges)
@@ -55,8 +53,9 @@ def dumpKeypoints(img, filename):
 	######################################### DEBUG
 	print "Showing keypoints on image..."
 	drawKeypointsOntoImage(img, kps)
-	cv2.imshow("dd", img)
-	cv2.waitKey()
+	cv2.imwrite("./keypoints_.png", img)
+	# cv2.imshow("dd", img)
+	# cv2.waitKey()
 	######################################### /DEBUG
 
 	dumpToJson(kps, filename)
@@ -71,8 +70,6 @@ def dumpExcludeList(exList, outputFile):
 		f.write( ex + '\n' )
 
 def main():
-	import os
-	from shutil import copyfile
 	import sys
 	if len(sys.argv) < 3:
 		print("you need to pass in an image path!!!! and also an output path for the json")

@@ -12,11 +12,21 @@ def plotTwoFuncsVsOrgPoints(tList, fx_t, org_x, fy_t, org_y):
         return
     #PLOT
     subplot(211)
-    plot(tList, org_x, 'x', color="red")
-    plot(tList, fx_t(tList), 'b', color="blue")
+    plot(org_x, org_y, 'b', color="red")
     subplot(212)
-    plot(tList, org_y, 'x', color="red")
-    plot(tList, fy_t(tList), 'b', color="blue")
+    plot(fx_t(tList), fy_t(tList), 'b', color="blue")
+    #plot(fx_t(tList), fy_t(tList), 'b', color="blue")
+    show()
+    #PLOT
+
+def plotArcVsSmoothedOrg(fx_t, org_x, fy_t, org_y):
+    if not g_enable_plotting:
+        return
+    #PLOT
+    subplot(211)
+    plot(org_x, org_y, 'b', color="red")
+    subplot(212)
+    plot(fx_t, fy_t, 'b', color="blue")
     #plot(fx_t(tList), fy_t(tList), 'b', color="blue")
     show()
     #PLOT
@@ -79,3 +89,23 @@ def plotItAtIndex(xs, ys, dxdt, dydt, d2xdt, d2ydt, s, curvature, dxcurvature, d
     print vals[-1]
     pylab.savefig('output_debug/'+g_name+'_foo'+str(idx)+'.png')
     pylab.clf()
+
+
+def plotCurvatureLocalMaximums(s, curvature, arcLengthOfLocalMaximum, curvatureOfLocalMaximum, xs, ys, xCoordsOfLocalMaximum, yCoordsOfLocalMaximum):
+    subplot(211)
+    plot(s, curvature, 'b', color='b')
+    plot(arcLengthOfLocalMaximum, curvatureOfLocalMaximum, 'ro', color='r')
+    subplot(212)
+    plot(xs, ys, 'b', color='b')
+    plot(xCoordsOfLocalMaximum, yCoordsOfLocalMaximum, 'ro', color='r')
+
+    show()
+
+
+
+
+
+
+
+
+
