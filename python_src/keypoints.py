@@ -3,6 +3,9 @@ import time
 import math
 from scipy.interpolate import UnivariateSpline, interp1d
 from scipy.integrate import quad, cumtrapz, quad_explain
+from scipy.signal import medfilt
+from scipy.signal import savgol_filter
+from statsmodels.nonparametric.smoothers_lowess import lowess
 import numpy as np
 import pylab
 from numpy import sin,pi,linspace
@@ -13,8 +16,8 @@ import plotting
 
 g_name = 'REPLACE_ME'
 g_enable_plotting = True
-g_SmoothingForParameterization_t = 1000
-g_SmoothingForParameterization_s = None
+g_SmoothingForParameterization_t = 0
+g_SmoothingForParameterization_s = 200
 g_SmoothingForDeltaCurvature = None
 g_isMakeAllPointsEqidistant = False
 g_cullPoints = False
@@ -282,19 +285,36 @@ def reParameterizeFunctionFromPoints(t_to_s_function, tList, fx_t, fy_t, smoothi
     #for each point (org_x[i], org_y[i]) the "arcLengthList" gives use the arc length from 0 to that point
     #arcLengthList = convertTListToArcLengthList_old(tList, fx_t, fy_t)
 
+    print 'tList'
+    temp_tList = []
+    for i in range(tList[-1]):
+        temp_tList.append( float(i) )
+        temp_tList.append( float(float(i)+0.5) )
+
+    # plot(fx_t(temp_tList), fy_t(temp_tList), 'b', color="green")
+    # plot(fx_t(temp_tList), fy_t(temp_tList), 'x', color="green")
+
     arcLengthList = convertTListToArcLengthList_debug_new(tList, fx_t, fy_t)
 
-    # print '############'
-    # print arcLengthList
-    # print arcLengthList2
-    # print len(arcLengthList)
-    # print len(arcLengthList2)
-    # print '############'
-    #
-    # sys.exit()
-    #CAREFUL!!! we might use fx_t(tList) here, or x_org
-    #but only if that's what the arcLengthListIsDefinedAS ??? it must be, how else would we make the spline????
+    print 'showing no smooth 1'
     fx_s, fy_s = getParameterizedFunctionFromPoints(arcLengthList, fx_t(tList), fy_t(tList), smoothing=smoothing)
+    # plot(fx_s(arcLengthList), fy_s(arcLengthList), 'b', color="red")
+
+    #now evenly distribute the arcLengthList
+    start = float(arcLengthList[0])
+    end = float(arcLengthList[-1])
+    temp_range = end - start
+
+    tempArcLengthList = []
+    for i in range(int(temp_range)):
+        tempArcLengthList.append((i+start))
+    arcLengthList = np.array(tempArcLengthList)
+
+    # print 'showing no smooth 2'
+    # plot(fx_s(arcLengthList), fy_s(arcLengthList), 'b', color="blue")
+    # show()
+
+
     return arcLengthList, fx_s, fy_s
 
 def getFirstAndSecondDerivForTPoints(arcLengthList, fx_s, fy_s):
@@ -332,18 +352,47 @@ def parameterizeFunctionWRTArcLength(pts):
 def _parameterizeFunctionWRTArcLength(org_x, org_y):
 
     tList = np.arange(org_x.shape[0])
-    fx_t, fy_t = getParameterizedFunctionFromPoints(tList, org_x, org_y, smoothing=g_SmoothingForParameterization_t)#this will smooth out the input shape
+
+    window = 11
+    poly_degree = 2
+    org_x_cpy = org_x
+    org_y_cpy = org_y
+
+    # org_x_cpy = savgol_filter(org_x, window, poly_degree)
+    # org_y_cpy = savgol_filter(org_y, window, poly_degree)
+
+    # org_x_cpy = medfilt(org_x, window)
+    # org_y_cpy = medfilt(org_y, window)
+
+    # filtered = lowess(tList, org_y, is_sorted=True, frac=10.025, it=0)
+    # # filtered = lowess(org_y, tList, is_sorted=True, frac=0.025, it=0)
+    # plot(org_y, tList, 'r')
+    # plot(filtered[:,0], filtered[:,1], 'b')
+    # show()
+    # org_x_cpy, org_y_cpy = filtered[:,0], filtered[:,1]
+
+    fx_t, fy_t = getParameterizedFunctionFromPoints(tList, org_x_cpy, org_y_cpy, smoothing=g_SmoothingForParameterization_t)#this will smooth out the input shape
 
     #PLOT
+    # org_x_cpy = savgol_filter(org_x, window, poly_degree)
+    # org_y_cpy = savgol_filter(org_y, window, poly_degree)
+
     # plotting.plotTwoFuncsVsOrgPoints(tList, fx_t, org_x, fy_t, org_y)
+    # org_x_cpy = savgol_filter(org_x, window, poly_degree)
+    # org_y_cpy = savgol_filter(org_y, window, poly_degree)
+
     # show()
     #PLOT
 
+    arcLengthList, fx_s_no_smooth, fy_s_no_smooth= reParameterizeFunctionFromPoints(convertTListToArcLengthList_old, tList, fx_t, fy_t, smoothing=0)
     arcLengthList, fx_s, fy_s = reParameterizeFunctionFromPoints(convertTListToArcLengthList_old, tList, fx_t, fy_t, smoothing=g_SmoothingForParameterization_s)
 
     #PRINT DEBUG
     #PLOT
-    # plotting.plotArcVsSmoothedOrg(fx_s(arcLengthList), fx_t(tList), fy_s(arcLengthList), fy_t(tList))
+    print "debug"
+    plotting.plotTwoFuncsVsOrgPoints2(arcLengthList, tList, fx_t(tList), org_x, fy_t(tList), org_y, fx_s(arcLengthList), fy_s(arcLengthList), fx_s_no_smooth, fy_s_no_smooth)
+    print "/debug"
+
     # show()
     #PLOT
     # randomPrint1(arcLengthList, org_x, org_y, fx_s, fy_s)
@@ -359,10 +408,10 @@ def _parameterizeFunctionWRTArcLength(org_x, org_y):
 
     curvature, dxcurvature, dx2curvature = getCurvatureForPoints(arcLengthList, fx_s, fy_s, smoothing=g_SmoothingForDeltaCurvature)
 
-    return org_x, org_y, x_, y_, x__, y__, arcLengthList, curvature, dxcurvature, dx2curvature, arcLengthList[-1], fx_s, fy_s
+    return fx_s_no_smooth(arcLengthList), fy_s_no_smooth(arcLengthList), x_, y_, x__, y__, arcLengthList, curvature, dxcurvature, dx2curvature, arcLengthList[-1], fx_s, fy_s
 
 
-def filterLocalMaximums(indexesOfMaximums, curvatureAtIndex, threshold=.02):
+def filterLocalMaximums(indexesOfMaximums, curvatureAtIndex, threshold=.05):
     ret = []
     for i in range(len(indexesOfMaximums)):
         if curvatureAtIndex[i] > threshold:
@@ -370,15 +419,20 @@ def filterLocalMaximums(indexesOfMaximums, curvatureAtIndex, threshold=.02):
 
     return ret
 
-def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s):
+def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, sList):
 
     tempIndexesOfMaximums = argrelextrema(curvature, np.greater, order=2)
+    print "tempIndexesOfMaximums"
+    print tempIndexesOfMaximums[0]
     indexesOfMaximums = tempIndexesOfMaximums[0]
 
     indexesOfMaximums = filterLocalMaximums(indexesOfMaximums, curvature[indexesOfMaximums]);
 
     curvatureOfLocalMaximum = curvature[indexesOfMaximums]
-    arcLengthOfLocalMaximum = s[indexesOfMaximums]
+    arcLengthOfLocalMaximum = sList[indexesOfMaximums]
+
+    print indexesOfMaximums
+    print xs
 
     xCoordsOfLocalMaximum = xs[indexesOfMaximums]
     yCoordsOfLocalMaximum = ys[indexesOfMaximums]
@@ -388,7 +442,7 @@ def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s):
         pt = (xCoordsOfLocalMaximum[i], yCoordsOfLocalMaximum[i])
         fin_pts.append(pt)
 
-    # plotting.plotCurvatureLocalMaximums(s, curvature, arcLengthOfLocalMaximum, curvatureOfLocalMaximum, xs, ys, xCoordsOfLocalMaximum, yCoordsOfLocalMaximum)
+    # plotting.plotCurvatureLocalMaximums(sList, curvature, arcLengthOfLocalMaximum, curvatureOfLocalMaximum, xs, ys, xCoordsOfLocalMaximum, yCoordsOfLocalMaximum)
 
     #
     # for i in range(len(dx2curvature)):
@@ -406,6 +460,8 @@ def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s):
 
 def getKeypoints(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):#FIXME: use number of pixels per unit to calc the smoothing
     org_x, org_y = pts[:, 0], pts[:, 1]
+    org_x = np.append(org_x,org_x)
+    org_y = np.append(org_y,org_y)
     # org_y = org_y[600:800]
     # org_x = org_x[600:800]
     #
@@ -418,8 +474,7 @@ def getKeypoints(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):#FIXME: use
     xs, ys, dxdt, dydt, d2xdt, d2ydt, s, curvature, dxcurvature, dx2curvature, fullLength_s, fx_s, fy_s = _parameterizeFunctionWRTArcLength(org_x, org_y)
 
     # curvature_f = UnivariateSpline(s, curvature, k=3, s=1.0/20.0)
-    # curvature = curvature_f(s)
-
+    # curvature = curvature(s)
     ret = getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s)
 
     return ret
