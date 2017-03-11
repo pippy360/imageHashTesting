@@ -48,7 +48,8 @@ def getEquidistantPointsForSingleEdge(edge):
 		#add all the points in between
 		distance = dist(currentPoint, prevPoint)
 		if distance > 5 and not isLine(currentPoint, prevPoint):
-			raise ValueError("It wasn't a line!!!")
+			# raise ValueError("It wasn't a line!!!" + str(currentPoint) + " : " + str(prevPoint))
+			pass
 		elif distance > 5:
 			iter = int(distance/5)
 			for i in range(iter):

@@ -17,7 +17,7 @@ import plotting
 g_name = 'REPLACE_ME'
 g_enable_plotting = True
 g_SmoothingForParameterization_t = 0
-g_SmoothingForParameterization_s = 200
+g_SmoothingForParameterization_s = 1000
 g_SmoothingForDeltaCurvature = None
 g_isMakeAllPointsEqidistant = False
 g_cullPoints = False
@@ -285,7 +285,6 @@ def reParameterizeFunctionFromPoints(t_to_s_function, tList, fx_t, fy_t, smoothi
     #for each point (org_x[i], org_y[i]) the "arcLengthList" gives use the arc length from 0 to that point
     #arcLengthList = convertTListToArcLengthList_old(tList, fx_t, fy_t)
 
-    print 'tList'
     temp_tList = []
     for i in range(tList[-1]):
         temp_tList.append( float(i) )
@@ -296,7 +295,6 @@ def reParameterizeFunctionFromPoints(t_to_s_function, tList, fx_t, fy_t, smoothi
 
     arcLengthList = convertTListToArcLengthList_debug_new(tList, fx_t, fy_t)
 
-    print 'showing no smooth 1'
     fx_s, fy_s = getParameterizedFunctionFromPoints(arcLengthList, fx_t(tList), fy_t(tList), smoothing=smoothing)
     # plot(fx_s(arcLengthList), fy_s(arcLengthList), 'b', color="red")
 
@@ -335,6 +333,10 @@ def newArcLengthList(oldArcLengthList, fx_s, fy_s, isMakeAllPointsEqidistant=g_i
     if isMakeAllPointsEqidistant:
         return getEqidistantPointsAlongFunction(oldArcLengthList, fx_s, fy_s)
     return oldArcLengthList
+
+def dist(x,y):
+    import numpy
+    return numpy.sqrt( (x[0]-y[0])**2 + (x[1]-y[1])**2 )
 
 #Remember: curvature points will be the input points (and so won't be equidistant if the arcLengthList isn't)
 def getCurvatureForPoints(arcLengthList, fx_s, fy_s, smoothing=None):
@@ -411,28 +413,32 @@ def _parameterizeFunctionWRTArcLength(org_x, org_y):
     return fx_s_no_smooth(arcLengthList), fy_s_no_smooth(arcLengthList), x_, y_, x__, y__, arcLengthList, curvature, dxcurvature, dx2curvature, arcLengthList[-1], fx_s, fy_s
 
 
-def filterLocalMaximums(indexesOfMaximums, curvatureAtIndex, threshold=.05):
+def filterLocalMaximums(indexesOfMaximums, curvatureAtIndex, threshold=.05, maxIndex=None):
     ret = []
     for i in range(len(indexesOfMaximums)):
+        if not maxIndex == None and indexesOfMaximums[i] < int(maxIndex/4):
+            continue
+
+        if not maxIndex == None and indexesOfMaximums[i] > int((maxIndex*3)/4):
+            continue
+
         if curvatureAtIndex[i] > threshold:
             ret.append(indexesOfMaximums[i])
 
     return ret
 
-def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, sList):
+def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, sList, isShapeCyclic=False):
 
     tempIndexesOfMaximums = argrelextrema(curvature, np.greater, order=2)
-    print "tempIndexesOfMaximums"
-    print tempIndexesOfMaximums[0]
     indexesOfMaximums = tempIndexesOfMaximums[0]
 
-    indexesOfMaximums = filterLocalMaximums(indexesOfMaximums, curvature[indexesOfMaximums]);
+    maxIndex = None
+    if isShapeCyclic:
+        maxIndex=len(curvature)
+    indexesOfMaximums = filterLocalMaximums(indexesOfMaximums, curvature[indexesOfMaximums], maxIndex=maxIndex);
 
     curvatureOfLocalMaximum = curvature[indexesOfMaximums]
     arcLengthOfLocalMaximum = sList[indexesOfMaximums]
-
-    print indexesOfMaximums
-    print xs
 
     xCoordsOfLocalMaximum = xs[indexesOfMaximums]
     yCoordsOfLocalMaximum = ys[indexesOfMaximums]
@@ -460,8 +466,13 @@ def getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, sList):
 
 def getKeypoints(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):#FIXME: use number of pixels per unit to calc the smoothing
     org_x, org_y = pts[:, 0], pts[:, 1]
-    org_x = np.append(org_x,org_x)
-    org_y = np.append(org_y,org_y)
+
+    isShapeCyclic = False
+    if dist( (org_x[0], org_y[0]), (org_x[-1], org_y[-1])) < 10:
+        print "isShapeCyclic = True"
+        isShapeCyclic = True
+        org_x = np.append(org_x,org_x)
+        org_y = np.append(org_y,org_y)
     # org_y = org_y[600:800]
     # org_x = org_x[600:800]
     #
@@ -475,7 +486,7 @@ def getKeypoints(pts, numberOfPixelsPerUnit=g_numberOfPixelsPerUnit):#FIXME: use
 
     # curvature_f = UnivariateSpline(s, curvature, k=3, s=1.0/20.0)
     # curvature = curvature(s)
-    ret = getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s)
+    ret = getPointsForLocalMaximumsOfCurvature(curvature, xs, ys, s, isShapeCyclic=isShapeCyclic)
 
     return ret
 
