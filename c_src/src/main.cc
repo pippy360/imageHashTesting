@@ -75,7 +75,7 @@ int findMatchingHashInRedis(string imageName){
         }
         exit(1);
     }
-    cout << "finished hashing" << endl;
+//    cout << "finished hashing" << endl;
 //    vector<hashes::PerceptualHash_Fast> result;
     vector<string> result;
 //    for (auto hash : hashes)
@@ -158,7 +158,7 @@ void compareTwoImages(string imageName1, string imageName2) {
     addAllHashesToRedis(imageName1);
 
     //check for matches using the second image
-    cout << "{ count: " << findMatchingHashInRedis(imageName2) << " }";
+    cout << "{\n\tcount: " << findMatchingHashInRedis(imageName2) << "\n}";
 }
 
 int main(int argc, char* argv[])
