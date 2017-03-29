@@ -79,7 +79,7 @@ def getEquidistantPoints(edges):
 def dumpKeypoints(img, filename):
 	import edgeFinder
 	import getKeypointsFromEdges
-	gaussW = 3
+	gaussW = 41
 	edges = edgeFinder.getTheEdges(img, gaussW)
 
 	######################################### DEBUG

@@ -26,7 +26,7 @@
 using namespace std;
 
 void addAllHashesToRedis(string imageName){
-    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints2.json");
+    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints.json");
     auto loadedImage = getLoadedImage("../inputImages/"+imageName+"/"+imageName+".jpg");
     auto hashTrianglePairs = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, tris, "../inputImages/"+imageName+"/outputFragments", "1");
 
@@ -54,8 +54,8 @@ void addAllHashesToRedis(string imageName){
     }
 }
 
-void findMatchingHashInRedis(string imageName){
-    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints2.json");
+int findMatchingHashInRedis(string imageName){
+    vector<Triangle> tris = getTriangles("../inputImages/"+imageName+"/keypoints.json");
     auto loadedImage = getLoadedImage("../inputImages/"+imageName+"/"+imageName+".jpg");
     auto hashTrianglePairs = cv::getAllTheHashesForImage<hashes::PerceptualHash>(loadedImage, tris, "../inputImages/"+imageName+"/outputFragments", "1");
 
@@ -111,20 +111,54 @@ void findMatchingHashInRedis(string imageName){
         resultMap[redisReplyImageName];
         resultMap[redisReplyImageName].push_back(redisReplyTriangle);
     }
-    cout << "Matches:" << endl;
-    for(auto const& ent1 : resultMap)
-    {
-        if(ent1.first == imageName){
-            continue;
+//    cout << "Matches:" << endl;
+//    for(auto const& ent1 : resultMap)
+//    {
+//        if(ent1.first == imageName){
+//            continue;
+//        }
+//        auto tempImg = cv::imread("../inputImages/"+ent1.first+"/"+ent1.first+".jpg");
+//        drawTrianglesOntoImage(ent1.second, tempImg);
+//        cv::imwrite("../outputFromSearch_"+ent1.first+".jpg", tempImg);
+//
+//        cout << ent1.first << ": " << ent1.second.size() << endl;
+//    }
+//
+//    cout << "Number of matches: " << result.size() << endl;
+    return result.size();
+}
+
+
+void redisClearDatabase(){
+    redisContext *c;
+    const char *hostname = "127.0.0.1";
+    int port = 6379;
+
+    struct timeval timeout = { 1, 500000 }; // 1.5 seconds
+    c = redisConnectWithTimeout(hostname, port, timeout);
+    if (c == NULL || c->err) {
+        if (c) {
+            printf("Connection error: %s\n", c->errstr);
+            redisFree(c);
+        } else {
+            printf("Connection error: can't allocate redis context\n");
         }
-        auto tempImg = cv::imread("../inputImages/"+ent1.first+"/"+ent1.first+".jpg");
-        drawTrianglesOntoImage(ent1.second, tempImg);
-        cv::imwrite("../outputFromSearch_"+ent1.first+".jpg", tempImg);
-
-        cout << ent1.first << ": " << ent1.second.size() << endl;
+        exit(1);
     }
+    redisCommand(c,"FLUSHALL");
+    redisFree(c);
+}
 
-    cout << "Number of matches: " << result.size() << endl;
+void compareTwoImages(string imageName1, string imageName2) {
+
+    //clear the db
+    redisClearDatabase();
+
+    //add the first image to db
+    addAllHashesToRedis(imageName1);
+
+    //check for matches using the second image
+    cout << "{ count: " << findMatchingHashInRedis(imageName2) << " }";
 }
 
 int main(int argc, char* argv[])
@@ -135,15 +169,12 @@ int main(int argc, char* argv[])
     }
 
     string imageName = (argc > 2)? argv[2]: "img1";
-    string imageFullPath =  "inputImages/"+ imageName + "/" + imageName + ".jpg";
-    string imagePoints =    "inputImages/"+ imageName + "/keypoints.txt";
 
     if (argc > 2 && !strcmp(argv[1], "dumpRandom")){
         cout << "Dumping image hashes for: " << imageName << endl;
-//    }else if (argc > 2 && !strcmp(argv[1], "speedTest")){
-//        hasingSpeedTestFull<hashes::PerceptualHash_Fast>(imageName);
-//    }else if (argc > 2 && !strcmp(argv[1], "dumpThem")){
-//        dumpThem(imageName);
+    }else if (argc > 3 && !strcmp(argv[1], "compareTwoImages")){
+        string imageName2 = argv[3];
+        compareTwoImages(imageName, imageName2);
     }else if (argc > 2 && !strcmp(argv[1], "addRedisImage")){
         addAllHashesToRedis(imageName);
     }else if (argc > 2 && !strcmp(argv[1], "checkRedisImage")){
