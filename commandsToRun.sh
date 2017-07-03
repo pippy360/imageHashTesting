@@ -10,6 +10,7 @@ sudo apt-get install python-pip
 sudo pip install matplotlib
 sudo pip install scipy
 sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+sudo python -mpip install statsmodels
 
 #remove annoying opencv error
 sudo ln /dev/null /dev/raw1394
